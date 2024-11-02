@@ -1,0 +1,157 @@
+.navbar {
+    position: absolute !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    background-color: transparent;
+    padding: 10px 20px;
+    box-shadow: none;
+}
+
+.navbar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.navbar-email {
+    text-decoration: none;
+    margin-left: 20px;
+    color: #fff;
+    margin-right: 20px; /* Razmak između emaila i društvenih mreža */
+}
+
+.navbar-social {
+    display: flex;
+    margin-left: auto; /* Pomeri društvene mreže skroz desno */
+    justify-content: flex-end;
+}
+
+.navbar-social a {
+    margin-left: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-social a:hover {
+    color: #ccc;
+}
+
+.navbar-divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 10px 0;
+}
+
+.navbar-bottom {
+    display: flex;
+    justify-content: space-between; /* Obezbeđuje da se elementi rasporede na suprotnim krajevima */
+    align-items: center;
+}
+
+.navbar-bottom-left {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.navbar-logo {
+    margin-left: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-right: 20px; /* Razmak između logoa i linkova */
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: flex-end; /* Pomeranje linkova na desnu stranu */
+    margin-left: auto; /* Osigurava da linkovi budu skroz desno */
+}
+
+.navbar-links a {
+    margin-left: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-links a:hover {
+    color: #ccc;
+}
+@media (max-width: 768px) {
+    .navbar-top {
+        flex-direction: row; /* Menjamo na red kako bi elementi bili jedan pored drugog */
+        justify-content: space-between; /* Razdvajamo elemente na suprotne strane */
+        align-items: center; /* Centriramo elemente vertikalno */
+    }
+
+    .navbar-left, .navbar-social {
+        flex: 1; /* Dajemo oba div-a jednaku fleksibilnost da zauzmu dostupan prostor */
+        display: flex;
+        align-items: center; /* Vertikalno centriranje ikonica */
+        justify-content: center; /* Horizontalno centriranje ikonica */
+        margin: 0; /* Uklanjamo sve spoljne margine */
+    }
+
+    .navbar-social {
+        justify-content: flex-end; /* Poravnavanje društvenih mreža na kraj */
+    }
+
+    .navbar-email span:not(.bi) {
+        display: none; /* Sakrijemo tekstualne linkove i prikažemo samo ikonice */
+    }
+
+    .navbar-social a span:not(.bi) {
+        display: none; /* Sakrijemo tekstualne opise društvenih mreža */
+    }
+
+    .navbar-bottom-left {
+        display: block; /* Osiguravamo da logo ostane vidljiv */
+    }
+}
+
+/* Dodavanje specifičnijih selektora i !important da osiguramo primenu stilova */
+.navbar .navbar-top {
+    display: flex;
+    justify-content: space-between; /* Obezbeđuje da se elementi rasporede na suprotnim krajevima */
+    align-items: center;
+    width: 100%; /* Osigurava da navbar-top zauzima punu širinu */
+}
+
+.navbar .navbar-left {
+    flex: 1; /* Omogućava da navbar-left zauzima prostor koji mu je potreban */
+    justify-content: flex-start;
+}
+
+.navbar .navbar-social {
+    margin-right: 20px;
+    flex: 1; /* Omogućava da navbar-social zauzima prostor koji mu je potreban */
+    justify-content: flex-end;
+    margin-left: auto !important; /* Pomeri društvene mreže skroz desno */
+}
+
+/* Pojačavanje specifičnosti i dodavanje !important za osiguranje primene stilova */
+.navbar .navbar-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar .navbar-bottom .navbar-links {
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-end !important; /* Pomeranje linkova na desnu stranu */
+    margin-left: auto !important; /* Osigurava da linkovi budu skroz desno */
+    flex: 1; /* Omogućava da navbar-links zauzima prostor koji mu je potreban */
+}
+
