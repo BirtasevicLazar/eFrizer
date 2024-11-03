@@ -42,7 +42,7 @@ function NavigationBar() {
           <a href="#contact" onClick={toggleMenu}>Contact</a>
         </div>
         <div className="hamburger" onClick={toggleMenu}>
-          <span className={`hamburger-icon ${isMenuOpen ? 'close' : ''}`}>
+          <span className={`hamburger-icon ${isMenuOpen ? 'open' : ''}`}>
             {isMenuOpen ? '✕' : '☰'}
           </span>
         </div>
