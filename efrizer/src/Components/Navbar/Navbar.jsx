@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 
 function NavigationBar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="navbar">
       <div className="navbar-top">
@@ -29,11 +35,16 @@ function NavigationBar() {
         <div className="navbar-bottom-left">
           <div className="navbar-logo">eFrizer</div>
         </div>
-        <div className="navbar-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
+        <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
+          <a href="#home" onClick={toggleMenu}>Home</a>
+          <a href="#about" onClick={toggleMenu}>About</a>
+          <a href="#services" onClick={toggleMenu}>Services</a>
+          <a href="#contact" onClick={toggleMenu}>Contact</a>
+        </div>
+        <div className="hamburger" onClick={toggleMenu}>
+          <span className={`hamburger-icon ${isMenuOpen ? 'close' : ''}`}>
+            {isMenuOpen ? '✕' : '☰'}
+          </span>
         </div>
       </div>
     </div>

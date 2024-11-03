@@ -14,6 +14,13 @@
     align-items: center;
     font-size: 0.9rem;
     color: #fff;
+    width: 100%;
+}
+
+.navbar-top .navbar-social {
+    margin-left: auto;
+    justify-content: flex-end;
+    margin-right: 20px;
 }
 
 .navbar-left {
@@ -22,7 +29,22 @@
     margin-right: auto;
 }
 
+
+.hamburger-icon {
+    display: inline-block;
+    transition: transform 0.3s ease; /* Dodaj tranziciju */
+}
+
+.hamburger-icon.open {
+    transform: rotate(90deg); /* Rotira ikonicu kada je meni otvoren */
+}
+
+.hamburger-icon.close {
+    transform: rotate(-90deg); /* Rotira ikonicu u drugom smeru */
+}
+
 .navbar-email {
+    flex: 1;
     text-decoration: none;
     margin-left: 20px;
     color: #fff;
@@ -54,14 +76,17 @@
 
 .navbar-bottom {
     display: flex;
-    justify-content: space-between; /* Obezbeđuje da se elementi rasporede na suprotnim krajevima */
-    align-items: center;
+    flex-direction: row; /* Elementi u horizontalnom redu */
+    justify-content: space-between; /* Razdvajanje elemenata na suprotne strane */
+    align-items: center; /* Vertikalno centriranje elemenata */
+    width: 100%; /* Osigurava da navbar-bottom zauzima punu širinu */
 }
 
 .navbar-bottom-left {
     display: flex;
     align-items: center;
-    margin-right: auto;
+    flex-grow: 1; /* Omogućava da navbar-bottom-left zauzima potreban prostor */
+    justify-content: flex-start; /* Poravnanje logoa na početak */
 }
 
 .navbar-logo {
@@ -69,17 +94,18 @@
     font-size: 1.5rem;
     font-weight: bold;
     color: #fff;
-    margin-right: 20px; /* Razmak između logoa i linkova */
 }
 
 .navbar-links {
     display: flex;
+    gap: 14px;
+    transition: transform 0.3s ease;
+    overflow: hidden;
     justify-content: flex-end; /* Pomeranje linkova na desnu stranu */
     margin-left: auto; /* Osigurava da linkovi budu skroz desno */
 }
 
 .navbar-links a {
-    margin-left: 20px;
     color: #fff;
     text-decoration: none;
 }
@@ -87,11 +113,21 @@
 .navbar-links a:hover {
     color: #ccc;
 }
+
+.hamburger {
+    display: none; /* Sakrivanje hamburger ikonice na većim ekranima */
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-right: 20px;
+    z-index: 1001; /* Osigurava da ostane iznad menija */
+}
+
 @media (max-width: 768px) {
     .navbar-top {
-        flex-direction: row; /* Menjamo na red kako bi elementi bili jedan pored drugog */
-        justify-content: space-between; /* Razdvajamo elemente na suprotne strane */
-        align-items: center; /* Centriramo elemente vertikalno */
+        flex-direction: row; /* Elementi u horizontalnom redu */
+        justify-content: space-between; /* Razdvajanje elemenata na suprotne strane */
+        align-items: center; /* Vertikalno centriranje elemenata */
     }
 
     .navbar-left, .navbar-social {
@@ -117,41 +153,53 @@
     .navbar-bottom-left {
         display: block; /* Osiguravamo da logo ostane vidljiv */
     }
+
+    .navbar-links {
+        position: fixed;
+        top: 0; /* Postavljanje top da bude 0 */
+        right: 0;
+        height: 100vh; /* Visina da bude 100% viewporta */
+        width: 70%;
+        background-color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centriranje linkova horizontalno */
+        justify-content: center; /* Centriranje linkova vertikalno */
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        padding: 0; /* Uklonite padding ako ometa centriranje */
+    }
+
+    .navbar-links a {
+        color: #fff;
+        padding: 15px 0; /* Možete smanjiti ili povećati ovaj padding */
+        text-decoration: none;
+        width: 100%; /* Širina linkova da bude punoj širini roditelja */
+        text-align: center;
+        margin: 0; /* Uklonite margine koje pomeraju linkove */
+        transition: background-color 0.2s;
+    }
+
+    .navbar-links.open {
+        transform: translateX(0); /* Otvori meni */
+    }
+
+    .navbar-links a:hover {
+        background-color: #444;
+    }
+
+    .hamburger {
+        display: block; /* Prikazuje hamburger meni na mobilnim uređajima */
+    }
+
+    .navbar-bottom-left {
+        flex: 1;
+    }
 }
 
-/* Dodavanje specifičnijih selektora i !important da osiguramo primenu stilova */
-.navbar .navbar-top {
-    display: flex;
-    justify-content: space-between; /* Obezbeđuje da se elementi rasporede na suprotnim krajevima */
-    align-items: center;
-    width: 100%; /* Osigurava da navbar-top zauzima punu širinu */
-}
 
-.navbar .navbar-left {
-    flex: 1; /* Omogućava da navbar-left zauzima prostor koji mu je potreban */
-    justify-content: flex-start;
+@media (min-width: 768px) {
+    .navbar-links  {
+        margin-right: 20px; /* Smanjuje desnu marginu linkovima na većim ekranima */
+    }
 }
-
-.navbar .navbar-social {
-    margin-right: 20px;
-    flex: 1; /* Omogućava da navbar-social zauzima prostor koji mu je potreban */
-    justify-content: flex-end;
-    margin-left: auto !important; /* Pomeri društvene mreže skroz desno */
-}
-
-/* Pojačavanje specifičnosti i dodavanje !important za osiguranje primene stilova */
-.navbar .navbar-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.navbar .navbar-bottom .navbar-links {
-    margin-right: 20px;
-    display: flex;
-    justify-content: flex-end !important; /* Pomeranje linkova na desnu stranu */
-    margin-left: auto !important; /* Osigurava da linkovi budu skroz desno */
-    flex: 1; /* Omogućava da navbar-links zauzima prostor koji mu je potreban */
-}
-
