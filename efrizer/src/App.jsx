@@ -9,9 +9,9 @@ function App() {
       <NavigationBar />
       <div className="App-hero">
         <header className="App-header">
-          <h1>Financial infrastructure to grow your revenue</h1>
+          <h1>Finansijska infrastruktura za rast vaših prihoda</h1>
           <p>
-            Join the millions of companies of all sizes that use Stripe to accept payments online and in person, embed financial services, power custom revenue models, and build a more profitable business.
+            Pridružite se milionima kompanija svih veličina koje koriste Stripe za prihvatanje plaćanja online i uživo, ugrađivanje finansijskih usluga, pokretanje prilagođenih modela prihoda i izgradnju profitabilnijeg poslovanja.
           </p>
         </header>
       </div>

@@ -36,10 +36,10 @@ function NavigationBar() {
           <div className="navbar-logo">eFrizer</div>
         </div>
         <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
-          <a href="#home" onClick={toggleMenu}>Home</a>
-          <a href="#about" onClick={toggleMenu}>About</a>
-          <a href="#services" onClick={toggleMenu}>Services</a>
-          <a href="#contact" onClick={toggleMenu}>Contact</a>
+          <a href="#home" onClick={toggleMenu}>Početna</a>
+          <a href="#about" onClick={toggleMenu}>O nama</a>
+          <a href="#services" onClick={toggleMenu}>Usluge</a>
+          <a href="#contact" onClick={toggleMenu}>Kontakt</a>
         </div>
         <div className="hamburger" onClick={toggleMenu}>
           <span className={`hamburger-icon ${isMenuOpen ? 'open' : ''}`}>
