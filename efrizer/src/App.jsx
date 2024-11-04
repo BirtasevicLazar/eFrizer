@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import NavigationBar from './Components/Navbar/Navbar.jsx';
+import Footer from './Components/Footer/Footer.jsx';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           </p>
         </header>
       </div>
+      <Footer />
     </div>
   );
 }
