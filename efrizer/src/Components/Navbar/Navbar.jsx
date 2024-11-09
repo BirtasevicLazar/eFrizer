@@ -6,6 +6,7 @@ function NavigationBar() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    document.body.classList.toggle('no-scroll', !isMenuOpen);
   };
 
   return (
