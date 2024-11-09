@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+body {
+  background-color: #ffffff !important;
+  font-family: 'Helvetica', sans-serif;
+}
+
 /* Header styles */
 .App-header {
     max-width: 600px;
@@ -19,11 +24,7 @@ p {
     margin-top: 1rem;
 }
 
-/* Navbar styles */
-body {
-    background-color: #ffffff !important;
-    font-family: 'Helvetica', sans-serif;
-}
+
 
 
   
