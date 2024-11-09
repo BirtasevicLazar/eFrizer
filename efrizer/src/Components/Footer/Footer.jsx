@@ -20,7 +20,7 @@ function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2023 eFrizer. Sva prava zadržana.</p>
+        <p>© 2023 MojFrizer. Sva prava zadržana.</p>
         <div className="footer-social-links">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
