@@ -6,12 +6,14 @@ import Hero from './Components/Hero/Hero.jsx';
 import Cards from './Components/PricingCards/Cards.jsx';
 import './Style/typography.css';
 import FAQ from './Components/FAQ/FAQ.jsx';
+import HowItWorks from './Components/HowItWorks/HowItWorks.jsx';
 
 function App() {
   return (
     <div className="App">
       <NavigationBar />
       <Hero />
+      <HowItWorks />
       <Cards />
       <FAQ />
       <Footer />

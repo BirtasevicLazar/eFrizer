@@ -5,6 +5,10 @@ import { BsCheckCircleFill, BsStarFill } from 'react-icons/bs';
 const Cards = () => {
   return (
     <section className="pricing-section">
+      <div className="pricing-header">
+        <h2>Izaberite Svoj Paket</h2>
+        <p>Fleksibilna rešenja za digitalizaciju vašeg salona</p>
+      </div>
       <div className="pricing-container">
         <div className="pricing-card">
           <div className="card-content">

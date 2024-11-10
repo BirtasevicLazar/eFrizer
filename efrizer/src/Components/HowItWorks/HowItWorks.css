@@ -1,0 +1,142 @@
+.how-it-works {
+  padding: 5rem 1.5rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.how-it-works h2 {
+  font-size: 2.75rem;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #1f2937, #60a5fa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 1.2rem;
+  margin-bottom: 4rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  position: relative;
+}
+
+.step-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 2.5rem 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(96, 165, 250, 0.15);
+}
+
+.step-icon {
+  background: linear-gradient(135deg, #60a5fa20, #60a5fa40);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  border: 2px solid #60a5fa30;
+  transition: all 0.3s ease;
+}
+
+.step-card:hover .step-icon {
+  background: linear-gradient(135deg, #60a5fa30, #60a5fa50);
+  transform: scale(1.05);
+}
+
+.step-icon svg {
+  font-size: 2.2rem;
+  color: #60a5fa;
+}
+
+.step-card h3 {
+  font-size: 1.4rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.step-card p {
+  color: #6b7280;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+  .how-it-works {
+    padding: 4rem 1rem;
+  }
+
+  .how-it-works h2 {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  .steps-container {
+    gap: 2rem;
+  }
+
+  .step-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .how-it-works {
+    padding: 3rem 1rem;
+  }
+
+  .how-it-works h2 {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .step-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .step-icon svg {
+    font-size: 1.8rem;
+  }
+
+  .step-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .step-card p {
+    font-size: 1rem;
+  }
+} 
