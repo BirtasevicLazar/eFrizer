@@ -7,15 +7,16 @@
   text-align: center;
   background: linear-gradient(
     135deg,
-    #0a192f,
-    #112240,
-    #1f3a60,
-    #2d4a7c,
-    #3a5998
+    #000000,
+    #0a0a0a,
+    #212121,
+    #0a0a0a,
+    #000000,
+    #0d1117
   );
-  background-size: 300% 300%;
-  animation: gradientAnimation 10s ease infinite;
-  color: white;
+  background-size: 400% 400%;
+  animation: gradientAnimation 6s ease infinite;
+  color: #e9e9e9;
   position: relative;
   overflow: hidden;
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
@@ -65,28 +66,33 @@
 .hero-stats {
   display: flex;
   justify-content: center;
-  gap: 4rem;
-  margin: 3rem 0;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .stat-number {
   font-size: 2.5rem;
-  font-weight: bold;
-  color: #00b4d8;
+  font-weight: 600;
+  color: #60a5fa;
   letter-spacing: -0.02em;
+  text-shadow: 0 0 15px rgba(96, 165, 250, 0.2);
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-label {
   font-size: 1rem;
   color: #e2e2e2;
   font-weight: 500;
-  letter-spacing: normal;
+  margin-top: 0.5rem;
 }
 
 .hero-buttons {
@@ -110,9 +116,9 @@
   padding: 0.7rem 1.8rem;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #00b4d8;
-  background: rgba(0, 180, 216, 0.1);
-  border: 1px solid rgba(0, 180, 216, 0.3);
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.25);
   border-radius: 25px;
   backdrop-filter: blur(10px);
   overflow: hidden;
@@ -143,9 +149,9 @@
 
 .primary-btn:hover {
   transform: translateY(-2px);
-  background: rgba(0, 180, 216, 0.15);
-  border-color: rgba(0, 180, 216, 0.5);
-  box-shadow: 0 5px 20px rgba(0, 180, 216, 0.2);
+  background: rgba(96, 165, 250, 0.12);
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: 0 5px 20px rgba(96, 165, 250, 0.15);
 }
 
 .primary-btn:hover::before {
@@ -298,4 +304,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.animate-number {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-item:hover .stat-number {
+  transform: scale(1.1);
+  text-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
 } 

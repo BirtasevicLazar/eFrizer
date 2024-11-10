@@ -1,35 +1,38 @@
+.pricing-section {
+  padding: 4rem 1rem;
+  background-color: #ffffff;
+}
+
 .pricing-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   gap: 2rem;
-  padding: 2rem;
-  flex-wrap: wrap;
+  padding: 1rem;
 }
 
 .pricing-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 2rem;
-  width: 300px;
+  flex: 1;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   position: relative;
-  transition: transform 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .pricing-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
-.popular-badge {
-  position: absolute;
-  top: -12px;
-  right: 20px;
-  background: #ff4757;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
+.featured {
+  border: 2px solid #60a5fa;
+}
+
+.card-content {
+  padding: 2rem;
 }
 
 .card-header {
@@ -38,98 +41,148 @@
 }
 
 .card-header h3 {
-  color: #2d3436;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  color: #1f2937;
   margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .price {
-  font-size: 2.5rem;
-  color: #2d3436;
-  font-weight: bold;
+  display: flex;
+  align-items: baseline;
+  color: #60a5fa;
 }
 
 .currency {
   font-size: 1.5rem;
-  vertical-align: super;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.amount {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .period {
+  color: #6b7280;
   font-size: 1rem;
-  color: #636e72;
 }
 
-.card-features ul {
+.features-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 2rem 0;
 }
 
-.card-features li {
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   padding: 0.8rem 0;
-  color: #636e72;
-  border-bottom: 1px solid #eee;
+  color: #4b5563;
+  font-size: 1rem;
 }
 
-.card-btn {
+.check-icon {
+  color: #60a5fa;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: #60a5fa;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.2);
+}
+
+.card-button {
   width: 100%;
   padding: 1rem;
-  margin-top: 2rem;
-  border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  background: #f3f4f6;
+  color: #374151;
+  border: none;
 }
 
-.basic .card-btn {
-  background: #f1f2f6;
-  color: #2d3436;
-}
-
-.basic .card-btn:hover {
-  background: #dfe4ea;
-}
-
-.premium {
-  background: linear-gradient(145deg, #ffffff, #f8f9fa);
-  border: 2px solid #ff4757;
-}
-
-.premium-btn {
-  background: #ff4757;
+.featured-button {
+  background: #60a5fa;
   color: white;
 }
 
-.premium-btn:hover {
-  background: #ff6b81;
+.card-button:hover {
+  transform: translateY(-2px);
 }
 
-/* Responsive Design */
+.featured-button:hover {
+  background: #3b82f6;
+}
+
 @media (max-width: 768px) {
   .pricing-container {
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
   }
 
   .pricing-card {
     width: 100%;
-    max-width: 350px;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+  }
+  
+  .card-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .amount {
+    font-size: 3rem;
   }
 }
 
-@media (max-width: 480px) {
-  .pricing-card {
-    padding: 1.5rem;
-  }
+.pricing-card.featured {
+  border: 2px solid #60a5fa;
+  margin-top: 12px;
+}
 
-  .price {
-    font-size: 2rem;
+@media (max-width: 768px) {
+  .pricing-card.featured {
+    margin-top: 20px;
   }
+  
+  .popular-badge {
+    top: -14px;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
 
-  .card-header h3 {
-    font-size: 1.2rem;
-  }
+.subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
 }
