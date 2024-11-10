@@ -5,6 +5,7 @@ import Footer from './Components/Footer/Footer.jsx';
 import Hero from './Components/Hero/Hero.jsx';
 import Cards from './Components/PricingCards/Cards.jsx';
 import './Style/typography.css';
+import FAQ from './Components/FAQ/FAQ.jsx';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <NavigationBar />
       <Hero />
       <Cards />
+      <FAQ />
       <Footer />
     </div>
   );
