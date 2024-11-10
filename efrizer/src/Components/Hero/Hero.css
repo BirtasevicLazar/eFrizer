@@ -3,45 +3,299 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  min-height: 80vh;
   text-align: center;
-  background: linear-gradient(270deg, #2e004b, #4a0a7a, #5b1a6a, #6b2be2, #2e004b);
-  background-size: 400% 400%;
-  animation: gradientAnimation 7s ease infinite;
+  background: linear-gradient(
+    135deg,
+    #0a192f,
+    #112240,
+    #1f3a60,
+    #2d4a7c,
+    #3a5998
+  );
+  background-size: 300% 300%;
+  animation: gradientAnimation 10s ease infinite;
   color: white;
   position: relative;
   overflow: hidden;
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-  z-index: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.hero-content {
+  max-width: 1200px;
+  padding: 2rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.App-header h1 {
+  font-size: 4.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #ffffff, #e2e2e2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255,255,255,0.1);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #e2e2e2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.hero-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #e6e6e6;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin: 3rem 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00b4d8;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #e2e2e2;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.primary-btn, .secondary-btn {
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-btn {
+  position: relative;
+  padding: 0.7rem 1.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #00b4d8;
+  background: rgba(0, 180, 216, 0.1);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.primary-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 180, 216, 0.15);
+  border-color: rgba(0, 180, 216, 0.5);
+  box-shadow: 0 5px 20px rgba(0, 180, 216, 0.2);
+}
+
+.primary-btn:hover::before {
+  left: 100%;
+}
+
+.primary-btn:active {
+  transform: translateY(-1px);
+}
+
+.secondary-btn:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .hero-content {
+    padding: 1.5rem;
+  }
+  
+  .App-header h1 {
+    font-size: 3.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.8rem;
+  }
+  
+  .hero-stats {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 1rem;
+    margin-top: 60px;
+  }
+  
+  .App-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .hero-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-stats {
+    gap: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.6rem;
+  }
+  
+  .primary-btn {
+    padding: 0.6rem 1.6rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    margin-top: 60px;
+  }
+  
+  .App-header h1 {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .hero-stats {
+    gap: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.8rem;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .App-hero::after {
   content: '';
   position: absolute;
-  left: 0;
-  width: 100%;
-  height: 0px;
-  background: inherit;
-  transform: skewY(-30deg);
-  transform-origin: top left;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  animation: shine 6s infinite;
 }
 
-.App-header {
-  max-width: 600px;
+@keyframes shine {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
-h1 {
-  font-size: 3rem;
-  margin: 0;
+.App-hero::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 50%
+  );
+  transform: rotate(30deg);
+  animation: shimmer 8s linear infinite;
 }
 
-p {
-  font-size: 1.25rem;
-  margin-top: 1rem;
-}
-
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes shimmer {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 } 

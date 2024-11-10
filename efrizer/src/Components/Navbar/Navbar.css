@@ -101,10 +101,11 @@
 .navbar-links {
     display: flex;
     gap: 14px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.65, 0, 0.35, 1);
     overflow: hidden;
-    justify-content: flex-end; /* Pomeranje linkova na desnu stranu */
-    margin-left: auto; /* Osigurava da linkovi budu skroz desno */
+    justify-content: flex-end;
+    margin-left: auto;
+    will-change: transform;
 }
 
 .navbar-links a {
@@ -158,33 +159,42 @@
 
     .navbar-links {
         position: fixed;
-        top: 0; /* Postavljanje top da bude 0 */
+        top: 0;
         right: 0;
-        height: 100vh; /* Visina da bude 100% viewporta */
+        height: 100vh;
         width: 70%;
         background-color: #fff;
         display: flex;
         flex-direction: column;
-        align-items: center; /* Centriranje linkova horizontalno */
-        justify-content: center; /* Centriranje linkova vertikalno */
+        align-items: center;
+        justify-content: center;
         transform: translateX(100%);
-        transition: transform 0.3s ease;
-        padding: 0; /* Uklonite padding ako ometa centriranje */
+        transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+        padding: 0;
+        will-change: transform;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
     }
 
     .navbar-links a {
         color: #333;
-        padding: 15px 0; /* Možete smanjiti ili povećati ovaj padding */
+        padding: 15px 0;
         text-decoration: none;
-        width: 100%; /* Širina linkova da bude punoj širini roditelja */
+        width: 100%;
         text-align: center;
-        margin: 0; /* Uklonite margine koje pomeraju linkove */
-        transition: background-color 0.2s;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        margin: 0;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .navbar-links.open {
-        transform: translateX(0); /* Otvori meni */
+        transform: translateX(0);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     }
 
     .navbar-links a:hover {
@@ -192,14 +202,24 @@
         color: #222;
     }
 
+    .navbar-links.open a {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .navbar-links.open a:nth-child(1) { transition-delay: 0.2s; }
+    .navbar-links.open a:nth-child(2) { transition-delay: 0.25s; }
+    .navbar-links.open a:nth-child(3) { transition-delay: 0.3s; }
+    .navbar-links.open a:nth-child(4) { transition-delay: 0.35s; }
+
     .hamburger {
-        display: block; /* Prikazuje hamburger meni na mobilnim uređajima */
-        color: #fff; /* Postavite inicijalnu boju ikonice */
+        display: block;
+        color: #fff;
     }
 
     .hamburger.open {
-        color: #333; /* Promenite boju ikonice u tamniju kada je meni otvoren */
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Dodajte senku za bolju vidljivost */
+        color: #333;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .navbar-bottom-left {
@@ -210,10 +230,10 @@
 
 @media (min-width: 768px) {
     .navbar-links  {
-        margin-right: 20px; /* Smanjuje desnu marginu linkovima na većim ekranima */
+        margin-right: 20px;
     }
 }
 
 .no-scroll {
-    overflow: hidden; /* Onemogućava skrolovanje */
+    overflow: hidden;
 }

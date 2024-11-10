@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 
 function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  useEffect(() => {
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, []);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    document.body.classList.toggle('no-scroll', !isMenuOpen);
+    if (!isMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      setTimeout(() => {
+        document.body.classList.remove('no-scroll');
+      }, 300);
+    }
   };
 
   return (

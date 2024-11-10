@@ -1,0 +1,135 @@
+.pricing-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+.pricing-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 300px;
+  position: relative;
+  transition: transform 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: #ff4757;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.card-header h3 {
+  color: #2d3436;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 2.5rem;
+  color: #2d3436;
+  font-weight: bold;
+}
+
+.currency {
+  font-size: 1.5rem;
+  vertical-align: super;
+}
+
+.period {
+  font-size: 1rem;
+  color: #636e72;
+}
+
+.card-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-features li {
+  padding: 0.8rem 0;
+  color: #636e72;
+  border-bottom: 1px solid #eee;
+}
+
+.card-btn {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.basic .card-btn {
+  background: #f1f2f6;
+  color: #2d3436;
+}
+
+.basic .card-btn:hover {
+  background: #dfe4ea;
+}
+
+.premium {
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border: 2px solid #ff4757;
+}
+
+.premium-btn {
+  background: #ff4757;
+  color: white;
+}
+
+.premium-btn:hover {
+  background: #ff6b81;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pricing-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .pricing-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-card {
+    padding: 1.5rem;
+  }
+
+  .price {
+    font-size: 2rem;
+  }
+
+  .card-header h3 {
+    font-size: 1.2rem;
+  }
+}
