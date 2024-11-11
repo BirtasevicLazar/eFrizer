@@ -14,6 +14,7 @@ import FAQ from './Components/FAQ/FAQ';
 import HowItWorks from './Components/HowItWorks/HowItWorks';
 import Register from './Components/Register/Register';
 import Dashboard from './Components/Dashboard/Dashboard';
+import Login from './Components/Login/Login';
 
 // Layout wrapper komponenta
 const MainLayout = ({ children }) => (
@@ -58,6 +59,10 @@ function App() {
                 <Dashboard />
               </PrivateRoute>
             } 
+          />
+          <Route 
+            path="/login" 
+            element={<Login />} 
           />
         </Routes>
       </div>

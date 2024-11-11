@@ -1,8 +1,11 @@
 import React from 'react';
 import './Cards.css';
 import { BsCheckCircleFill, BsStarFill } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 const Cards = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="pricing-section">
       <div className="pricing-header">
@@ -47,7 +50,12 @@ const Cards = () => {
               </li>
             </ul>
             
-            <button className="card-button">Započni Besplatno</button>
+            <button 
+              className="card-button"
+              onClick={() => navigate('/register')}
+            >
+              Registruj salon
+            </button>
           </div>
         </div>
 

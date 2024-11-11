@@ -80,9 +80,9 @@ function Hero() {
         <div className="hero-buttons">
           <button 
             className="primary-btn" 
-            onClick={() => navigate('/register')}
+            onClick={() => navigate('/login')}
           >
-            Registruj salon
+            Prijavi se
           </button>
         </div>
       </div>

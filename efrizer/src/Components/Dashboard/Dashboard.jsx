@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BsPersonCircle, BsCalendar, BsScissors, BsGraphUp, BsPencil, BsCheckLg, BsX } from 'react-icons/bs';
+import { BsPersonCircle, BsCalendar, BsScissors, BsGraphUp, BsPencil, BsCheckLg, BsX, BsBoxArrowRight } from 'react-icons/bs';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -69,6 +69,14 @@ const Dashboard = () => {
     }
   };
 
+  const handleLogout = () => {
+    const confirmLogout = window.confirm('Da li ste sigurni da želite da se odjavite?');
+    if (confirmLogout) {
+      localStorage.removeItem('salonId');
+      navigate('/');
+    }
+  };
+
   return (
     <div className="dashboard">
       <aside className="sidebar">
@@ -103,6 +111,12 @@ const Dashboard = () => {
             onClick={() => setActiveTab('statistics')}
           >
             <BsGraphUp /> Statistika
+          </button>
+          <button 
+            className="nav-item logout-button"
+            onClick={handleLogout}
+          >
+            <BsBoxArrowRight /> Odjavi se
           </button>
         </nav>
       </aside>
