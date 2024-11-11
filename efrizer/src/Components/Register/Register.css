@@ -1,0 +1,174 @@
+.register-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #60a5fa20, #ffffff);
+    padding: 2rem;
+  }
+  
+  .register-container {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 80px auto;
+  }
+  
+  .register-container h2 {
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .steps-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 2rem;
+  }
+  
+  .step {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    font-weight: 600;
+    position: relative;
+  }
+  
+  .step.active {
+    background: #60a5fa;
+    color: white;
+  }
+  
+  .step.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #60a5fa;
+    right: -100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .step:last-child.active::after {
+    display: none;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    position: absolute;
+    left: 1rem;
+    color: #6b7280;
+  }
+  
+  .input-icon input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .input-icon input:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+  }
+  
+  .input-icon input.error {
+    border-color: #ef4444;
+  }
+  
+  .error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    display: block;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .checkbox-group input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .buttons-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .prev-button,
+  .next-button,
+  .submit-button {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .prev-button {
+    background: #e5e7eb;
+    color: #4b5563;
+  }
+  
+  .next-button,
+  .submit-button {
+    background: #60a5fa;
+    color: white;
+  }
+  
+  .prev-button:hover {
+    background: #d1d5db;
+  }
+  
+  .next-button:hover,
+  .submit-button:hover {
+    background: #3b82f6;
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 640px) {
+    .register-container {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+  
+    .steps-indicator {
+      gap: 1rem;
+    }
+  
+    .buttons-container {
+      flex-direction: column;
+    }
+  }

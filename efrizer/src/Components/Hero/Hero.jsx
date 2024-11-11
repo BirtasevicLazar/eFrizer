@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
+import { useNavigate } from 'react-router-dom';
 
 function Hero() {
   const [animatedNumbers, setAnimatedNumbers] = useState({
@@ -7,6 +8,7 @@ function Hero() {
     clients: 0,
     satisfaction: 0
   });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const targetNumbers = {
@@ -15,7 +17,7 @@ function Hero() {
       satisfaction: 98
     };
 
-    const duration = 2000; // 2 sekunde za animaciju
+    const duration = 800; // 2 sekunde za animaciju
     const steps = 60;
     const interval = duration / steps;
 
@@ -76,7 +78,12 @@ function Hero() {
           </div>
         </div>
         <div className="hero-buttons">
-          <button className="primary-btn">Započni Besplatno</button>
+          <button 
+            className="primary-btn" 
+            onClick={() => navigate('/register')}
+          >
+            Registruj salon
+          </button>
         </div>
       </div>
     </div>
