@@ -46,7 +46,7 @@ function NavigationBar() {
 
       <div className="navbar-bottom">
         <div className="navbar-bottom-left">
-          <div className="navbar-logo">MojFrizer</div>
+          <div className="navbar-logo"></div>
         </div>
         <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
           <a href="#home" onClick={toggleMenu}>Početna</a>

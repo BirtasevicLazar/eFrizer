@@ -17,7 +17,7 @@ function Hero() {
       satisfaction: 98
     };
 
-    const duration = 800; // 2 sekunde za animaciju
+    const duration = 700; 
     const steps = 60;
     const interval = duration / steps;
 

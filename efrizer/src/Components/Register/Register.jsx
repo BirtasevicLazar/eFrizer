@@ -46,6 +46,8 @@ const Register = () => {
         newErrors.email = 'Email nije validan';
       }
       if (!formData.phone) newErrors.phone = 'Telefon je obavezan';
+      if (!formData.address.trim()) newErrors.address = 'Adresa je obavezna';
+      if (!formData.city.trim()) newErrors.city = 'Grad je obavezan';
     }
 
     if (currentStep === 3) {
@@ -78,14 +80,32 @@ const Register = () => {
     setStep(prev => prev - 1);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const stepErrors = validateStep(3);
     
     if (Object.keys(stepErrors).length === 0) {
-      console.log('Podaci za registraciju:', formData);
-      // Ovde ide logika za slanje podataka na server
-      navigate('/');
+      try {
+        const response = await fetch('http://192.168.0.29:8888/efrizer_api/register.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+        
+        if (data.success) {
+          alert('Uspešno ste registrovali salon!');
+          navigate('/');
+        } else {
+          alert(data.error || 'Došlo je do greške prilikom registracije');
+        }
+      } catch (error) {
+        console.error('Greška:', error);
+        alert('Došlo je do greške prilikom povezivanja sa serverom');
+      }
     } else {
       setErrors(stepErrors);
     }
@@ -159,6 +179,36 @@ const Register = () => {
                 />
               </div>
               {errors.phone && <span className="error-message">{errors.phone}</span>}
+            </div>
+
+            <div className="form-group">
+              <div className="input-icon">
+                <BsGeoAlt className="icon" />
+                <input
+                  type="text"
+                  placeholder="Adresa"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  className={errors.address ? 'error' : ''}
+                />
+              </div>
+              {errors.address && <span className="error-message">{errors.address}</span>}
+            </div>
+
+            <div className="form-group">
+              <div className="input-icon">
+                <BsGeoAlt className="icon" />
+                <input
+                  type="text"
+                  placeholder="Grad"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  className={errors.city ? 'error' : ''}
+                />
+              </div>
+              {errors.city && <span className="error-message">{errors.city}</span>}
             </div>
           </>
         );
@@ -251,4 +301,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Register; 
