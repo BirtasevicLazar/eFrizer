@@ -5,6 +5,7 @@ import './App.css';
 // Layout komponente
 import NavigationBar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 // Stranice i komponente
 import Hero from './Components/Hero/Hero';
@@ -12,6 +13,7 @@ import Cards from './Components/PricingCards/Cards';
 import FAQ from './Components/FAQ/FAQ';
 import HowItWorks from './Components/HowItWorks/HowItWorks';
 import Register from './Components/Register/Register';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 // Layout wrapper komponenta
 const MainLayout = ({ children }) => (
@@ -48,6 +50,14 @@ function App() {
           <Route 
             path="/register" 
             element={<Register />} 
+          />
+          <Route 
+            path="/dashboard" 
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            } 
           />
         </Routes>
       </div>

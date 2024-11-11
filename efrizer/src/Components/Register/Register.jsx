@@ -97,8 +97,14 @@ const Register = () => {
         const data = await response.json();
         
         if (data.success) {
+          localStorage.setItem('isAuthenticated', 'true');
+          localStorage.setItem('salonId', data.salonId.toString());
+          localStorage.setItem('salonData', JSON.stringify({
+            ...formData,
+            id: data.salonId
+          }));
           alert('Uspešno ste registrovali salon!');
-          navigate('/');
+          navigate('/dashboard');
         } else {
           alert(data.error || 'Došlo je do greške prilikom registracije');
         }
