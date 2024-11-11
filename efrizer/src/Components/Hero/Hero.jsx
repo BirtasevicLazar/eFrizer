@@ -62,7 +62,7 @@ function Hero() {
             <span className="stat-number">
               {animatedNumbers.salons.toLocaleString()}+
             </span>
-            <span className="stat-label">Aktivnih salona</span>
+            <span className="stat-label">Salona</span>
           </div>
           <div className="stat-item">
             <span className="stat-number">

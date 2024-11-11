@@ -233,11 +233,11 @@
   }
   
   .hero-stats {
-    gap: 1rem;
+    gap: 1.3rem;
   }
   
   .stat-number {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
 }
 
