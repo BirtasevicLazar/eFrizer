@@ -86,21 +86,31 @@ const Register = () => {
     
     if (Object.keys(stepErrors).length === 0) {
       try {
-        const response = await fetch('http://192.168.0.29:8888/efrizer_api/register.php', {
+        const registrationData = {
+          salonName: formData.salonName.trim(),
+          ownerName: formData.ownerName.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          password: formData.password,
+          address: formData.address.trim(),
+          city: formData.city.trim()
+        };
+
+        const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/register.php', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
           },
-          body: JSON.stringify(formData)
+          body: JSON.stringify(registrationData)
         });
 
         const data = await response.json();
         
         if (data.success) {
           localStorage.setItem('isAuthenticated', 'true');
-          localStorage.setItem('salonId', data.salonId.toString());
+          localStorage.setItem('salonId', data.salonId);
           localStorage.setItem('salonData', JSON.stringify({
-            ...formData,
+            ...registrationData,
             id: data.salonId
           }));
           alert('Uspešno ste registrovali salon!');

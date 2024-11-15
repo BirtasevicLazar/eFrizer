@@ -4,10 +4,12 @@ import { BsPersonCircle, BsCalendar, BsScissors, BsGraphUp, BsPencil, BsCheckLg,
 import './Dashboard.css';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('profile');
   const [salonData, setSalonData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({});
 
   useEffect(() => {
     const fetchSalonData = async () => {
@@ -19,7 +21,7 @@ const Dashboard = () => {
       }
 
       try {
-        const response = await fetch('http://192.168.0.29:8888/efrizer_api/get_salon_data.php', {
+        const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/get_salon_data.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -27,21 +29,21 @@ const Dashboard = () => {
           body: JSON.stringify({ salonId })
         });
 
-        const contentType = response.headers.get("content-type");
-        if (!contentType || !contentType.includes("application/json")) {
-          throw new Error("Server nije vratio JSON odgovor");
+        if (!response.ok) {
+          throw new Error('Mrežna greška');
         }
 
         const data = await response.json();
         if (data.success) {
           setSalonData(data.salon);
+          setFormData(data.salon);
         } else {
           console.error('Greška pri učitavanju podataka:', data.error);
-          navigate('/');
+          navigate('/login');
         }
       } catch (error) {
         console.error('Greška pri komunikaciji sa serverom:', error);
-        navigate('/');
+        navigate('/login');
       } finally {
         setLoading(false);
       }
@@ -50,8 +52,61 @@ const Dashboard = () => {
     fetchSalonData();
   }, [navigate]);
 
+  const handleEdit = () => {
+    setIsEditing(true);
+    setFormData({...salonData});
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!formData.salonName?.trim() || !formData.ownerName?.trim() || 
+        !formData.address?.trim() || !formData.city?.trim()) {
+      alert('Sva polja moraju biti popunjena');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/update_salon.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          id: salonData.id
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Mrežna greška');
+      }
+
+      const data = await response.json();
+      
+      if (data.success) {
+        setSalonData(data.salonData);
+        setIsEditing(false);
+        alert('Podaci uspešno ažurirani!');
+      } else {
+        alert(data.error || 'Greška pri ažuriranju podataka');
+      }
+    } catch (error) {
+      console.error('Greška:', error);
+      alert('Došlo je do greške pri komunikaciji sa serverom');
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   if (loading) {
-    return <div className="loading">Učitavanje...</div>;
+    return <div>Učitavanje...</div>;
   }
 
   const renderContent = () => {
@@ -132,18 +187,23 @@ const ProfileSection = ({ salonData, setSalonData }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({...salonData});
 
+  useEffect(() => {
+    if (salonData) {
+      setFormData(salonData);
+    }
+  }, [salonData]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validacija
-    if (!formData.salonName.trim() || !formData.ownerName.trim() || 
-        !formData.address.trim() || !formData.city.trim()) {
+    if (!formData.salonName?.trim() || !formData.ownerName?.trim() || 
+        !formData.address?.trim() || !formData.city?.trim()) {
       alert('Sva polja moraju biti popunjena');
       return;
     }
 
     try {
-      const response = await fetch('http://192.168.0.29:8888/efrizer_api/update_salon.php', {
+      const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/update_salon.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -154,10 +214,15 @@ const ProfileSection = ({ salonData, setSalonData }) => {
         })
       });
 
+      if (!response.ok) {
+        throw new Error('Mrežna greška');
+      }
+
       const data = await response.json();
       
       if (data.success) {
-        setSalonData(formData);
+        setSalonData(data.salonData);
+        setFormData(data.salonData);
         setIsEditing(false);
         alert('Podaci uspešno ažurirani!');
       } else {
@@ -171,12 +236,12 @@ const ProfileSection = ({ salonData, setSalonData }) => {
 
   const handleEdit = () => {
     setIsEditing(true);
-    setFormData({...salonData}); // Reset form data kada se započne izmena
+    setFormData({...salonData});
   };
 
   const handleCancel = () => {
     setIsEditing(false);
-    setFormData({...salonData}); // Reset form data kada se otkaže izmena
+    setFormData({...salonData});
   };
 
   return (

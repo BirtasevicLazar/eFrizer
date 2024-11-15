@@ -23,14 +23,23 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    if (!formData.email || !formData.password) {
+      setError('Sva polja su obavezna');
+      return;
+    }
+
     try {
-      const response = await fetch('http://192.168.0.29:8888/efrizer_api/login.php', {
+      const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData)
       });
+
+      if (!response.ok) {
+        throw new Error('Mrežna greška');
+      }
 
       const data = await response.json();
       
