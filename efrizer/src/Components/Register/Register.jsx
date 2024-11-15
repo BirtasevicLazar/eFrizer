@@ -311,6 +311,9 @@ const Register = () => {
               </button>
             )}
           </div>
+          <div className="login-link">
+            Već imate nalog? <span onClick={() => navigate('/login')}>Prijavite se</span>
+          </div>
         </form>
       </div>
     </div>

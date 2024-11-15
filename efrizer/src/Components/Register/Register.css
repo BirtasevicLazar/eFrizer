@@ -1,4 +1,10 @@
 .register-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -171,4 +177,20 @@
     .buttons-container {
       flex-direction: column;
     }
+  }
+  
+  .login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #6b7280;
+  }
+  
+  .login-link span {
+    color: #60a5fa;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .login-link span:hover {
+    text-decoration: underline;
   }
