@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 
 // Layout komponente
@@ -35,38 +35,39 @@ const HomePage = () => (
   </>
 );
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout><HomePage /></MainLayout>
+  },
+  {
+    path: "/register",
+    element: <Register />
+  },
+  {
+    path: "/dashboard",
+    element: <PrivateRoute><Dashboard /></PrivateRoute>
+  },
+  {
+    path: "/login",
+    element: <Login />
+  }
+], {
+  future: {
+    v7_startTransition: true,
+    v7_relativeSplatPath: true,
+    v7_fetcherPersist: true,
+    v7_normalizeFormMethod: true,
+    v7_partialHydration: true,
+    v7_skipActionErrorRevalidation: true
+  }
+});
+
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              <MainLayout>
-                <HomePage />
-              </MainLayout>
-            } 
-          />
-          <Route 
-            path="/register" 
-            element={<Register />} 
-          />
-          <Route 
-            path="/dashboard" 
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            } 
-          />
-          <Route 
-            path="/login" 
-            element={<Login />} 
-          />
-        </Routes>
-      </div>
-    </Router>
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BsPersonCircle, BsCalendar, BsScissors, BsGraphUp, BsPencil, BsCheckLg, BsX, BsBoxArrowRight } from 'react-icons/bs';
+import { BsPersonCircle, BsCalendar, BsScissors, BsGraphUp, BsPencil, BsCheckLg, BsX, BsBoxArrowRight, BsClock } from 'react-icons/bs';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -8,8 +8,6 @@ const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('profile');
   const [salonData, setSalonData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({});
 
   useEffect(() => {
     const fetchSalonData = async () => {
@@ -36,7 +34,6 @@ const Dashboard = () => {
         const data = await response.json();
         if (data.success) {
           setSalonData(data.salon);
-          setFormData(data.salon);
         } else {
           console.error('Greška pri učitavanju podataka:', data.error);
           navigate('/login');
@@ -52,62 +49,13 @@ const Dashboard = () => {
     fetchSalonData();
   }, [navigate]);
 
-  const handleEdit = () => {
-    setIsEditing(true);
-    setFormData({...salonData});
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!formData.salonName?.trim() || !formData.ownerName?.trim() || 
-        !formData.address?.trim() || !formData.city?.trim()) {
-      alert('Sva polja moraju biti popunjena');
-      return;
-    }
-
-    try {
-      const response = await fetch('http://192.168.0.25:8888/efrizer/php_api/update_salon.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          id: salonData.id
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Mrežna greška');
-      }
-
-      const data = await response.json();
-      
-      if (data.success) {
-        setSalonData(data.salonData);
-        setIsEditing(false);
-        alert('Podaci uspešno ažurirani!');
-      } else {
-        alert(data.error || 'Greška pri ažuriranju podataka');
-      }
-    } catch (error) {
-      console.error('Greška:', error);
-      alert('Došlo je do greške pri komunikaciji sa serverom');
+  const handleLogout = () => {
+    const confirmLogout = window.confirm('Da li ste sigurni da želite da se odjavite?');
+    if (confirmLogout) {
+      localStorage.removeItem('salonId');
+      navigate('/');
     }
   };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  if (loading) {
-    return <div>Učitavanje...</div>;
-  }
 
   const renderContent = () => {
     switch(activeTab) {
@@ -124,24 +72,20 @@ const Dashboard = () => {
     }
   };
 
-  const handleLogout = () => {
-    const confirmLogout = window.confirm('Da li ste sigurni da želite da se odjavite?');
-    if (confirmLogout) {
-      localStorage.removeItem('salonId');
-      navigate('/');
-    }
-  };
+  if (loading) {
+    return <div>Učitavanje...</div>;
+  }
 
   return (
     <div className="dashboard">
       <aside className="sidebar">
         <div className="salon-info">
           <div className="salon-avatar">
-            <BsScissors />
+            <BsPersonCircle />
           </div>
-          <h3>{salonData?.salonName}</h3>
+          <h3>{salonData.salonName}</h3>
         </div>
-        
+
         <nav className="sidebar-nav">
           <button 
             className={`nav-item ${activeTab === 'profile' ? 'active' : ''}`}
@@ -349,10 +293,217 @@ const AppointmentsSection = ({ salonId }) => {
 };
 
 const ServicesSection = ({ salonId }) => {
+  const [services, setServices] = useState([]);
+  const [newService, setNewService] = useState({
+    naziv_usluge: '',
+    cena: '',
+    trajanje: '',
+    opis: '',
+    valuta: 'EUR'
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewService(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleAddService = async (e) => {
+    e.preventDefault();
+
+    if (!newService.naziv_usluge || !newService.cena || !newService.trajanje) {
+      alert('Naziv usluge, cena i trajanje su obavezni');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://192.168.0.25:8888/efrizer/php_api/add_service.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...newService,
+          salon_id: salonId
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success && data.service) {
+        setServices(prev => [...prev, data.service]);
+        setNewService({ naziv_usluge: '', opis: '', cena: '', trajanje: '', valuta: 'EUR' });
+        alert('Usluga uspešno dodata!');
+      } else {
+        alert(data.error || 'Greška pri dodavanju usluge');
+      }
+    } catch (error) {
+      console.error('Greška:', error);
+      alert('Došlo je do greške pri komunikaciji sa serverom');
+    }
+  };
+
+  const handleDeleteService = async (serviceId) => {
+    if (window.confirm('Da li ste sigurni da želite da obrišete ovu uslugu?')) {
+      try {
+        const response = await fetch('http://192.168.0.25:8888/efrizer/php_api/delete_service.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ serviceId })
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          setServices(services.filter(service => service.id !== serviceId));
+        } else {
+          alert(data.error || 'Greška pri brisanju usluge');
+        }
+      } catch (error) {
+        console.error('Greška:', error);
+        alert('Došlo je do greške pri komunikaciji sa serverom');
+      }
+    }
+  };
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch('http://192.168.0.25:8888/efrizer/php_api/get_services.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ salonId })
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          setServices(data.services);
+        } else {
+          console.error('Greška pri učitavanju usluga:', data.error);
+        }
+      } catch (error) {
+        console.error('Greška pri komunikaciji sa serverom:', error);
+      }
+    };
+
+    fetchServices();
+  }, [salonId]);
+
   return (
-    <div className="dashboard-section">
-      <h2>Usluge</h2>
-      {/* Implementacija usluga */}
+    <div className="dashboard-section services-section">
+      <div className="content-wrapper">
+        <form onSubmit={handleAddService} className="service-form">
+          <div className="form-header">
+            <h3>Dodaj novu uslugu</h3>
+          </div>
+          
+          <div className="form-body">
+            <div className="form-group">
+              <input
+                type="text"
+                name="naziv_usluge"
+                value={newService.naziv_usluge}
+                onChange={handleChange}
+                placeholder=" "
+                required
+              />
+              <label>Naziv usluge</label>
+            </div>
+            
+            <div className="form-row">
+              <div className="form-group">
+                <input
+                  type="number"
+                  name="cena"
+                  value={newService.cena}
+                  onChange={handleChange}
+                  placeholder=" "
+                  required
+                />
+                <label>Cena</label>
+              </div>
+
+              <div className="form-group">
+                <select
+                  name="valuta"
+                  value={newService.valuta}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="EUR">EUR</option>
+                  <option value="RSD">RSD</option>
+                </select>
+              </div>
+            </div>
+            
+            <div className="form-group">
+              <input
+                type="number"
+                name="trajanje"
+                value={newService.trajanje}
+                onChange={handleChange}
+                placeholder=" "
+                required
+              />
+              <label>Trajanje (min)</label>
+            </div>
+            
+            <div className="form-group">
+              <textarea
+                name="opis"
+                value={newService.opis}
+                onChange={handleChange}
+                placeholder=" "
+                rows="3"
+              />
+              <label>Opis usluge</label>
+            </div>
+          </div>
+
+          <div className="form-footer">
+            <button type="submit" className="submit-btn">
+              Dodaj uslugu
+            </button>
+          </div>
+        </form>
+
+        <div className="services-grid">
+          {services.map(service => (
+            <div key={service.id} className="service-card">
+              <div className="service-card-header">
+                <h4>{service.naziv_usluge}</h4>
+                <div className="service-actions">
+                  <button 
+                    className="action-btn delete"
+                    onClick={() => handleDeleteService(service.id)}
+                  >
+                    <BsX />
+                  </button>
+                </div>
+              </div>
+              <div className="service-card-body">
+                <div className="service-details">
+                  <span className="service-price">
+                    <span className="price-amount">{service.cena}</span>
+                    <span className="price-currency">{service.valuta}</span>
+                  </span>
+                  <span className="service-duration">
+                    <BsClock /> {service.trajanje} min
+                  </span>
+                </div>
+                {service.opis && (
+                  <p className="service-description">{service.opis}</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

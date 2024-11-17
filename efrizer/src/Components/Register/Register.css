@@ -73,6 +73,7 @@
   
   .form-group {
     margin-bottom: 1.5rem;
+    position: relative;
   }
   
   .input-icon {
@@ -85,11 +86,13 @@
     position: absolute;
     left: 1rem;
     color: #6b7280;
+    z-index: 1;
+    pointer-events: none;
   }
   
   .input-icon input {
     width: 100%;
-    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    padding: 0.75rem 1rem 0.75rem 3rem;
     border: 1px solid #e5e7eb;
     border-radius: 0.5rem;
     font-size: 1rem;
