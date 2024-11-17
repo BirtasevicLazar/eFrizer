@@ -93,10 +93,6 @@ const Login = () => {
           <button type="submit" className="login-button">
             Prijavi se
           </button>
-
-          <div className="register-link">
-            Nemate nalog? <span onClick={() => navigate('/register')}>Registrujte se</span>
-          </div>
         </form>
       </div>
     </div>
