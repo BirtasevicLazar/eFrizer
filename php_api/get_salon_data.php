@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-header('Access-Control-Allow-Origin: http://192.168.0.28:5173');
+header('Access-Control-Allow-Origin: http://192.168.0.25:5173');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');

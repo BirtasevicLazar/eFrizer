@@ -21,7 +21,7 @@ const Dashboard = () => {
       }
 
       try {
-        const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/get_salon_data.php', {
+        const response = await fetch('http://192.168.0.25:8888/efrizer/php_api/get_salon_data.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const Dashboard = () => {
     }
 
     try {
-      const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/update_salon.php', {
+      const response = await fetch('http://192.168.0.25:8888/efrizer/php_api/update_salon.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -203,7 +203,7 @@ const ProfileSection = ({ salonData, setSalonData }) => {
     }
 
     try {
-      const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/update_salon.php', {
+      const response = await fetch('http://192.168.0.25:8888/efrizer/php_api/update_salon.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
