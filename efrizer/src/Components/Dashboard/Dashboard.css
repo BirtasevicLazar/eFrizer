@@ -203,6 +203,9 @@
     .save-button {
         width: 100%;
         margin: 0;
+        padding: 0.8rem;
+        justify-content: center;
+        text-align: center;
     }
 
     .working-hours-section {
@@ -597,12 +600,11 @@
 .working-hours-section {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 2rem;
-    border-radius: 24px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.02);
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
     max-width: 1200px;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
 }
 
 .working-hours-section h2 {
@@ -628,22 +630,24 @@
 
 .working-hours-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem;
 }
 
 .day-card {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 1.2rem;
     border: 1px solid rgba(230, 230, 230, 0.7);
-    height: auto;
+    transition: all 0.3s ease;
 }
 
 .day-card.active {
-    background: rgba(66, 153, 225, 0.02);
-    border: 1px solid rgba(66, 153, 225, 0.2);
+    border: 1px solid #4299e1;
+    box-shadow: 0 4px 12px rgba(66, 153, 225, 0.1);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .day-card.inactive {
@@ -750,7 +754,8 @@
 @media (max-width: 768px) {
     .working-hours-section {
         padding: 1rem;
-        margin: 0.5rem;
+        margin: 0;
+        padding-bottom: 80px;
     }
 
     .working-hours-grid {
@@ -762,18 +767,37 @@
         padding: 1rem;
         margin-bottom: 0.5rem;
     }
+
+    .actions {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        z-index: 100;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .save-button {
+        width: 100%;
+        margin: 0;
+        padding: 0.8rem;
+        justify-content: center;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
     .working-hours-section {
         padding: 0.8rem;
-        border-radius: 16px;
+        padding-bottom: 90px;
     }
 
     .day-card {
         padding: 0.8rem;
-        border-radius: 12px;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.5rem;
     }
 
     .time-field {
