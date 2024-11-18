@@ -5,10 +5,11 @@ import './Booking.css';
 
 const Booking = () => {
   const { slug } = useParams();
+  const [step, setStep] = useState(1);
   const [salonData, setSalonData] = useState(null);
   const [services, setServices] = useState([]);
+  const [selectedService, setSelectedService] = useState(null);
   const [selectedDate, setSelectedDate] = useState('');
-  const [selectedService, setSelectedService] = useState('');
   const [availableSlots, setAvailableSlots] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState('');
   const [customerData, setCustomerData] = useState({
@@ -16,7 +17,6 @@ const Booking = () => {
     phone: '',
     email: ''
   });
-  const [isLoadingSlots, setIsLoadingSlots] = useState(false);
 
   useEffect(() => {
     fetchSalonData();
@@ -69,7 +69,6 @@ const Booking = () => {
   };
 
   const fetchAvailableSlots = async (date, serviceId) => {
-    setIsLoadingSlots(true);
     try {
       const response = await fetch('http://192.168.0.25:8888/efrizer/php_api/get_available_slots.php', {
         method: 'POST',
@@ -89,8 +88,6 @@ const Booking = () => {
       }
     } catch (error) {
       console.error('Greška:', error);
-    } finally {
-      setIsLoadingSlots(false);
     }
   };
 
@@ -115,7 +112,7 @@ const Booking = () => {
       if (data.success) {
         alert('Uspešno ste zakazali termin!');
         // Reset forme
-        setSelectedService('');
+        setSelectedService(null);
         setSelectedDate('');
         setSelectedSlot('');
         setCustomerData({ name: '', phone: '', email: '' });
@@ -125,128 +122,145 @@ const Booking = () => {
     }
   };
 
-  if (!salonData) {
-    return <div className="loading">Učitavanje...</div>;
-  }
+  const handleNextStep = () => {
+    if (validateCurrentStep()) {
+      setStep(prev => prev + 1);
+    }
+  };
+
+  const handlePrevStep = () => {
+    setStep(prev => prev - 1);
+  };
+
+  const validateCurrentStep = () => {
+    switch(step) {
+      case 1:
+        return selectedService !== null;
+      case 2:
+        return selectedDate !== '';
+      case 3:
+        return selectedSlot !== '';
+      default:
+        return true;
+    }
+  };
+
+  const renderStepContent = () => {
+    switch(step) {
+      case 1:
+        return (
+          <div className="booking-services">
+            {services.map(service => (
+              <div
+                key={service.id}
+                className={`booking-service-card ${selectedService === service.id ? 'selected' : ''}`}
+                onClick={() => setSelectedService(service.id)}
+              >
+                <h4>{service.naziv_usluge}</h4>
+                <div className="service-details">
+                  <span className="price">{service.cena} {service.valuta}</span>
+                  <span className="duration"><BsClock /> {service.trajanje} min</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+
+      case 2:
+        return (
+          <div className="booking-calendar">
+            <h3><BsCalendar /> Izaberite datum</h3>
+            <input
+              type="date"
+              value={selectedDate}
+              onChange={(e) => handleDateChange(e.target.value)}
+              min={new Date().toISOString().split('T')[0]}
+            />
+          </div>
+        );
+
+      case 3:
+        return (
+          <div className="booking-slots">
+            {availableSlots.map(slot => (
+              <button
+                key={slot}
+                className={`booking-time-slot ${selectedSlot === slot ? 'selected' : ''}`}
+                onClick={() => setSelectedSlot(slot)}
+              >
+                {slot}
+              </button>
+            ))}
+          </div>
+        );
+
+      case 4:
+        return (
+          <div className="booking-customer-info">
+            <h3><BsPerson /> Vaši podaci</h3>
+            <input
+              type="text"
+              placeholder="Ime i prezime"
+              value={customerData.name}
+              onChange={(e) => setCustomerData({...customerData, name: e.target.value})}
+            />
+            <input
+              type="tel"
+              placeholder="Telefon"
+              value={customerData.phone}
+              onChange={(e) => setCustomerData({...customerData, phone: e.target.value})}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={customerData.email}
+              onChange={(e) => setCustomerData({...customerData, email: e.target.value})}
+            />
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
 
   return (
-    <div className="booking-container">
-      <div className="salon-info">
-        <h1>{salonData.salonName}</h1>
-        <p className="salon-details">
-          <BsPerson /> {salonData.ownerName}
-          <br />
-          {salonData.address}, {salonData.city}
-        </p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="booking-form">
-        <div className="form-section">
-          <h3><BsScissors /> Izaberite uslugu</h3>
-          <div className="services-grid">
-            {services.length > 0 ? (
-              services.map(service => (
-                <div
-                  key={service.id}
-                  className={`service-card ${selectedService === service.id ? 'selected' : ''}`}
-                  onClick={() => {
-                    setSelectedService(service.id);
-                    if (selectedDate) {
-                      fetchAvailableSlots(selectedDate, service.id);
-                    }
-                  }}
-                >
-                  <h4>{service.naziv_usluge}</h4>
-                  <div className="service-details">
-                    <span className="price">{service.cena} {service.valuta}</span>
-                    <span className="duration"><BsClock /> {service.trajanje} min</span>
-                  </div>
-                  {service.opis && <p className="description">{service.opis}</p>}
-                </div>
-              ))
-            ) : (
-              <p className="no-services">Trenutno nema dostupnih usluga</p>
-            )}
-          </div>
+    <div className="booking-wrapper">
+      <div className="booking-main">
+        <div className="booking-header">
+          <h1>{salonData?.salonName}</h1>
+          <p>{salonData?.address}, {salonData?.city}</p>
         </div>
 
-        {selectedService && (
-          <>
-            <div className="form-section">
-              <h3><BsCalendar /> Izaberite datum</h3>
-              <input
-                type="date"
-                value={selectedDate}
-                onChange={(e) => handleDateChange(e.target.value)}
-                min={new Date().toISOString().split('T')[0]}
-                required
-              />
+        <div className="booking-progress">
+          {[1, 2, 3, 4].map((num) => (
+            <div key={num} className={`booking-step ${step >= num ? 'active' : ''}`}>
+              {num}
             </div>
+          ))}
+        </div>
 
-            {selectedDate && (
-              <div className="form-section">
-                <h3><BsClock /> Izaberite termin</h3>
-                {isLoadingSlots ? (
-                  <div className="loading-slots">Učitavanje dostupnih termina...</div>
-                ) : availableSlots.length > 0 ? (
-                  <div className="time-slots">
-                    {availableSlots.map(slot => (
-                      <button
-                        key={slot}
-                        type="button"
-                        className={`time-slot ${selectedSlot === slot ? 'selected' : ''}`}
-                        onClick={() => setSelectedSlot(slot)}
-                      >
-                        {slot}
-                      </button>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="no-slots">Nema dostupnih termina za izabrani datum</p>
-                )}
-              </div>
+        <form onSubmit={handleSubmit}>
+          {renderStepContent()}
+          
+          <div className="booking-nav">
+            {step > 1 && (
+              <button type="button" className="booking-btn-prev" onClick={handlePrevStep}>
+                Nazad
+              </button>
             )}
-          </>
-        )}
-
-        {selectedSlot && (
-          <div className="form-section">
-            <h3><BsPerson /> Vaši podaci</h3>
-            <div className="customer-form">
-              <input
-                type="text"
-                placeholder="Ime i prezime"
-                value={customerData.name}
-                onChange={(e) => setCustomerData({...customerData, name: e.target.value})}
-                required
-              />
-              <input
-                type="tel"
-                placeholder="Telefon"
-                value={customerData.phone}
-                onChange={(e) => setCustomerData({...customerData, phone: e.target.value})}
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={customerData.email}
-                onChange={(e) => setCustomerData({...customerData, email: e.target.value})}
-                required
-              />
-            </div>
+            {step < 4 ? (
+              <button type="button" className="booking-btn-next" onClick={handleNextStep}>
+                Dalje
+              </button>
+            ) : (
+              <button type="submit" className="booking-btn-next">
+                Zakaži termin
+              </button>
+            )}
           </div>
-        )}
-
-        <button 
-          type="submit" 
-          className="submit-button"
-          disabled={!selectedService || !selectedDate || !selectedSlot || 
-                   !customerData.name || !customerData.phone || !customerData.email}
-        >
-          Zakaži termin
-        </button>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
