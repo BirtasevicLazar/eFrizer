@@ -84,7 +84,7 @@
     gap: 0.3rem;
   }
   
-  .form-section {
+  .booking-form-section {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 16px;
@@ -92,7 +92,7 @@
     margin-bottom: 1.5rem;
   }
   
-  .form-section h3 {
+  .booking-form-section h3 {
     font-size: 1.3rem;
     color: #1d1d1f;
     margin-bottom: 1.5rem;
@@ -101,10 +101,10 @@
     gap: 0.5rem;
   }
   
-  input[type="date"],
-  input[type="text"],
-  input[type="tel"],
-  input[type="email"] {
+  .booking-form-section input[type="date"],
+  .booking-form-section input[type="text"],
+  .booking-form-section input[type="tel"],
+  .booking-form-section input[type="email"] {
     width: 100%;
     padding: 1rem;
     border-radius: 8px;
