@@ -529,7 +529,15 @@ const StatisticsSection = ({ salonId }) => {
 
 const WorkingHoursSection = ({ salonId }) => {
   const [workingHours, setWorkingHours] = useState([
-    { day_of_week: 1, name: 'Ponedeljak', start_time: '09:00', end_time: '17:00', is_working: true },
+    { 
+      day_of_week: 1, 
+      name: 'Ponedeljak', 
+      start_time: '09:00', 
+      end_time: '17:00',
+      break_start: '13:00',
+      break_end: '14:00',
+      is_working: true 
+    },
     { day_of_week: 2, name: 'Utorak', start_time: '09:00', end_time: '17:00', is_working: true },
     { day_of_week: 3, name: 'Sreda', start_time: '09:00', end_time: '17:00', is_working: true },
     { day_of_week: 4, name: 'Četvrtak', start_time: '09:00', end_time: '17:00', is_working: true },
@@ -619,6 +627,27 @@ const WorkingHoursSection = ({ salonId }) => {
                   onChange={(e) => handleTimeChange(day.day_of_week, 'end_time', e.target.value)}
                   disabled={!day.is_working}
                 />
+              </div>
+              <div className="break-time-section">
+                <h4>Pauza</h4>
+                <div className="time-field">
+                  <label>Početak pauze</label>
+                  <input
+                    type="time"
+                    value={day.break_start}
+                    onChange={(e) => handleTimeChange(day.day_of_week, 'break_start', e.target.value)}
+                    disabled={!day.is_working}
+                  />
+                </div>
+                <div className="time-field">
+                  <label>Kraj pauze</label>
+                  <input
+                    type="time"
+                    value={day.break_end}
+                    onChange={(e) => handleTimeChange(day.day_of_week, 'break_end', e.target.value)}
+                    disabled={!day.is_working}
+                  />
+                </div>
               </div>
             </div>
           </div>

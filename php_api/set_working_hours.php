@@ -30,8 +30,8 @@ try {
     $stmt->execute();
     
     // Zatim dodajemo novo radno vreme
-    $query = "INSERT INTO working_hours (salon_id, day_of_week, start_time, end_time, is_working) 
-              VALUES (:salon_id, :day_of_week, :start_time, :end_time, :is_working)";
+    $query = "INSERT INTO working_hours (salon_id, day_of_week, start_time, end_time, is_working, break_start, break_end) 
+              VALUES (:salon_id, :day_of_week, :start_time, :end_time, :is_working, :break_start, :break_end)";
     $stmt = $conn->prepare($query);
     
     foreach ($data->working_hours as $day) {
@@ -40,6 +40,8 @@ try {
         $stmt->bindParam(':start_time', $day->start_time);
         $stmt->bindParam(':end_time', $day->end_time);
         $stmt->bindParam(':is_working', $day->is_working, PDO::PARAM_BOOL);
+        $stmt->bindParam(':break_start', $day->break_start);
+        $stmt->bindParam(':break_end', $day->break_end);
         $stmt->execute();
     }
     

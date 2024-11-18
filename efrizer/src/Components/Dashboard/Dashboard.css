@@ -162,6 +162,68 @@
     .dashboard-content {
         padding: 1rem;
     }
+
+    .working-hours-section {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .working-hours-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .day-card {
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .time-field {
+        padding: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .break-time-section {
+        margin-top: 0.8rem;
+        padding-top: 0.8rem;
+    }
+
+    .actions {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        z-index: 100;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .save-button {
+        width: 100%;
+        margin: 0;
+    }
+
+    .working-hours-section {
+        padding-bottom: 5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .working-hours-section {
+        padding: 0.8rem;
+        margin: 0.3rem;
+    }
+
+    .day-card {
+        padding: 0.8rem;
+    }
+
+    .time-field input[type="time"] {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+    }
 }
 
 .service-form {
@@ -538,9 +600,7 @@
     -webkit-backdrop-filter: blur(20px);
     padding: 2rem;
     border-radius: 24px;
-    box-shadow: 
-        0 2px 20px rgba(0, 0, 0, 0.02),
-        0 1px 2px rgba(0, 0, 0, 0.01);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.02);
     max-width: 1200px;
     margin: 1rem auto;
 }
@@ -568,22 +628,17 @@
 
 .working-hours-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
-    margin: 1.5rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
 }
 
 .day-card {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     border-radius: 16px;
-    padding: 1.2rem;
-    transition: all 0.3s ease;
+    padding: 1.5rem;
     border: 1px solid rgba(230, 230, 230, 0.7);
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
+    height: auto;
 }
 
 .day-card.active {
@@ -704,7 +759,6 @@
     }
 
     .day-card {
-        min-height: auto;
         padding: 1rem;
         margin-bottom: 0.5rem;
     }
@@ -788,4 +842,29 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(18px);
+}
+
+.break-time-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.break-time-section h4 {
+    color: #4a5568;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .break-time-section {
+        margin-top: 0.8rem;
+        padding-top: 0.8rem;
+    }
+    
+    .break-time-section h4 {
+        font-size: 0.85rem;
+        margin-bottom: 0.6rem;
+    }
 }
