@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BsPersonCircle, BsCalendar, BsScissors, BsGraphUp, BsPencil, BsCheckLg, BsX, BsBoxArrowRight, BsClock } from 'react-icons/bs';
+import { BsPersonCircle, BsCalendar, BsScissors, BsGraphUp, BsPencil, BsCheckLg, BsX, BsBoxArrowRight, BsClock, BsLink45Deg } from 'react-icons/bs';
 import { Toaster, toast } from 'react-hot-toast';
 import './Dashboard.css';
 
@@ -198,6 +198,14 @@ const ProfileSection = ({ salonData, setSalonData }) => {
     setFormData({...salonData});
   };
 
+  const handleCopyLink = () => {
+    const link = `${window.location.origin}/booking/${salonData.slug}`;
+    navigator.clipboard.writeText(link);
+    alert('Link je kopiran u clipboard!');
+  };
+
+  const bookingLink = `${window.location.origin}/booking/${salonData.slug}`;
+
   return (
     <div className="dashboard-section">
       <h2>Profil Salona</h2>
@@ -260,32 +268,27 @@ const ProfileSection = ({ salonData, setSalonData }) => {
             className={!isEditing ? 'readonly-field' : ''}
           />
         </div>
-        <div className="button-group">
-          {!isEditing ? (
-            <button 
-              type="button" 
-              className="edit-button"
-              onClick={handleEdit}
-            >
-              <BsPencil /> Izmeni
-            </button>
-          ) : (
+        <div className="booking-link-container">
+          <label>Link za zakazivanje:</label>
+          <div className="booking-link">
+            <BsLink45Deg />
+            <span>{bookingLink}</span>
+          </div>
+        </div>
+        <div className="form-actions">
+          {isEditing ? (
             <>
-              <button 
-                type="button" 
-                className="save-button"
-                onClick={handleSubmit}
-              >
+              <button type="submit" className="save-button">
                 <BsCheckLg /> Sačuvaj
               </button>
-              <button 
-                type="button" 
-                className="cancel-button"
-                onClick={handleCancel}
-              >
+              <button type="button" onClick={handleCancel} className="cancel-button">
                 <BsX /> Otkaži
               </button>
             </>
+          ) : (
+            <button type="button" onClick={handleEdit} className="edit-button">
+              <BsPencil /> Izmeni
+            </button>
           )}
         </div>
       </form>

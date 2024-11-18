@@ -1,5 +1,6 @@
 <?php
 require_once 'config.php';
+require_once 'generate_slug.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode([
@@ -31,8 +32,10 @@ try {
         exit;
     }
 
-    $sql = "INSERT INTO saloni (salon_naziv, vlasnik_ime, email, telefon, lozinka, adresa, grad, datum_registracije, aktivan) 
-            VALUES (:salon_naziv, :vlasnik_ime, :email, :telefon, :lozinka, :adresa, :grad, NOW(), 1)";
+    $slug = getUniqueSlug($conn, $data['salonName']);
+
+    $sql = "INSERT INTO saloni (salon_naziv, slug, vlasnik_ime, email, telefon, lozinka, adresa, grad, datum_registracije, aktivan) 
+            VALUES (:salon_naziv, :slug, :vlasnik_ime, :email, :telefon, :lozinka, :adresa, :grad, NOW(), 1)";
     
     $stmt = $conn->prepare($sql);
     
@@ -40,6 +43,7 @@ try {
     
     $stmt->execute([
         ':salon_naziv' => $data['salonName'],
+        ':slug' => $slug,
         ':vlasnik_ime' => $data['ownerName'],
         ':email' => $data['email'],
         ':telefon' => $data['phone'],

@@ -14,7 +14,7 @@ if (!isset($data['email']) || !isset($data['password'])) {
 try {
     $stmt = $conn->prepare("SELECT id, salon_naziv as salonName, vlasnik_ime as ownerName, 
                            email, lozinka, telefon as phone, adresa as address, 
-                           grad as city, aktivan 
+                           grad as city, aktivan, slug 
                            FROM saloni 
                            WHERE email = ? AND aktivan = 1");
     $stmt->execute([$data['email']]);
@@ -34,7 +34,8 @@ try {
                 'email' => $salon['email'],
                 'phone' => $salon['phone'],
                 'address' => $salon['address'],
-                'city' => $salon['city']
+                'city' => $salon['city'],
+                'slug' => $salon['slug']
             ]
         ]);
     } else {

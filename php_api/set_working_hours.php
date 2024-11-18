@@ -1,17 +1,10 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
-
 header('Access-Control-Allow-Origin: http://192.168.0.25:5173');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
-header('Access-Control-Allow-Credentials: true');
 header('Content-Type: application/json');
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type');
 
 require_once 'config.php';
 
@@ -19,41 +12,143 @@ try {
     $input = file_get_contents("php://input");
     $data = json_decode($input);
     
-    if (!isset($data->salon_id) || !isset($data->working_hours)) {
-        throw new Exception('Nedostaju potrebni podaci');
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        throw new Exception('Nevalidan JSON format');
     }
     
-    // Prvo brišemo postojeće radno vreme za salon
-    $query = "DELETE FROM working_hours WHERE salon_id = :salon_id";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':salon_id', $data->salon_id, PDO::PARAM_INT);
-    $stmt->execute();
+    if (!isset($data->salon_id)) {
+        throw new Exception('Nedostaje salon_id');
+    }
     
-    // Zatim dodajemo novo radno vreme
-    $query = "INSERT INTO working_hours (salon_id, day_of_week, start_time, end_time, is_working, break_start, break_end) 
-              VALUES (:salon_id, :day_of_week, :start_time, :end_time, :is_working, :break_start, :break_end)";
-    $stmt = $conn->prepare($query);
+    if (!isset($data->working_hours) || !is_array($data->working_hours)) {
+        throw new Exception('Nedostaje working_hours ili nije niz');
+    }
+    
+    $conn->beginTransaction();
+
+    // Ažuriramo radno vreme
+    $deleteWorkingHours = "DELETE FROM working_hours WHERE salon_id = ?";
+    $stmt = $conn->prepare($deleteWorkingHours);
+    $stmt->execute([$data->salon_id]);
+    
+    $insertWorkingHours = "INSERT INTO working_hours 
+                          (salon_id, day_of_week, start_time, end_time, 
+                           is_working, break_start, break_end) 
+                          VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($insertWorkingHours);
     
     foreach ($data->working_hours as $day) {
-        $stmt->bindParam(':salon_id', $data->salon_id, PDO::PARAM_INT);
-        $stmt->bindParam(':day_of_week', $day->day_of_week, PDO::PARAM_INT);
-        $stmt->bindParam(':start_time', $day->start_time);
-        $stmt->bindParam(':end_time', $day->end_time);
-        $stmt->bindParam(':is_working', $day->is_working, PDO::PARAM_BOOL);
-        $stmt->bindParam(':break_start', $day->break_start);
-        $stmt->bindParam(':break_end', $day->break_end);
-        $stmt->execute();
+        $stmt->execute([
+            $data->salon_id,
+            $day->day_of_week,
+            $day->start_time . ':00',
+            $day->end_time . ':00',
+            $day->is_working ? 1 : 0,
+            $day->break_start . ':00',
+            $day->break_end . ':00'
+        ]);
     }
-    
-    echo json_encode(['success' => true]);
-    
+
+    // Brišemo stare termine
+    $deleteOldSlots = "DELETE FROM time_slots WHERE date < CURRENT_DATE AND salon_id = ?";
+    $stmt = $conn->prepare($deleteOldSlots);
+    $stmt->execute([$data->salon_id]);
+
+    // Ažuriramo postojeće i dodajemo nove termine
+    for ($i = 0; $i < 30; $i++) {
+        $date = date('Y-m-d', strtotime("+$i days"));
+        $dayOfWeek = date('N', strtotime($date));
+        
+        // Dohvatamo radno vreme za taj dan
+        $workingHoursQuery = "SELECT * FROM working_hours 
+                            WHERE salon_id = ? AND day_of_week = ?";
+        $stmt = $conn->prepare($workingHoursQuery);
+        $stmt->execute([$data->salon_id, $dayOfWeek]);
+        $workingHours = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($workingHours) {
+            // Brišemo termine van radnog vremena
+            if (!$workingHours['is_working']) {
+                $deleteSlots = "DELETE FROM time_slots 
+                              WHERE salon_id = ? AND date = ?";
+                $stmt = $conn->prepare($deleteSlots);
+                $stmt->execute([$data->salon_id, $date]);
+                continue;
+            }
+
+            // Brišemo termine van novog radnog vremena
+            $deleteOutsideHours = "DELETE FROM time_slots 
+                                 WHERE salon_id = ? 
+                                 AND date = ? 
+                                 AND (time_slot < ? 
+                                 OR time_slot > ? 
+                                 OR (time_slot BETWEEN ? AND ?))";
+            $stmt = $conn->prepare($deleteOutsideHours);
+            $stmt->execute([
+                $data->salon_id,
+                $date,
+                $workingHours['start_time'],
+                $workingHours['end_time'],
+                $workingHours['break_start'],
+                $workingHours['break_end']
+            ]);
+
+            // Dodajemo termine pre pauze
+            $startTime = strtotime($workingHours['start_time']);
+            $breakStart = strtotime($workingHours['break_start']);
+            
+            while ($startTime < $breakStart) {
+                $timeSlot = date('H:i:s', $startTime);
+                
+                // Proveravamo da li slot već postoji
+                $checkSlot = "SELECT id FROM time_slots 
+                            WHERE salon_id = ? AND date = ? AND time_slot = ?";
+                $stmt = $conn->prepare($checkSlot);
+                $stmt->execute([$data->salon_id, $date, $timeSlot]);
+                
+                if (!$stmt->fetch()) {
+                    $insertSlot = "INSERT INTO time_slots 
+                                 (salon_id, date, time_slot, is_available) 
+                                 VALUES (?, ?, ?, 1)";
+                    $stmt = $conn->prepare($insertSlot);
+                    $stmt->execute([$data->salon_id, $date, $timeSlot]);
+                }
+                
+                $startTime += 900;
+            }
+
+            // Dodajemo termine posle pauze
+            $startTime = strtotime($workingHours['break_end']);
+            $endTime = strtotime($workingHours['end_time']);
+            
+            while ($startTime < $endTime) {
+                $timeSlot = date('H:i:s', $startTime);
+                
+                $checkSlot = "SELECT id FROM time_slots 
+                            WHERE salon_id = ? AND date = ? AND time_slot = ?";
+                $stmt = $conn->prepare($checkSlot);
+                $stmt->execute([$data->salon_id, $date, $timeSlot]);
+                
+                if (!$stmt->fetch()) {
+                    $insertSlot = "INSERT INTO time_slots 
+                                 (salon_id, date, time_slot, is_available) 
+                                 VALUES (?, ?, ?, 1)";
+                    $stmt = $conn->prepare($insertSlot);
+                    $stmt->execute([$data->salon_id, $date, $timeSlot]);
+                }
+                
+                $startTime += 900;
+            }
+        }
+    }
+
+    $conn->commit();
+    echo json_encode(['success' => true, 'message' => 'Radno vreme je uspešno ažurirano']);
+
 } catch(Exception $e) {
+    $conn->rollBack();
     error_log($e->getMessage());
     http_response_code(400);
     echo json_encode(['success' => false, 'error' => $e->getMessage()]);
-} catch(PDOException $e) {
-    error_log($e->getMessage());
-    http_response_code(500);
-    echo json_encode(['success' => false, 'error' => 'Greška baze podataka']);
 }
 ?>

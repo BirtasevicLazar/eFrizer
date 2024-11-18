@@ -20,6 +20,8 @@ try {
     
     $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
+    error_log("Services for salon_id " . $data->salonId . ": " . print_r($services, true));
+    
     echo json_encode(array(
         'success' => true,
         'services' => $services

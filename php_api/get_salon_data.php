@@ -23,7 +23,7 @@ try {
 
     // Izmenjen SQL upit bez slug kolone
     $query = "SELECT id, salon_naziv as salonName, vlasnik_ime as ownerName, 
-              email, telefon as phone, adresa as address, grad as city 
+              email, telefon as phone, adresa as address, grad as city, slug 
               FROM saloni 
               WHERE id = :salonId AND aktivan = 1";
               

@@ -15,6 +15,7 @@ import HowItWorks from './Components/HowItWorks/HowItWorks';
 import Register from './Components/Register/Register';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Login from './Components/Login/Login';
+import Booking from './Components/Booking/Booking';
 
 // Layout wrapper komponenta
 const MainLayout = ({ children }) => (
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />
+  },
+  {
+    path: "/booking/:slug",
+    element: <Booking />
   }
 ], {
   future: {
@@ -65,7 +70,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="App">
+    <div className="App"> 
       <RouterProvider router={router} />
     </div>
   );
