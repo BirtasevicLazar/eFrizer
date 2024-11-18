@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BsPersonCircle, BsCalendar, BsScissors, BsGraphUp, BsPencil, BsCheckLg, BsX, BsBoxArrowRight, BsClock } from 'react-icons/bs';
+import { Toaster, toast } from 'react-hot-toast';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -67,6 +68,8 @@ const Dashboard = () => {
         return <ServicesSection salonId={salonData.id} />;
       case 'statistics':
         return <StatisticsSection salonId={salonData.id} />;
+      case 'working_hours':
+        return <WorkingHoursSection salonId={salonData.id} />;
       default:
         return <ProfileSection salonData={salonData} setSalonData={setSalonData} />;
     }
@@ -78,6 +81,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
+      <Toaster position="top-right" />
       <aside className="sidebar">
         <div className="salon-info">
           <div className="salon-avatar">
@@ -110,6 +114,12 @@ const Dashboard = () => {
             onClick={() => setActiveTab('statistics')}
           >
             <BsGraphUp /> Statistika
+          </button>
+          <button 
+            className={`nav-item ${activeTab === 'working_hours' ? 'active' : ''}`}
+            onClick={() => setActiveTab('working_hours')}
+          >
+            <BsClock /> Radno vreme
           </button>
           <button 
             className="nav-item logout-button"
@@ -299,7 +309,7 @@ const ServicesSection = ({ salonId }) => {
     cena: '',
     trajanje: '',
     opis: '',
-    valuta: 'EUR'
+    valuta: 'RSD'
   });
 
   const handleChange = (e) => {
@@ -334,7 +344,7 @@ const ServicesSection = ({ salonId }) => {
 
       if (data.success && data.service) {
         setServices(prev => [...prev, data.service]);
-        setNewService({ naziv_usluge: '', opis: '', cena: '', trajanje: '', valuta: 'EUR' });
+        setNewService({ naziv_usluge: '', opis: '', cena: '', trajanje: '', valuta: 'RSD' });
         alert('Usluga uspešno dodata!');
       } else {
         alert(data.error || 'Greška pri dodavanju usluge');
@@ -435,8 +445,8 @@ const ServicesSection = ({ salonId }) => {
                   onChange={handleChange}
                   required
                 >
+                  <option value="RSD">RSD</option>  
                   <option value="EUR">EUR</option>
-                  <option value="RSD">RSD</option>
                 </select>
               </div>
             </div>
@@ -513,6 +523,112 @@ const StatisticsSection = ({ salonId }) => {
     <div className="dashboard-section">
       <h2>Statistika</h2>
       {/* Implementacija statistike */}
+    </div>
+  );
+};
+
+const WorkingHoursSection = ({ salonId }) => {
+  const [workingHours, setWorkingHours] = useState([
+    { day_of_week: 1, name: 'Ponedeljak', start_time: '09:00', end_time: '17:00', is_working: true },
+    { day_of_week: 2, name: 'Utorak', start_time: '09:00', end_time: '17:00', is_working: true },
+    { day_of_week: 3, name: 'Sreda', start_time: '09:00', end_time: '17:00', is_working: true },
+    { day_of_week: 4, name: 'Četvrtak', start_time: '09:00', end_time: '17:00', is_working: true },
+    { day_of_week: 5, name: 'Petak', start_time: '09:00', end_time: '17:00', is_working: true },
+    { day_of_week: 6, name: 'Subota', start_time: '09:00', end_time: '15:00', is_working: true },
+    { day_of_week: 0, name: 'Nedelja', start_time: '09:00', end_time: '17:00', is_working: false }
+  ]);
+
+  const handleTimeChange = (dayIndex, field, value) => {
+    const newHours = [...workingHours];
+    const dayToUpdate = newHours.find(day => day.day_of_week === dayIndex);
+    if (dayToUpdate) {
+      dayToUpdate[field] = value;
+      setWorkingHours(newHours);
+    }
+  };
+
+  const handleWorkingChange = (dayIndex, isWorking) => {
+    const newHours = [...workingHours];
+    const dayToUpdate = newHours.find(day => day.day_of_week === dayIndex);
+    if (dayToUpdate) {
+      dayToUpdate.is_working = isWorking;
+      setWorkingHours(newHours);
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      const response = await fetch('http://192.168.0.25:8888/efrizer/php_api/set_working_hours.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          salon_id: parseInt(salonId, 10),
+          working_hours: workingHours
+        })
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        toast.success('Radno vreme je uspešno sačuvano');
+      } else {
+        toast.error(data.error || 'Greška pri čuvanju radnog vremena');
+      }
+    } catch (error) {
+      console.error('Greška:', error);
+      toast.error('Došlo je do greške pri čuvanju radnog vremena');
+    }
+  };
+
+  return (
+    <div className="working-hours-section">
+      <h2>Radno Vreme</h2>
+      <div className="working-hours-grid">
+        {workingHours.map((day) => (
+          <div key={day.day_of_week} className={`day-card ${day.is_working ? 'active' : 'inactive'}`}>
+            <div className="day-header">
+              <h3>{day.name}</h3>
+              <div className="toggle-wrapper">
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={day.is_working}
+                    onChange={(e) => handleWorkingChange(day.day_of_week, e.target.checked)}
+                  />
+                  <span className="slider round"></span>
+                </label>
+                <span className="working-status">{day.is_working ? 'Radan dan' : 'Neradan dan'}</span>
+              </div>
+            </div>
+            <div className="time-inputs">
+              <div className="time-field">
+                <label>Početak radnog vremena</label>
+                <input
+                  type="time"
+                  value={day.start_time}
+                  onChange={(e) => handleTimeChange(day.day_of_week, 'start_time', e.target.value)}
+                  disabled={!day.is_working}
+                />
+              </div>
+              <div className="time-field">
+                <label>Kraj radnog vremena</label>
+                <input
+                  type="time"
+                  value={day.end_time}
+                  onChange={(e) => handleTimeChange(day.day_of_week, 'end_time', e.target.value)}
+                  disabled={!day.is_working}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="actions">
+        <button onClick={handleSave} className="save-button">
+          <BsCheckLg /> Sačuvaj promene
+        </button>
+      </div>
     </div>
   );
 };

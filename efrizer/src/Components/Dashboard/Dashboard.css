@@ -531,3 +531,261 @@
 .form-group select:hover {
     border-color: #4299e1;
 }
+
+.working-hours-section {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 24px;
+    box-shadow: 
+        0 2px 20px rgba(0, 0, 0, 0.02),
+        0 1px 2px rgba(0, 0, 0, 0.01);
+    max-width: 1200px;
+    margin: 1rem auto;
+}
+
+.working-hours-section h2 {
+    color: #1a202c;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.working-hours-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #4299e1 0%, #63b3ed 100%);
+    border-radius: 2px;
+}
+
+.working-hours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.day-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(230, 230, 230, 0.7);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.day-card.active {
+    background: rgba(66, 153, 225, 0.02);
+    border: 1px solid rgba(66, 153, 225, 0.2);
+}
+
+.day-card.inactive {
+    opacity: 0.7;
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.day-header h3 {
+    color: #1a202c;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.working-status {
+    color: #4a5568;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.time-inputs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+.time-field {
+    background: rgba(247, 250, 252, 0.5);
+    border-radius: 12px;
+    padding: 0.8rem;
+    margin-bottom: 0.6rem;
+}
+
+.time-field input[type="time"] {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.time-field input[type="time"]:focus {
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+    outline: none;
+}
+
+.time-field input[type="time"]:disabled {
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.save-button {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(90deg, #4299e1 0%, #63b3ed 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(66, 153, 225, 0.2);
+}
+
+.save-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(66, 153, 225, 0.3);
+}
+
+.save-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .working-hours-section {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .working-hours-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .day-card {
+        min-height: auto;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .working-hours-section {
+        padding: 0.8rem;
+        border-radius: 16px;
+    }
+
+    .day-card {
+        padding: 0.8rem;
+        border-radius: 12px;
+        margin-bottom: 0.8rem;
+    }
+
+    .time-field {
+        padding: 0.6rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .time-field input[type="time"] {
+        padding: 0.5rem;
+    }
+
+    .save-button {
+        margin-top: 1rem;
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 12px;
+        background: #4299e1;
+        color: white;
+        border: none;
+        font-weight: 500;
+    }
+}
+
+/* Switch dugme u Apple stilu */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(203, 213, 224, 0.8);
+    transition: .4s;
+    border-radius: 26px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input:checked + .slider {
+    background-color: #4299e1;
+}
+
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
