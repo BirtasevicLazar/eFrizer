@@ -150,9 +150,15 @@ const ProfileSection = ({ salonData, setSalonData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    const hasChanges = JSON.stringify(formData) !== JSON.stringify(salonData);
+    
+    if (!isEditing || !hasChanges) {
+      return;
+    }
+
     if (!formData.salonName?.trim() || !formData.ownerName?.trim() || 
         !formData.address?.trim() || !formData.city?.trim()) {
-      alert('Sva polja moraju biti popunjena');
+      toast.error('Sva polja moraju biti popunjena');
       return;
     }
 
@@ -178,19 +184,18 @@ const ProfileSection = ({ salonData, setSalonData }) => {
         setSalonData(data.salonData);
         setFormData(data.salonData);
         setIsEditing(false);
-        alert('Podaci uspešno ažurirani!');
+        toast.success('Podaci uspešno ažurirani!');
       } else {
-        alert(data.error || 'Greška pri ažuriranju podataka');
+        toast.error(data.error || 'Greška pri ažuriranju podataka');
       }
     } catch (error) {
       console.error('Greška:', error);
-      alert('Došlo je do greške pri komunikaciji sa serverom');
+      toast.error('Došlo je do greške pri komunikaciji sa serverom');
     }
   };
 
   const handleEdit = () => {
     setIsEditing(true);
-    setFormData({...salonData});
   };
 
   const handleCancel = () => {
@@ -209,7 +214,7 @@ const ProfileSection = ({ salonData, setSalonData }) => {
   return (
     <div className="dashboard-section">
       <h2>Profil Salona</h2>
-      <form className="profile-info">
+      <form onSubmit={handleSubmit} className="profile-info">
         <div className="info-group">
           <label>Naziv salona</label>
           <input 
