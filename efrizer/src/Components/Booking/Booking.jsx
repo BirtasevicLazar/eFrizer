@@ -17,6 +17,7 @@ const Booking = () => {
     phone: '',
     email: ''
   });
+  const [selectedServiceDuration, setSelectedServiceDuration] = useState(null);
 
   useEffect(() => {
     fetchSalonData();
@@ -145,6 +146,21 @@ const Booking = () => {
     }
   };
 
+  const handleServiceSelect = (service) => {
+    setSelectedService(service.id);
+    setSelectedServiceDuration(service.trajanje);
+  };
+
+  const formatEndTime = (startTime, duration) => {
+    const [hours, minutes] = startTime.split(':');
+    const startDate = new Date();
+    startDate.setHours(parseInt(hours, 10));
+    startDate.setMinutes(parseInt(minutes, 10));
+    
+    const endDate = new Date(startDate.getTime() + duration * 60000);
+    return `${endDate.getHours().toString().padStart(2, '0')}:${endDate.getMinutes().toString().padStart(2, '0')}`;
+  };
+
   const renderStepContent = () => {
     switch(step) {
       case 1:
@@ -154,12 +170,14 @@ const Booking = () => {
               <div
                 key={service.id}
                 className={`booking-service-card ${selectedService === service.id ? 'selected' : ''}`}
-                onClick={() => setSelectedService(service.id)}
+                onClick={() => handleServiceSelect(service)}
               >
                 <h4>{service.naziv_usluge}</h4>
                 <div className="service-details">
                   <span className="price">{service.cena} {service.valuta}</span>
-                  <span className="duration"><BsClock /> {service.trajanje} min</span>
+                  <span className="duration">
+                    <BsClock /> {service.trajanje} min
+                  </span>
                 </div>
               </div>
             ))}
@@ -182,15 +200,20 @@ const Booking = () => {
       case 3:
         return (
           <div className="booking-slots">
-            {availableSlots.map(slot => (
-              <button
-                key={slot}
-                className={`booking-time-slot ${selectedSlot === slot ? 'selected' : ''}`}
-                onClick={() => setSelectedSlot(slot)}
-              >
-                {slot}
-              </button>
-            ))}
+            <div className="slot-info">
+              <BsClock /> Trajanje termina: {selectedServiceDuration} min
+            </div>
+            <div className="slots-grid">
+              {availableSlots.map(slot => (
+                <button
+                  key={slot}
+                  className={`booking-time-slot ${selectedSlot === slot ? 'selected' : ''}`}
+                  onClick={() => setSelectedSlot(slot)}
+                >
+                  {slot.slice(0, 5)} - {formatEndTime(slot, selectedServiceDuration)}
+                </button>
+              ))}
+            </div>
           </div>
         );
 

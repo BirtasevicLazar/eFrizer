@@ -537,22 +537,53 @@ const StatisticsSection = ({ salonId }) => {
 
 const WorkingHoursSection = ({ salonId }) => {
   const [workingHours, setWorkingHours] = useState([
-    { 
-      day_of_week: 1, 
-      name: 'Ponedeljak', 
-      start_time: '09:00', 
-      end_time: '17:00',
-      break_start: '13:00',
-      break_end: '14:00',
-      is_working: true 
-    },
-    { day_of_week: 2, name: 'Utorak', start_time: '09:00', end_time: '17:00', is_working: true },
-    { day_of_week: 3, name: 'Sreda', start_time: '09:00', end_time: '17:00', is_working: true },
-    { day_of_week: 4, name: 'Četvrtak', start_time: '09:00', end_time: '17:00', is_working: true },
-    { day_of_week: 5, name: 'Petak', start_time: '09:00', end_time: '17:00', is_working: true },
-    { day_of_week: 6, name: 'Subota', start_time: '09:00', end_time: '15:00', is_working: true },
-    { day_of_week: 0, name: 'Nedelja', start_time: '09:00', end_time: '17:00', is_working: false }
+    { day_of_week: 1, name: 'Ponedeljak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
+    { day_of_week: 2, name: 'Utorak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
+    { day_of_week: 3, name: 'Sreda', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
+    { day_of_week: 4, name: 'Četvrtak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
+    { day_of_week: 5, name: 'Petak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
+    { day_of_week: 6, name: 'Subota', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
+    { day_of_week: 0, name: 'Nedelja', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false }
   ]);
+
+  useEffect(() => {
+    const fetchWorkingHours = async () => {
+      try {
+        const response = await fetch('http://192.168.0.29:8888/efrizer/php_api/get_working_hours.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ salon_id: salonId })
+        });
+
+        const data = await response.json();
+        
+        if (data.success && data.working_hours.length > 0) {
+          const updatedHours = workingHours.map(day => {
+            const savedDay = data.working_hours.find(d => d.day_of_week === day.day_of_week);
+            if (savedDay) {
+              return {
+                ...day,
+                start_time: savedDay.start_time,
+                end_time: savedDay.end_time,
+                break_start: savedDay.break_start,
+                break_end: savedDay.break_end,
+                is_working: savedDay.is_working
+              };
+            }
+            return day;
+          });
+          setWorkingHours(updatedHours);
+        }
+      } catch (error) {
+        console.error('Greška pri učitavanju radnog vremena:', error);
+        toast.error('Greška pri učitavanju radnog vremena');
+      }
+    };
+
+    fetchWorkingHours();
+  }, [salonId]);
 
   const handleTimeChange = (dayIndex, field, value) => {
     const newHours = [...workingHours];

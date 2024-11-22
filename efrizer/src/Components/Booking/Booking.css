@@ -180,3 +180,26 @@
 .booking-btn-next:hover {
   background: #3b82f6;
 }
+
+.slot-info {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4b5563;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+.booking-time-slot {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+}
