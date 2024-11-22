@@ -29,7 +29,7 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch('http://192.168.0.25:8888/efrizer/php_api/login.php', {
+      const response = await fetch('http://192.168.0.29:8888/efrizer/php_api/login.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
