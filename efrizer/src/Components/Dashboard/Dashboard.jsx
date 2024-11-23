@@ -537,13 +537,13 @@ const StatisticsSection = ({ salonId }) => {
 
 const WorkingHoursSection = ({ salonId }) => {
   const [workingHours, setWorkingHours] = useState([
-    { day_of_week: 1, name: 'Ponedeljak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
-    { day_of_week: 2, name: 'Utorak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
-    { day_of_week: 3, name: 'Sreda', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
-    { day_of_week: 4, name: 'Četvrtak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
-    { day_of_week: 5, name: 'Petak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
-    { day_of_week: 6, name: 'Subota', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false },
-    { day_of_week: 0, name: 'Nedelja', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false }
+    { day_of_week: 1, name: 'Ponedeljak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
+    { day_of_week: 2, name: 'Utorak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
+    { day_of_week: 3, name: 'Sreda', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
+    { day_of_week: 4, name: 'Četvrtak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
+    { day_of_week: 5, name: 'Petak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
+    { day_of_week: 6, name: 'Subota', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
+    { day_of_week: 0, name: 'Nedelja', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true }
   ]);
 
   useEffect(() => {
@@ -599,6 +599,15 @@ const WorkingHoursSection = ({ salonId }) => {
     const dayToUpdate = newHours.find(day => day.day_of_week === dayIndex);
     if (dayToUpdate) {
       dayToUpdate.is_working = isWorking;
+      setWorkingHours(newHours);
+    }
+  };
+
+  const handleBreakChange = (dayIndex, hasBreak) => {
+    const newHours = [...workingHours];
+    const dayToUpdate = newHours.find(day => day.day_of_week === dayIndex);
+    if (dayToUpdate) {
+      dayToUpdate.has_break = hasBreak;
       setWorkingHours(newHours);
     }
   };
@@ -667,27 +676,40 @@ const WorkingHoursSection = ({ salonId }) => {
                   disabled={!day.is_working}
                 />
               </div>
-              <div className="break-time-section">
-                <h4>Pauza</h4>
-                <div className="time-field">
-                  <label>Početak pauze</label>
+              <div className="break-control">
+                <label className="switch">
                   <input
-                    type="time"
-                    value={day.break_start}
-                    onChange={(e) => handleTimeChange(day.day_of_week, 'break_start', e.target.value)}
+                    type="checkbox"
+                    checked={day.has_break}
+                    onChange={(e) => handleBreakChange(day.day_of_week, e.target.checked)}
                     disabled={!day.is_working}
                   />
-                </div>
-                <div className="time-field">
-                  <label>Kraj pauze</label>
-                  <input
-                    type="time"
-                    value={day.break_end}
-                    onChange={(e) => handleTimeChange(day.day_of_week, 'break_end', e.target.value)}
-                    disabled={!day.is_working}
-                  />
-                </div>
+                  <span className="slider round"></span>
+                </label>
+                <span>Pauza u toku dana</span>
               </div>
+              {day.has_break && (
+                <>
+                  <div className="time-field">
+                    <label>Početak pauze</label>
+                    <input
+                      type="time"
+                      value={day.break_start}
+                      onChange={(e) => handleTimeChange(day.day_of_week, 'break_start', e.target.value)}
+                      disabled={!day.is_working}
+                    />
+                  </div>
+                  <div className="time-field">
+                    <label>Kraj pauze</label>
+                    <input
+                      type="time"
+                      value={day.break_end}
+                      onChange={(e) => handleTimeChange(day.day_of_week, 'break_end', e.target.value)}
+                      disabled={!day.is_working}
+                    />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         ))}

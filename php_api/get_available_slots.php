@@ -20,7 +20,7 @@ try {
     }
     
     $serviceDuration = $service['trajanje'];
-    $requiredSlots = ceil($serviceDuration / 15); // Broj potrebnih 15-minutnih slotova
+    $requiredSlots = ceil($serviceDuration / 15);
     
     // Dohvatamo radno vreme za taj dan
     $dayOfWeek = date('N', strtotime($data->date));
@@ -38,15 +38,16 @@ try {
         exit();
     }
 
-    // Dohvatamo sve slobodne slotove za taj dan
+    // Dohvatamo sve slobodne slotove za taj dan u okviru radnog vremena
     $availableSlotsQuery = "SELECT time_slot 
                            FROM time_slots 
                            WHERE salon_id = ? 
                            AND date = ? 
                            AND is_available = 1 
-                           AND time_slot >= ? 
-                           AND time_slot <= ? 
-                           AND time_slot NOT BETWEEN ? AND ?
+                           AND TIME(time_slot) >= TIME(?) 
+                           AND TIME(time_slot) <= TIME(?) 
+                           AND (TIME(time_slot) < TIME(?) 
+                           OR TIME(time_slot) > TIME(?))
                            ORDER BY time_slot";
     
     $stmt = $conn->prepare($availableSlotsQuery);
@@ -62,20 +63,41 @@ try {
     $allSlots = $stmt->fetchAll(PDO::FETCH_COLUMN);
     $validSlots = [];
 
-    // Prolazimo kroz sve slotove i tražimo uzastopne
+    // Provera uzastopnih slotova
     for ($i = 0; $i <= count($allSlots) - $requiredSlots; $i++) {
         $consecutive = true;
+        $currentSlotTime = strtotime($allSlots[$i]);
         
-        // Proveravamo da li imamo dovoljan broj uzastopnih slotova
+        // Provera da li je trenutni slot unutar radnog vremena
+        $slotTime = date('H:i:s', $currentSlotTime);
+        if ($slotTime < $workingHours['start_time'] || $slotTime > $workingHours['end_time']) {
+            continue;
+        }
+        
+        // Provera da li su svi potrebni slotovi dostupni i unutar radnog vremena
         for ($j = 1; $j < $requiredSlots; $j++) {
-            $currentSlot = strtotime($allSlots[$i + $j - 1]);
-            $nextSlot = strtotime($allSlots[$i + $j]);
-            
-            // Proveravamo da li su slotovi uzastopni (razlika 15 minuta)
-            if ($nextSlot - $currentSlot != 900) { // 900 sekundi = 15 minuta
+            if (!isset($allSlots[$i + $j])) {
                 $consecutive = false;
                 break;
             }
+            
+            $nextSlotTime = strtotime($allSlots[$i + $j]);
+            
+            // Provera da li je sledeći slot 15 minuta nakon prethodnog
+            if ($nextSlotTime - $currentSlotTime !== 900) {
+                $consecutive = false;
+                break;
+            }
+            
+            // Provera da li sledeći slot prelazi radno vreme ili ulazi u pauzu
+            $nextTime = date('H:i:s', $nextSlotTime);
+            if ($nextTime > $workingHours['end_time'] || 
+                ($nextTime >= $workingHours['break_start'] && $nextTime <= $workingHours['break_end'])) {
+                $consecutive = false;
+                break;
+            }
+            
+            $currentSlotTime = $nextSlotTime;
         }
         
         if ($consecutive) {
