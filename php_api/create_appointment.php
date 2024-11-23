@@ -10,51 +10,84 @@ try {
     $data = json_decode(file_get_contents("php://input"));
     
     $conn->beginTransaction();
-
-    // Provera da li su slotovi i dalje slobodni
-    $timeSlot = $data->timeSlot;
+    
+    // Kreiranje appointment zapisa
+    $createAppointment = "INSERT INTO appointments 
+                         (salon_id, service_id, date, time_slot, 
+                          customer_name, customer_phone, customer_email, status) 
+                         VALUES (?, ?, ?, ?, ?, ?, ?, 'pending')";
+    
+    $stmt = $conn->prepare($createAppointment);
+    $stmt->execute([
+        $data->salonId,
+        $data->serviceId,
+        $data->date,
+        $data->timeSlot,
+        $data->customerData->name,
+        $data->customerData->phone,
+        $data->customerData->email
+    ]);
+    
+    $appointmentId = $conn->lastInsertId();
+    
+    // Provera dostupnosti slotova
     $serviceQuery = "SELECT trajanje FROM usluge WHERE id = ?";
     $stmt = $conn->prepare($serviceQuery);
     $stmt->execute([$data->serviceId]);
     $service = $stmt->fetch(PDO::FETCH_ASSOC);
     $requiredSlots = ceil($service['trajanje'] / 15);
 
-    // Proveri dostupnost svih potrebnih slotova
     $checkSlotsQuery = "SELECT COUNT(*) FROM time_slots 
                        WHERE salon_id = ? 
                        AND date = ? 
                        AND time_slot >= ? 
-                       AND is_available = 1 
-                       LIMIT ?";
+                       AND time_slot < ADDTIME(?, ?) 
+                       AND is_available = 1";
+    
     $stmt = $conn->prepare($checkSlotsQuery);
-    $stmt->execute([$data->salonId, $data->date, $timeSlot, $requiredSlots]);
+    $stmt->execute([
+        $data->salonId, 
+        $data->date, 
+        $data->timeSlot,
+        $data->timeSlot,
+        date('H:i:s', $service['trajanje'] * 60)
+    ]);
     $availableCount = $stmt->fetchColumn();
 
     if ($availableCount < $requiredSlots) {
         throw new Exception('Izabrani termini više nisu dostupni');
     }
 
-    // Zauzmi potrebne slotove
-    $updateSlotsQuery = "UPDATE time_slots 
-                        SET is_available = 0, 
-                            appointment_id = ? 
-                        WHERE salon_id = ? 
-                        AND date = ? 
-                        AND time_slot >= ? 
-                        AND is_available = 1 
-                        LIMIT ?";
+    // Dodati pre provere dostupnosti slotova
+    $currentDateTime = date('Y-m-d H:i:s');
+    $appointmentDateTime = $data->date . ' ' . $data->timeSlot;
+
+    if (strtotime($appointmentDateTime) < strtotime($currentDateTime)) {
+        throw new Exception('Ne možete zakazati termin u prošlosti');
+    }
+
+    // Zauzimanje slotova
+    $updateSlots = "UPDATE time_slots 
+                   SET is_available = 0, 
+                       appointment_id = ? 
+                   WHERE salon_id = ? 
+                   AND date = ? 
+                   AND time_slot >= ? 
+                   AND time_slot < ADDTIME(?, ?) 
+                   AND is_available = 1";
     
-    $stmt = $conn->prepare($updateSlotsQuery);
+    $stmt = $conn->prepare($updateSlots);
     $stmt->execute([
         $appointmentId,
         $data->salonId,
         $data->date,
-        $timeSlot,
-        $requiredSlots
+        $data->timeSlot,
+        $data->timeSlot,
+        date('H:i:s', $service['trajanje'] * 60)
     ]);
 
     $conn->commit();
-
+    
     echo json_encode([
         'success' => true,
         'message' => 'Termin je uspešno zakazan',

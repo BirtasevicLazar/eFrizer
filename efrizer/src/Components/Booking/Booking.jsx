@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BsCalendar, BsClock, BsScissors, BsPerson } from 'react-icons/bs';
 import './Booking.css';
+import { toast, Toaster } from 'react-hot-toast';
 
 const Booking = () => {
   const { slug } = useParams();
@@ -107,33 +108,63 @@ const Booking = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/create_appointment.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          salonId: salonData.id,
-          serviceId: selectedService,
-          date: selectedDate,
-          timeSlot: selectedSlot,
-          customerData
-        })
-      });
-      
-      const data = await response.json();
-      if (data.success) {
-        alert('Uspešno ste zakazali termin!');
-        // Reset forme
-        setSelectedService(null);
-        setSelectedDate('');
-        setSelectedSlot('');
-        setCustomerData({ name: '', phone: '', email: '' });
-      }
-    } catch (error) {
-      console.error('Greška:', error);
+    
+    if (!validateForm()) {
+        return;
     }
+    
+    try {
+        const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/create_appointment.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                salonId: salonData.id,
+                serviceId: selectedService,
+                date: selectedDate,
+                timeSlot: selectedSlot,
+                customerData
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            toast.success('Uspešno ste zakazali termin!');
+            // Reset forme
+            setSelectedService(null);
+            setSelectedDate('');
+            setSelectedSlot('');
+            setCustomerData({ name: '', phone: '', email: '' });
+            setStep(1);
+        } else {
+            toast.error(data.error || 'Došlo je do greške prilikom zakazivanja');
+        }
+    } catch (error) {
+        console.error('Greška:', error);
+        toast.error('Došlo je do greške prilikom komunikacije sa serverom');
+    }
+  };
+
+  const validateForm = () => {
+    if (!customerData.name.trim()) {
+        toast.error('Unesite vaše ime');
+        return false;
+    }
+    if (!customerData.phone.trim()) {
+        toast.error('Unesite broj telefona');
+        return false;
+    }
+    if (!customerData.email.trim()) {
+        toast.error('Unesite email adresu');
+        return false;
+    }
+    if (!selectedService || !selectedDate || !selectedSlot) {
+        toast.error('Molimo popunite sve podatke o terminu');
+        return false;
+    }
+    return true;
   };
 
   const handleNextStep = () => {
@@ -280,6 +311,7 @@ const Booking = () => {
 
   return (
     <div className="booking-wrapper">
+      <Toaster position="top-right" />
       <div className="booking-main">
         <div className="booking-header">
           <h1>{salonData?.salonName}</h1>
