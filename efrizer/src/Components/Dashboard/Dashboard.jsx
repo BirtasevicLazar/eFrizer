@@ -460,15 +460,23 @@ const ServicesSection = ({ salonId }) => {
             </div>
             
             <div className="form-group">
-              <input
-                type="number"
+              <select
                 name="trajanje"
                 value={newService.trajanje}
                 onChange={handleChange}
-                placeholder=" "
                 required
-              />
-              <label>Trajanje (min)</label>
+                className="duration-select"
+              >
+                <option value="">Izaberite trajanje</option>
+                <option value="15">15 minuta</option>
+                <option value="30">30 minuta</option>
+                <option value="45">45 minuta</option>
+                <option value="60">60 minuta</option>
+                <option value="75">75 minuta</option>
+                <option value="90">90 minuta</option>
+                <option value="105">105 minuta</option>
+                <option value="120">120 minuta</option>
+              </select>
             </div>
             
             <div className="form-group">

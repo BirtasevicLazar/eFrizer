@@ -9,7 +9,7 @@ require_once 'config.php';
 try {
     $data = json_decode(file_get_contents("php://input"));
     
-    // Dohvatamo trajanje usluge
+    // Dohvatanje trajanja usluge
     $serviceQuery = "SELECT trajanje FROM usluge WHERE id = ?";
     $stmt = $conn->prepare($serviceQuery);
     $stmt->execute([$data->serviceId]);
@@ -20,9 +20,8 @@ try {
     }
     
     $serviceDuration = $service['trajanje'];
-    $requiredSlots = ceil($serviceDuration / 15);
     
-    // Dohvatamo radno vreme za taj dan
+    // Dohvatanje radnog vremena
     $dayOfWeek = date('N', strtotime($data->date));
     $workingHoursQuery = "SELECT * FROM working_hours WHERE salon_id = ? AND day_of_week = ?";
     $stmt = $conn->prepare($workingHoursQuery);
@@ -38,71 +37,73 @@ try {
         exit();
     }
 
-    // Dohvatamo sve slobodne slotove za taj dan u okviru radnog vremena
+    // Dohvatanje svih slobodnih slotova
     $availableSlotsQuery = "SELECT time_slot 
                            FROM time_slots 
                            WHERE salon_id = ? 
                            AND date = ? 
                            AND is_available = 1 
-                           AND TIME(time_slot) >= TIME(?) 
-                           AND TIME(time_slot) <= TIME(?) 
-                           AND (TIME(time_slot) < TIME(?) 
-                           OR TIME(time_slot) > TIME(?))
                            ORDER BY time_slot";
     
     $stmt = $conn->prepare($availableSlotsQuery);
-    $stmt->execute([
-        $data->salonId,
-        $data->date,
-        $workingHours['start_time'],
-        $workingHours['end_time'],
-        $workingHours['break_start'],
-        $workingHours['break_end']
-    ]);
-
+    $stmt->execute([$data->salonId, $data->date]);
     $allSlots = $stmt->fetchAll(PDO::FETCH_COLUMN);
-    $validSlots = [];
+    
+    // Додајте ово одмах након дохватања слотова
+    if (empty($allSlots)) {
+        echo json_encode([
+            'success' => true,
+            'slots' => [],
+            'serviceDuration' => $serviceDuration
+        ]);
+        exit();
+    }
+    
+    // Konvertovanje vremena
+    $workStart = strtotime($workingHours['start_time']);
+    $workEnd = strtotime($workingHours['end_time']);
+    $breakStart = $workingHours['has_break'] ? strtotime($workingHours['break_start']) : null;
+    $breakEnd = $workingHours['has_break'] ? strtotime($workingHours['break_end']) : null;
 
-    // Provera uzastopnih slotova
-    for ($i = 0; $i <= count($allSlots) - $requiredSlots; $i++) {
-        $consecutive = true;
-        $currentSlotTime = strtotime($allSlots[$i]);
+    // Pronalaženje dostupnih termina
+    $validSlots = [];
+    $interval = 15;
+    $requiredSlots = ceil($serviceDuration / 15);
+    $currentTime = $workStart;
+    
+    // И измените главну while петљу
+    while ($currentTime <= $workEnd - ($serviceDuration * 60)) {
+        $endTime = $currentTime + ($serviceDuration * 60);
+        $isValid = true;
         
-        // Provera da li je trenutni slot unutar radnog vremena
-        $slotTime = date('H:i:s', $currentSlotTime);
-        if ($slotTime < $workingHours['start_time'] || $slotTime > $workingHours['end_time']) {
-            continue;
+        // Провера да ли термин улази у паузу
+        if ($breakStart && $breakEnd) {
+            if (($currentTime < $breakStart && $endTime > $breakStart) || 
+                ($currentTime >= $breakStart && $currentTime < $breakEnd)) {
+                $currentTime = $breakEnd;
+                continue;
+            }
         }
         
-        // Provera da li su svi potrebni slotovi dostupni i unutar radnog vremena
-        for ($j = 1; $j < $requiredSlots; $j++) {
-            if (!isset($allSlots[$i + $j])) {
-                $consecutive = false;
-                break;
-            }
-            
-            $nextSlotTime = strtotime($allSlots[$i + $j]);
-            
-            // Provera da li je sledeći slot 15 minuta nakon prethodnog
-            if ($nextSlotTime - $currentSlotTime !== 900) {
-                $consecutive = false;
-                break;
-            }
-            
-            // Provera da li sledeći slot prelazi radno vreme ili ulazi u pauzu
-            $nextTime = date('H:i:s', $nextSlotTime);
-            if ($nextTime > $workingHours['end_time'] || 
-                ($nextTime >= $workingHours['break_start'] && $nextTime <= $workingHours['break_end'])) {
-                $consecutive = false;
-                break;
-            }
-            
-            $currentSlotTime = $nextSlotTime;
+        // Провера да ли прелази крај радног времена
+        if ($endTime > $workEnd) {
+            break;
         }
         
-        if ($consecutive) {
-            $validSlots[] = $allSlots[$i];
+        // Провера узастопних слотова
+        for ($i = 0; $i < $requiredSlots; $i++) {
+            $slotToCheck = date('H:i:s', $currentTime + ($i * 15 * 60));
+            if (!in_array($slotToCheck, $allSlots)) {
+                $isValid = false;
+                break;
+            }
         }
+        
+        if ($isValid) {
+            $validSlots[] = date('H:i:s', $currentTime);
+        }
+        
+        $currentTime += ($interval * 60);
     }
 
     echo json_encode([

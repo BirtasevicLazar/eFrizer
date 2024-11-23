@@ -113,29 +113,54 @@
 }
 
 .booking-slots {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  margin: 2rem 0;
+}
+
+.slot-info {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
-  margin-bottom: 2rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
 }
 
 .booking-time-slot {
-  padding: 0.75rem;
-  text-align: center;
+  background: white;
   border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
+  padding: 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .booking-time-slot:hover {
   border-color: #60a5fa;
+  transform: translateY(-2px);
 }
 
 .booking-time-slot.selected {
   background: #60a5fa;
   color: white;
   border-color: #60a5fa;
+}
+
+.time-range {
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
 .booking-customer-info input {
@@ -179,27 +204,4 @@
 
 .booking-btn-next:hover {
   background: #3b82f6;
-}
-
-.slot-info {
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  background-color: #f3f4f6;
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #4b5563;
-}
-
-.slots-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 0.5rem;
-}
-
-.booking-time-slot {
-  width: 100%;
-  padding: 0.75rem;
-  font-size: 0.9rem;
 }

@@ -62,10 +62,23 @@ const Booking = () => {
     }
   };
 
+  const handleServiceChange = (serviceId) => {
+    setSelectedService(serviceId);
+    setAvailableSlots([]);
+    setSelectedSlot('');
+    
+    if (selectedDate) {
+        fetchAvailableSlots(selectedDate, serviceId);
+    }
+  };
+
   const handleDateChange = async (date) => {
     setSelectedDate(date);
+    setAvailableSlots([]);
+    setSelectedSlot('');
+    
     if (selectedService) {
-      fetchAvailableSlots(date, selectedService);
+        await fetchAvailableSlots(date, selectedService);
     }
   };
 
@@ -130,6 +143,10 @@ const Booking = () => {
   };
 
   const handlePrevStep = () => {
+    if (step === 3) {
+        setAvailableSlots([]);
+        setSelectedSlot('');
+    }
     setStep(prev => prev - 1);
   };
 
@@ -149,6 +166,9 @@ const Booking = () => {
   const handleServiceSelect = (service) => {
     setSelectedService(service.id);
     setSelectedServiceDuration(service.trajanje);
+    setAvailableSlots([]);
+    setSelectedSlot('');
+    setSelectedDate('');
   };
 
   const formatEndTime = (startTime, duration) => {
@@ -159,6 +179,34 @@ const Booking = () => {
     
     const endDate = new Date(startDate.getTime() + duration * 60000);
     return `${endDate.getHours().toString().padStart(2, '0')}:${endDate.getMinutes().toString().padStart(2, '0')}`;
+  };
+
+  const renderTimeSlots = () => {
+    return (
+      <div className="booking-slots">
+        <div className="slot-info">
+          <BsClock /> Trajanje termina: {selectedServiceDuration} min
+        </div>
+        <div className="slots-grid">
+          {availableSlots.map(slot => {
+            const startTime = slot.slice(0, 5);
+            const endTime = formatEndTime(slot, selectedServiceDuration);
+            
+            return (
+              <button
+                key={slot}
+                className={`booking-time-slot ${selectedSlot === slot ? 'selected' : ''}`}
+                onClick={() => setSelectedSlot(slot)}
+              >
+                <span className="time-range">
+                  {startTime} - {endTime}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
   };
 
   const renderStepContent = () => {
@@ -198,24 +246,7 @@ const Booking = () => {
         );
 
       case 3:
-        return (
-          <div className="booking-slots">
-            <div className="slot-info">
-              <BsClock /> Trajanje termina: {selectedServiceDuration} min
-            </div>
-            <div className="slots-grid">
-              {availableSlots.map(slot => (
-                <button
-                  key={slot}
-                  className={`booking-time-slot ${selectedSlot === slot ? 'selected' : ''}`}
-                  onClick={() => setSelectedSlot(slot)}
-                >
-                  {slot.slice(0, 5)} - {formatEndTime(slot, selectedServiceDuration)}
-                </button>
-              ))}
-            </div>
-          </div>
-        );
+        return renderTimeSlots();
 
       case 4:
         return (
