@@ -545,13 +545,13 @@ const StatisticsSection = ({ salonId }) => {
 
 const WorkingHoursSection = ({ salonId }) => {
   const [workingHours, setWorkingHours] = useState([
-    { day_of_week: 1, name: 'Ponedeljak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
-    { day_of_week: 2, name: 'Utorak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
-    { day_of_week: 3, name: 'Sreda', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
-    { day_of_week: 4, name: 'Četvrtak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
-    { day_of_week: 5, name: 'Petak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
-    { day_of_week: 6, name: 'Subota', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true },
-    { day_of_week: 0, name: 'Nedelja', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: true }
+    { day_of_week: 1, name: 'Ponedeljak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: false },
+    { day_of_week: 2, name: 'Utorak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: false },
+    { day_of_week: 3, name: 'Sreda', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: false },
+    { day_of_week: 4, name: 'Četvrtak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: false },
+    { day_of_week: 5, name: 'Petak', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: false },
+    { day_of_week: 6, name: 'Subota', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: false },
+    { day_of_week: 0, name: 'Nedelja', start_time: '', end_time: '', break_start: '', break_end: '', is_working: false, has_break: false }
   ]);
 
   useEffect(() => {
@@ -577,7 +577,8 @@ const WorkingHoursSection = ({ salonId }) => {
                 end_time: savedDay.end_time,
                 break_start: savedDay.break_start,
                 break_end: savedDay.break_end,
-                is_working: savedDay.is_working
+                is_working: savedDay.is_working,
+                has_break: savedDay.has_break
               };
             }
             return day;

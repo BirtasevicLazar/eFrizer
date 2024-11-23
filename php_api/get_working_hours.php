@@ -15,7 +15,7 @@ try {
         throw new Exception('Nije prosleđen ID salona');
     }
 
-    $query = "SELECT * FROM working_hours WHERE salon_id = ? ORDER BY day_of_week";
+    $query = "SELECT *, has_break as has_break FROM working_hours WHERE salon_id = ? ORDER BY day_of_week";
     $stmt = $conn->prepare($query);
     $stmt->execute([$data->salon_id]);
     $workingHours = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -27,6 +27,7 @@ try {
         $day['break_start'] = substr($day['break_start'], 0, 5);
         $day['break_end'] = substr($day['break_end'], 0, 5);
         $day['is_working'] = (bool)$day['is_working'];
+        $day['has_break'] = (bool)$day['has_break'];
     }
 
     echo json_encode([
