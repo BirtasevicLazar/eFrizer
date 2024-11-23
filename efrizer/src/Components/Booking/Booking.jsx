@@ -106,71 +106,19 @@ const Booking = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!validateForm()) {
-        return;
-    }
-    
-    try {
-        const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/create_appointment.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                salonId: salonData.id,
-                serviceId: selectedService,
-                date: selectedDate,
-                timeSlot: selectedSlot,
-                customerData
-            })
-        });
-        
-        const data = await response.json();
-        
-        if (data.success) {
-            toast.success('Uspešno ste zakazali termin!');
-            // Reset forme
-            setSelectedService(null);
-            setSelectedDate('');
-            setSelectedSlot('');
-            setCustomerData({ name: '', phone: '', email: '' });
-            setStep(1);
-        } else {
-            toast.error(data.error || 'Došlo je do greške prilikom zakazivanja');
-        }
-    } catch (error) {
-        console.error('Greška:', error);
-        toast.error('Došlo je do greške prilikom komunikacije sa serverom');
-    }
-  };
-
-  const validateForm = () => {
-    if (!customerData.name.trim()) {
-        toast.error('Unesite vaše ime');
-        return false;
-    }
-    if (!customerData.phone.trim()) {
-        toast.error('Unesite broj telefona');
-        return false;
-    }
-    if (!customerData.email.trim()) {
-        toast.error('Unesite email adresu');
-        return false;
-    }
-    if (!selectedService || !selectedDate || !selectedSlot) {
-        toast.error('Molimo popunite sve podatke o terminu');
-        return false;
-    }
-    return true;
-  };
-
   const handleNextStep = () => {
-    if (validateCurrentStep()) {
-      setStep(prev => prev + 1);
+    switch(step) {
+      case 1:
+        if (!selectedService) return;
+        break;
+      case 2:
+        if (!selectedDate) return;
+        break;
+      case 3:
+        if (!selectedSlot) return;
+        break;
     }
+    setStep(step + 1);
   };
 
   const handlePrevStep = () => {
@@ -306,6 +254,47 @@ const Booking = () => {
 
       default:
         return null;
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!customerData.name.trim() || !customerData.phone.trim() || !customerData.email.trim()) {
+      toast.error('Molimo popunite sva polja');
+      return;
+    }
+    
+    try {
+      const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/create_appointment.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          salonId: salonData.id,
+          serviceId: selectedService,
+          date: selectedDate,
+          timeSlot: selectedSlot,
+          customerData
+        })
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        toast.success('Uspešno ste zakazali termin!');
+        setSelectedService(null);
+        setSelectedDate('');
+        setSelectedSlot('');
+        setCustomerData({ name: '', phone: '', email: '' });
+        setStep(1);
+      } else {
+        toast.error(data.error || 'Došlo je do greške prilikom zakazivanja');
+      }
+    } catch (error) {
+      console.error('Greška:', error);
+      toast.error('Došlo je do greške u komunikaciji sa serverom');
     }
   };
 
