@@ -20,7 +20,7 @@ const Dashboard = () => {
       }
 
       try {
-        const response = await fetch('http://192.168.0.29:8888/efrizer/php_api/get_salon_data.php', {
+        const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/get_salon_data.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -163,7 +163,7 @@ const ProfileSection = ({ salonData, setSalonData }) => {
     }
 
     try {
-      const response = await fetch('http://192.168.0.29:8888/efrizer/php_api/update_salon.php', {
+      const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/update_salon.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -337,7 +337,7 @@ const ServicesSection = ({ salonId }) => {
     }
 
     try {
-      const response = await fetch('http://192.168.0.29:8888/efrizer/php_api/add_service.php', {
+      const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/add_service.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -366,7 +366,7 @@ const ServicesSection = ({ salonId }) => {
   const handleDeleteService = async (serviceId) => {
     if (window.confirm('Da li ste sigurni da želite da obrišete ovu uslugu?')) {
       try {
-        const response = await fetch('http://192.168.0.29:8888/efrizer/php_api/delete_service.php', {
+        const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/delete_service.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -390,7 +390,7 @@ const ServicesSection = ({ salonId }) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch('http://192.168.0.29:8888/efrizer/php_api/get_services.php', {
+        const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/get_services.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -549,7 +549,7 @@ const WorkingHoursSection = ({ salonId }) => {
   useEffect(() => {
     const fetchWorkingHours = async () => {
       try {
-        const response = await fetch('http://192.168.0.29:8888/efrizer/php_api/get_working_hours.php', {
+        const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/get_working_hours.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -605,7 +605,7 @@ const WorkingHoursSection = ({ salonId }) => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('http://192.168.0.29:8888/efrizer/php_api/set_working_hours.php', {
+      const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/set_working_hours.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

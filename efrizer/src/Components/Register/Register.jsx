@@ -96,7 +96,7 @@ const Register = () => {
           city: formData.city.trim()
         };
 
-        const response = await fetch('http://192.168.0.29:8888/efrizer/php_api/register.php', {
+        const response = await fetch('http://192.168.0.27:8888/efrizer/php_api/register.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
