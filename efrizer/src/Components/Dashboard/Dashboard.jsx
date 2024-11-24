@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { BsPersonCircle, BsCalendar, BsScissors, BsGraphUp, BsPencil, BsCheckLg, BsX, BsBoxArrowRight, BsClock, BsLink45Deg } from 'react-icons/bs';
 import { Toaster, toast } from 'react-hot-toast';
 import './Dashboard.css';
+import AppointmentsTable from './AppointmentsTable';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -305,7 +306,7 @@ const AppointmentsSection = ({ salonId }) => {
   return (
     <div className="dashboard-section">
       <h2>Termini</h2>
-      {/* Implementacija termina */}
+      <AppointmentsTable salonId={salonId} />
     </div>
   );
 };
