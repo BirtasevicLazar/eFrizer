@@ -120,7 +120,7 @@ const AppointmentsTable = ({ salonId }) => {
     <div className="appointments-container">
       <div className="date-navigation">
         <button onClick={() => setSelectedDate(subDays(selectedDate, 1))}>
-          <BsChevronLeft /> Prethodni dan
+          <BsChevronLeft /> <span>Prethodni dan</span>
         </button>
         <div className="current-date">
           <DatePicker
@@ -132,7 +132,7 @@ const AppointmentsTable = ({ salonId }) => {
           />
         </div>
         <button onClick={() => setSelectedDate(addDays(selectedDate, 1))}>
-          Sledeći dan <BsChevronRight />
+          <span>Sledeći dan</span> <BsChevronRight />
         </button>
       </div>
 
