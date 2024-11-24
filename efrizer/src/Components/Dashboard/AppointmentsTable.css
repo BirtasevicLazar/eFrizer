@@ -294,3 +294,192 @@
     padding: 12px;
   }
 }
+
+/* Modal stilovi */
+.ef-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.ef-modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ef-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #64748b;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.ef-modal-close:hover {
+  background: #f1f5f9;
+  color: #1a1a1a;
+}
+
+.ef-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ef-modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #1a1a1a;
+}
+
+.ef-modal-body {
+  padding: 24px;
+}
+
+.ef-modal-info-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.ef-modal-icon {
+  color: #64748b;
+  font-size: 20px;
+  margin-top: 4px;
+}
+
+.ef-modal-info-group label {
+  font-size: 12px;
+  color: #64748b;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.ef-modal-info-group p {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 14px;
+}
+
+.ef-modal-status {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.ef-status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.ef-status-badge.pending {
+  background: #fff3bf;
+  color: #856404;
+}
+
+.ef-status-badge.completed {
+  background: #d3f9d8;
+  color: #2b8a3e;
+}
+
+.ef-status-badge.cancelled {
+  background: #ffe3e3;
+  color: #c92a2a;
+}
+
+.ef-modal-actions {
+  padding: 20px 24px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.ef-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ef-btn-success {
+  background: #d3f9d8;
+  color: #2b8a3e;
+}
+
+.ef-btn-danger {
+  background: #ffe3e3;
+  color: #c92a2a;
+}
+
+.ef-btn:hover {
+  filter: brightness(0.95);
+}
+
+/* Responzivnost */
+@media (max-width: 480px) {
+  .ef-modal-content {
+    margin: 0;
+    height: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ef-modal-body {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .ef-modal-actions {
+    padding: 16px;
+  }
+
+  .ef-btn {
+    flex: 1;
+    justify-content: center;
+  }
+}

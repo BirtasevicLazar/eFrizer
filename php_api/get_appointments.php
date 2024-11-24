@@ -12,6 +12,8 @@ try {
                 a.*, 
                 u.naziv_usluge as service_name,
                 u.trajanje as duration,
+                u.cena as price,
+                u.valuta as currency,
                 DATE_FORMAT(a.date, '%Y-%m-%d') as formatted_date,
                 TIME_FORMAT(a.time_slot, '%H:%i') as formatted_time,
                 a.customer_name,

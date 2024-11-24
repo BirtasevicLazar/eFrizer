@@ -11,6 +11,7 @@ const AppointmentsTable = ({ salonId }) => {
   const [appointments, setAppointments] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [workingHours, setWorkingHours] = useState(null);
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   // Dohvatanje radnog vremena
   useEffect(() => {
@@ -130,6 +131,27 @@ const AppointmentsTable = ({ salonId }) => {
     );
   };
 
+  const handleAppointmentClick = (appointment) => {
+    setSelectedAppointment(appointment);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedAppointment(null);
+  };
+
+  const getStatusText = (status) => {
+    switch(status) {
+      case 'completed':
+        return 'Završen';
+      case 'cancelled':
+        return 'Otkazan';
+      case 'pending':
+        return 'Na čekanju';
+      default:
+        return 'Nepoznat status';
+    }
+  };
+
   return (
     <div className="appointments-container">
       <div className="date-navigation">
@@ -172,6 +194,7 @@ const AppointmentsTable = ({ salonId }) => {
                   top: `${topPosition}px`,
                   height: `${height}px`
                 }}
+                onClick={() => handleAppointmentClick(appointment)}
               >
                 <div className="appointment-info">
                   <div className="client-name">{appointment.client_name}</div>
@@ -197,6 +220,84 @@ const AppointmentsTable = ({ salonId }) => {
           })}
         </div>
       </div>
+
+      {selectedAppointment && (
+        <div className="ef-modal-overlay" onClick={handleCloseModal}>
+          <div className="ef-modal-content" onClick={e => e.stopPropagation()}>
+            <button className="ef-modal-close" onClick={handleCloseModal}>
+              <BsX />
+            </button>
+            
+            <div className="ef-modal-header">
+              <h3>Detalji termina</h3>
+            </div>
+            
+            <div className="ef-modal-body">
+              <div className="ef-modal-info-group">
+                <BsPerson className="ef-modal-icon" />
+                <div>
+                  <label>Klijent</label>
+                  <p>{selectedAppointment.customer_name}</p>
+                </div>
+              </div>
+
+              <div className="ef-modal-info-group">
+                <BsScissors className="ef-modal-icon" />
+                <div>
+                  <label>Usluga</label>
+                  <p>{selectedAppointment.service_name}</p>
+                </div>
+              </div>
+
+              <div className="ef-modal-info-group">
+                <BsClock className="ef-modal-icon" />
+                <div>
+                  <label>Vreme</label>
+                  <p>{format(new Date(`${selectedAppointment.formatted_date} ${selectedAppointment.formatted_time}`), 'HH:mm')} ({selectedAppointment.duration} min)</p>
+                </div>
+              </div>
+
+              <div className="ef-modal-info-group">
+                <BsTelephone className="ef-modal-icon" />
+                <div>
+                  <label>Telefon</label>
+                  <p>{selectedAppointment.customer_phone}</p>
+                </div>
+              </div>
+
+              <div className="ef-modal-info-group">
+                <BsEnvelope className="ef-modal-icon" />
+                <div>
+                  <label>Email</label>
+                  <p>{selectedAppointment.customer_email}</p>
+                </div>
+              </div>
+
+              <div className="ef-modal-status">
+                <label>Status</label>
+                <span className={`ef-status-badge ${selectedAppointment.status}`}>
+                  {getStatusText(selectedAppointment.status)}
+                </span>
+              </div>
+            </div>
+            
+            <div className="ef-modal-actions">
+              <button 
+                onClick={() => handleStatusUpdate(selectedAppointment.id, 'completed')}
+                className="ef-btn ef-btn-success"
+              >
+                <BsCheckCircle /> Završi
+              </button>
+              <button 
+                onClick={() => handleStatusUpdate(selectedAppointment.id, 'cancelled')}
+                className="ef-btn ef-btn-danger"
+              >
+                <BsXCircle /> Otkaži
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

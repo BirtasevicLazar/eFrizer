@@ -26,8 +26,8 @@ try {
 
     $conn->beginTransaction();
     
-    // Provera dostupnosti slotova
-    $serviceQuery = "SELECT trajanje FROM usluge WHERE id = ?";
+    // Dohvatanje cene usluge
+    $serviceQuery = "SELECT trajanje, cena, valuta FROM usluge WHERE id = ?";
     $stmt = $conn->prepare($serviceQuery);
     $stmt->execute([$data->serviceId]);
     $service = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -62,14 +62,16 @@ try {
 
     // Tek nakon provera kreiramo appointment
     $createAppointment = "INSERT INTO appointments 
-                         (salon_id, service_id, date, time_slot, 
+                         (salon_id, service_id, cena, valuta, date, time_slot, 
                           customer_name, customer_phone, customer_email, status) 
-                         VALUES (?, ?, ?, ?, ?, ?, ?, 'pending')";
+                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')";
     
     $stmt = $conn->prepare($createAppointment);
     $stmt->execute([
         $data->salonId,
         $data->serviceId,
+        $service['cena'],
+        $service['valuta'],
         $data->date,
         $data->timeSlot,
         $data->customerData->name,
