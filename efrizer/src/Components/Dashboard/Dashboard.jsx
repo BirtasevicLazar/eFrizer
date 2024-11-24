@@ -214,7 +214,7 @@ const ProfileSection = ({ salonData, setSalonData }) => {
 
   return (
     <div className="dashboard-section">
-      <h2>Profil Salona</h2>
+      <h2>Profil</h2>
       <form onSubmit={handleSubmit} className="profile-info">
         <div className="info-group">
           <label>Naziv salona</label>
@@ -415,6 +415,7 @@ const ServicesSection = ({ salonId }) => {
 
   return (
     <div className="dashboard-section services-section">
+      <h2>Usluge</h2>
       <div className="content-wrapper">
         <form onSubmit={handleAddService} className="service-form">
           <div className="form-header">
