@@ -47,6 +47,79 @@
   text-align: center;
   font-weight: 500;
   font-size: 14px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.date-picker:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.date-picker-popper {
+  z-index: 1000;
+}
+
+.react-datepicker {
+  font-family: inherit;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.react-datepicker__header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e2e8f0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding-top: 8px;
+}
+
+.react-datepicker__current-month {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1a1a1a;
+  padding: 4px 0;
+}
+
+.react-datepicker__day-name {
+  color: #64748b;
+  font-size: 12px;
+  width: 32px;
+  margin: 2px;
+}
+
+.react-datepicker__day {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  margin: 2px;
+  border-radius: 50%;
+  color: #1a1a1a;
+}
+
+.react-datepicker__day:hover {
+  background-color: #e9ecef;
+}
+
+.react-datepicker__day--selected {
+  background-color: #4a90e2 !important;
+  color: white !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: rgba(74, 144, 226, 0.1);
+  color: #4a90e2;
+}
+
+.react-datepicker__navigation {
+  top: 8px;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #64748b;
+  border-width: 2px 2px 0 0;
 }
 
 @media (max-width: 480px) {
@@ -183,4 +256,41 @@
 .status-btn.cancel {
   background: #ffe3e3;
   color: #c92a2a;
+}
+
+/* Osnovni stilovi za date picker wrapper */
+.ef-datepicker-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Stilovi za input */
+.ef-datepicker-input {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1a1a1a;
+  background: white;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.ef-datepicker-input:hover {
+  border-color: #4a90e2;
+}
+
+.ef-datepicker-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+/* Responzivnost */
+@media (max-width: 768px) {
+  .ef-datepicker-input {
+    font-size: 16px;
+    padding: 12px;
+  }
 }

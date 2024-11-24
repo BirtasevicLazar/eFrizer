@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { BsSearch, BsCheckCircle, BsXCircle, BsClock, BsPerson, BsTelephone, BsEnvelope, BsScissors, BsChevronLeft, BsChevronRight, BsX, BsCheck } from 'react-icons/bs';
 import { toast } from 'react-hot-toast';
 import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 import { format, addDays, subDays, setHours, setMinutes } from 'date-fns';
 import { sr } from 'date-fns/locale';
 import './AppointmentsTable.css';
@@ -116,6 +117,19 @@ const AppointmentsTable = ({ salonId }) => {
     }
   };
 
+  const CustomDatePicker = () => {
+    return (
+      <div className="ef-datepicker-wrapper">
+        <input 
+          type="date"
+          value={selectedDate ? format(selectedDate, 'yyyy-MM-dd') : ''}
+          onChange={(e) => setSelectedDate(new Date(e.target.value))}
+          className="ef-datepicker-input"
+        />
+      </div>
+    );
+  };
+
   return (
     <div className="appointments-container">
       <div className="date-navigation">
@@ -123,13 +137,7 @@ const AppointmentsTable = ({ salonId }) => {
           <BsChevronLeft /> <span>Prethodni dan</span>
         </button>
         <div className="current-date">
-          <DatePicker
-            selected={selectedDate}
-            onChange={date => setSelectedDate(date)}
-            dateFormat="EEEE, d. MMMM yyyy."
-            locale={sr}
-            className="date-picker"
-          />
+          <CustomDatePicker />
         </div>
         <button onClick={() => setSelectedDate(addDays(selectedDate, 1))}>
           <span>Sledeći dan</span> <BsChevronRight />
