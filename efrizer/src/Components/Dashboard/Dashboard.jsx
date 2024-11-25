@@ -205,12 +205,16 @@ const ProfileSection = ({ salonData, setSalonData }) => {
   };
 
   const handleCopyLink = () => {
+    if (!salonData?.slug) {
+      alert('Slug nije dostupan');
+      return;
+    }
     const link = `${window.location.origin}/booking/${salonData.slug}`;
     navigator.clipboard.writeText(link);
     alert('Link je kopiran u clipboard!');
   };
 
-  const bookingLink = `${window.location.origin}/booking/${salonData.slug}`;
+  const bookingLink = `${window.location.origin}/booking/${salonData?.slug || ''}`;
 
   return (
     <div className="dashboard-section">
