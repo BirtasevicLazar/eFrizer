@@ -50,29 +50,45 @@ try {
         ]);
     }
 
-    // Brišemo stare termine
+    // Brisanje svih starih termina
     $deleteOldSlots = "DELETE FROM time_slots WHERE date < CURRENT_DATE AND salon_id = ?";
     $stmt = $conn->prepare($deleteOldSlots);
     $stmt->execute([$data->salon_id]);
 
-    // Ažuriramo postojeće i dodajemo nove termine
+    // Brisanje termina za neradne dane
+    $deleteNonWorkingDays = "DELETE ts FROM time_slots ts
+                            LEFT JOIN working_hours wh ON 
+                            wh.salon_id = ts.salon_id AND 
+                            wh.day_of_week = DAYOFWEEK(ts.date)
+                            WHERE ts.salon_id = ? AND 
+                            (wh.is_working = 0 OR wh.is_working IS NULL)";
+    $stmt = $conn->prepare($deleteNonWorkingDays);
+    $stmt->execute([$data->salon_id]);
+
+    // Brisanje termina van radnog vremena
+    $deleteOutsideHours = "DELETE ts FROM time_slots ts
+                          JOIN working_hours wh ON 
+                          wh.salon_id = ts.salon_id AND 
+                          wh.day_of_week = DAYOFWEEK(ts.date)
+                          WHERE ts.salon_id = ? AND 
+                          (TIME(ts.time_slot) < wh.start_time OR 
+                           TIME(ts.time_slot) >= wh.end_time)";
+    $stmt = $conn->prepare($deleteOutsideHours);
+    $stmt->execute([$data->salon_id]);
+
+    // Ažuriramo postojeće i dodajemo nove termine za narednih 30 dana
     for ($i = 0; $i < 30; $i++) {
         $date = date('Y-m-d', strtotime("+$i days"));
         $dayOfWeek = date('N', strtotime($date));
         
-        // Dohvatamo radno vreme za taj dan
         $workingHoursQuery = "SELECT * FROM working_hours 
                             WHERE salon_id = ? AND day_of_week = ?";
         $stmt = $conn->prepare($workingHoursQuery);
         $stmt->execute([$data->salon_id, $dayOfWeek]);
         $workingHours = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($workingHours) {
-            if (!$workingHours['is_working']) {
-                continue;
-            }
-
-            // Brišemo postojeće slotove
+        if ($workingHours && $workingHours['is_working']) {
+            // Brišemo postojeće slotove za taj dan
             $deleteExistingSlots = "DELETE FROM time_slots WHERE salon_id = ? AND date = ?";
             $stmt = $conn->prepare($deleteExistingSlots);
             $stmt->execute([$data->salon_id, $date]);
@@ -85,22 +101,20 @@ try {
                 $breakStart = strtotime($workingHours['break_start']);
                 $breakEnd = strtotime($workingHours['break_end']);
                 
-                // Generišemo slotove pre pauze
+                // Pre pauze
                 while ($currentTime < $breakStart && $currentTime < $endTime) {
                     $timeSlot = date('H:i:s', $currentTime);
-                    // Insert slot
                     $insertSlot = "INSERT INTO time_slots (salon_id, date, time_slot, is_available) 
                                   VALUES (?, ?, ?, 1)";
                     $stmt = $conn->prepare($insertSlot);
                     $stmt->execute([$data->salon_id, $date, $timeSlot]);
-                    $currentTime += 900;
+                    $currentTime += 900; // 15 minuta
                 }
 
-                // Generišemo slotove posle pauze
+                // Posle pauze
                 $currentTime = $breakEnd;
                 while ($currentTime < $endTime) {
                     $timeSlot = date('H:i:s', $currentTime);
-                    // Insert slot
                     $insertSlot = "INSERT INTO time_slots (salon_id, date, time_slot, is_available) 
                                   VALUES (?, ?, ?, 1)";
                     $stmt = $conn->prepare($insertSlot);
@@ -108,10 +122,8 @@ try {
                     $currentTime += 900;
                 }
             } else {
-                // Ako nema pauze, generišemo sve slotove od početka do kraja
                 while ($currentTime < $endTime) {
                     $timeSlot = date('H:i:s', $currentTime);
-                    // Insert slot
                     $insertSlot = "INSERT INTO time_slots (salon_id, date, time_slot, is_available) 
                                   VALUES (?, ?, ?, 1)";
                     $stmt = $conn->prepare($insertSlot);
