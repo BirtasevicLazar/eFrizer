@@ -205,3 +205,14 @@
 .booking-btn-next:hover {
   background: #3b82f6;
 }
+
+.no-slots-message {
+  text-align: center;
+  padding: 2rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  color: #4b5563;
+  font-size: 1.1rem;
+  border: 1px dashed #e5e7eb;
+  margin: 1rem 0;
+}

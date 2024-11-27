@@ -166,24 +166,30 @@ const Booking = () => {
         <div className="slot-info">
           <BsClock /> Trajanje termina: {selectedServiceDuration} min
         </div>
-        <div className="slots-grid">
-          {availableSlots.map(slot => {
-            const startTime = slot.slice(0, 5);
-            const endTime = formatEndTime(slot, selectedServiceDuration);
-            
-            return (
-              <button
-                key={slot}
-                className={`booking-time-slot ${selectedSlot === slot ? 'selected' : ''}`}
-                onClick={() => setSelectedSlot(slot)}
-              >
-                <span className="time-range">
-                  {startTime} - {endTime}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+        {availableSlots.length > 0 ? (
+          <div className="slots-grid">
+            {availableSlots.map(slot => {
+              const startTime = slot.slice(0, 5);
+              const endTime = formatEndTime(slot, selectedServiceDuration);
+              
+              return (
+                <button
+                  key={slot}
+                  className={`booking-time-slot ${selectedSlot === slot ? 'selected' : ''}`}
+                  onClick={() => setSelectedSlot(slot)}
+                >
+                  <span className="time-range">
+                    {startTime} - {endTime}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="no-slots-message">
+            Nema dostupnih termina za izabrani datum. Molimo vas izaberite drugi datum.
+          </div>
+        )}
       </div>
     );
   };
