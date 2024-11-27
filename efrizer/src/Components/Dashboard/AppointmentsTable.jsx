@@ -12,6 +12,7 @@ const AppointmentsTable = ({ salonId }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [workingHours, setWorkingHours] = useState(null);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Dohvatanje radnog vremena
   useEffect(() => {
@@ -63,34 +64,45 @@ const AppointmentsTable = ({ salonId }) => {
 
   const timeSlots = generateTimeSlots();
 
-  // Polling za real-time ažuriranje
-  useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_appointments.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ 
-            salonId: salonId,
-            date: format(selectedDate, 'yyyy-MM-dd')
-          })
-        });
+  // Funkcija za dohvatanje termina
+  const fetchAppointments = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_appointments.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          salonId: salonId,
+          date: format(selectedDate, 'yyyy-MM-dd')
+        })
+      });
 
-        const data = await response.json();
-        if (data.success) {
-          setAppointments(data.appointments);
-        }
-      } catch (error) {
-        console.error('Greška pri učitavanju termina:', error);
+      const data = await response.json();
+      if (data.success) {
+        setAppointments(data.appointments);
       }
-    };
+    } catch (error) {
+      console.error('Greška pri učitavanju termina:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
+  // Polling useEffect
+  useEffect(() => {
+    // Inicijalno učitavanje
     fetchAppointments();
-    const interval = setInterval(fetchAppointments, 30000);
-    return () => clearInterval(interval);
-  }, [salonId, selectedDate]);
+
+    // Postavljanje intervala za osvežavanje (na svakih 10 sekundi)
+    const interval = setInterval(fetchAppointments, 10000);
+
+    // Cleanup funkcija
+    return () => {
+      clearInterval(interval);
+    };
+  }, [salonId, selectedDate]); // Dependency array
 
   const handleStatusUpdate = async (appointmentId, newStatus) => {
     try {
