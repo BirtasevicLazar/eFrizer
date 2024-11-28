@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { BsCalendar, BsClock, BsScissors, BsPerson } from 'react-icons/bs';
 import './Booking.css';
 import { toast, Toaster } from 'react-hot-toast';
@@ -245,7 +245,14 @@ const Booking = () => {
         );
 
       case 3:
-        return renderTimeSlots();
+        return (
+          <>
+            <h3 className="step-title">
+              <BsClock /> Izaberite termin
+            </h3>
+            {renderTimeSlots()}
+          </>
+        );
 
       case 4:
         return (
@@ -360,28 +367,50 @@ const Booking = () => {
   };
 
   return (
-    <div className="booking-wrapper">
-      <Toaster position="top-right" />
-      <div className="booking-main">
-        <div className="booking-header">
-          <h1>{salonData?.salonName}</h1>
-          <p>{salonData?.address}, {salonData?.city}</p>
-        </div>
+    <>
+      <nav className="booking-navbar">
+        <Link to="/" className="booking-navbar-logo">
+          eFrizer
+        </Link>
+        <Link to="/" className="booking-navbar-back">
+          Nazad na početnu
+        </Link>
+      </nav>
+      
+      <div className="booking-wrapper">
+        <Toaster position="top-right" />
+        <div className="booking-main">
+          <div className="booking-header">
+            <h1>{salonData?.salonName}</h1>
+            <p>{salonData?.address}, {salonData?.city}</p>
+          </div>
 
-        <div className="booking-progress">
-          {[1, 2, 3, 4].map((num) => (
-            <div key={num} className={`booking-step ${step >= num ? 'active' : ''}`}>
-              {num}
+          <div className="booking-progress">
+            {[1, 2, 3, 4].map((num) => (
+              <div key={num} className={`booking-step ${step >= num ? 'active' : ''}`}>
+                {num}
+              </div>
+            ))}
+          </div>
+
+          <form onSubmit={handleSubmit} noValidate>
+            {renderStepContent()}
+            {renderButtons()}
+          </form>
+        </div>
+        
+        <footer className="booking-footer">
+          <div className="booking-footer-content">
+            <p>© 2024 eFrizer. Sva prava zadržana.</p>
+            <div className="booking-footer-links">
+              <a href="#" className="booking-footer-link">Uslovi korišćenja</a>
+              <a href="#" className="booking-footer-link">Privatnost</a>
+              <a href="#" className="booking-footer-link">Kontakt</a>
             </div>
-          ))}
-        </div>
-
-        <form onSubmit={handleSubmit} noValidate>
-          {renderStepContent()}
-          {renderButtons()}
-        </form>
+          </div>
+        </footer>
       </div>
-    </div>
+    </>
   );
 };
 

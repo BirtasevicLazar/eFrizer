@@ -1,25 +1,22 @@
 .booking-wrapper {
-  position: fixed;
-  inset: 0;
-  overflow: auto;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
-  padding: 0.5rem;
-  align-items: flex-start;
+  padding-top: 70px;
+  padding-bottom: 2rem;
 }
 
 .booking-main {
+  flex: 1;
   background: white;
-  padding: 1rem;
-  border-radius: 1rem;
+  padding: 2rem;
+  border-radius: 1.5rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  width: 100%;
+  width: 95%;
   max-width: 900px;
-  margin: 20px auto;
-  transition: all 0.3s ease;
+  margin: 1rem auto;
+  position: relative;
 }
 
 .booking-header {
@@ -190,26 +187,34 @@
 }
 
 .booking-slots {
-  margin: 2rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 .slot-info {
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto;
   background: #f8fafc;
-  padding: 0.75rem;
+  padding: 1rem;
   border-radius: 8px;
-  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   color: #4b5563;
   font-weight: 500;
   font-size: 0.9rem;
+  justify-content: center;
 }
 
 .slots-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 0.75rem;
+  max-width: 600px;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .booking-time-slot {
@@ -336,7 +341,9 @@
   }
 
   .slots-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    max-width: 400px;
+    gap: 0.6rem;
   }
   
   .booking-main {
@@ -380,5 +387,306 @@
   .booking-service-card h4 {
     font-size: 0.85rem;
     min-height: 2rem;
+  }
+}
+
+.booking-navbar {
+  background: rgba(255, 255, 255, 0.98);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  height: 70px;
+}
+
+.booking-navbar-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3b82f6;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.booking-navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+.booking-navbar-back {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #3b82f6;
+  border-radius: 0.8rem;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.booking-navbar-back:hover {
+  background: #3b82f6;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.booking-footer {
+  background: white;
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+  margin-top: auto;
+}
+
+.booking-footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.booking-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 1.5rem;
+}
+
+.booking-footer-link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.booking-footer-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.booking-footer-link:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .booking-main {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .booking-navbar {
+    padding: 1rem;
+  }
+  
+  .booking-footer {
+    padding: 1.5rem 1rem;
+  }
+  
+  .booking-footer-links {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-navbar-logo {
+    font-size: 1.5rem;
+  }
+  
+  .booking-navbar-back {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Responzivnost za mobilne uređaje */
+@media (max-width: 480px) {
+  .booking-wrapper {
+    padding-top: 60px;
+    padding-bottom: 1rem;
+  }
+
+  .booking-main {
+    padding: 1rem;
+    width: 92%;
+    margin: 0.5rem auto;
+  }
+
+  .booking-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .booking-services {
+    padding: 0;
+    gap: 0.5rem;
+  }
+
+  .booking-service-card {
+    flex: 0 1 100%;
+    padding: 1rem;
+  }
+
+  .booking-navbar {
+    padding: 0.75rem 1rem;
+    height: 60px;
+  }
+
+  .booking-navbar-logo {
+    font-size: 1.3rem;
+  }
+
+  .booking-navbar-back {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .booking-footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .booking-footer-links {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .booking-progress {
+    gap: 0.5rem;
+  }
+
+  .booking-step {
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem;
+  }
+
+  .slots-grid {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    max-width: 280px;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .booking-time-slot {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablet responzivnost */
+@media (min-width: 481px) and (max-width: 768px) {
+  .booking-main {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .booking-services {
+    gap: 0.75rem;
+  }
+
+  .booking-service-card {
+    flex: 0 1 calc(50% - 1rem);
+  }
+
+  .slots-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    max-width: 400px;
+    gap: 0.6rem;
+  }
+}
+
+/* Landscape orijentacija na mobilnim */
+@media (max-height: 600px) and (orientation: landscape) {
+  .booking-wrapper {
+    padding-top: 50px;
+  }
+
+  .booking-main {
+    margin: 0.5rem auto;
+  }
+
+  .booking-progress {
+    margin: 0.75rem 0;
+  }
+
+  .booking-services {
+    margin: 1rem auto;
+  }
+
+  .booking-footer {
+    padding: 1rem;
+  }
+}
+
+.step-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1f2937;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.step-title svg {
+  color: #3b82f6;
+  font-size: 1.3rem;
+}
+
+.booking-calendar h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.booking-calendar h3 svg {
+  color: #3b82f6;
+  font-size: 1.3rem;
+}
+
+.booking-customer-info h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.booking-customer-info h3 svg {
+  color: #3b82f6;
+  font-size: 1.3rem;
+}
+
+@media (max-width: 480px) {
+  .step-title,
+  .booking-calendar h3,
+  .booking-customer-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
   }
 }
