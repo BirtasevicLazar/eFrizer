@@ -8,7 +8,7 @@ import Footer from './Components/Footer/Footer';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 // Stranice i komponente
-import Hero from './Components/Hero/Hero';
+import NewHero from './Components/NewHero/NewHero';
 import Cards from './Components/PricingCards/Cards';
 import FAQ from './Components/FAQ/FAQ';
 import HowItWorks from './Components/HowItWorks/HowItWorks';
@@ -33,7 +33,7 @@ const MainLayout = ({ children }) => (
 // Home page komponenta
 const HomePage = () => (
   <>
-    <Hero />
+    <NewHero />
     <HowItWorks />
     <Cards />
     <FAQ />
