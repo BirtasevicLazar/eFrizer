@@ -370,7 +370,7 @@ const Booking = () => {
     <>
       <nav className="booking-navbar">
         <Link to="/" className="booking-navbar-logo">
-          eFrizer
+          MojFrizer
         </Link>
         <Link to="/" className="booking-navbar-back">
           Nazad na početnu
@@ -401,7 +401,7 @@ const Booking = () => {
         
         <footer className="booking-footer">
           <div className="booking-footer-content">
-            <p>© 2024 eFrizer. Sva prava zadržana.</p>
+            <p>© 2024 MojFrizer. Sva prava zadržana.</p>
             <div className="booking-footer-links">
               <a href="#" className="booking-footer-link">Uslovi korišćenja</a>
               <a href="#" className="booking-footer-link">Privatnost</a>
