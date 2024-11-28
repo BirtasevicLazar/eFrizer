@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { BsCalendar, BsClock, BsScissors, BsPerson } from 'react-icons/bs';
+import { BsCalendar, BsClock, BsScissors, BsPerson, BsArrowLeft, BsFacebook, BsInstagram, BsTwitter, BsLinkedin, BsEnvelope, BsTelephone, BsGeoAlt } from 'react-icons/bs';
 import './Booking.css';
 import { toast, Toaster } from 'react-hot-toast';
+import Footer from '../Footer/Footer';
 
 const Booking = () => {
   const { slug } = useParams();
@@ -370,10 +371,8 @@ const Booking = () => {
     <>
       <nav className="booking-navbar">
         <Link to="/" className="booking-navbar-logo">
+          <BsScissors />
           MojFrizer
-        </Link>
-        <Link to="/" className="booking-navbar-back">
-          Nazad na početnu
         </Link>
       </nav>
       
@@ -398,17 +397,7 @@ const Booking = () => {
             {renderButtons()}
           </form>
         </div>
-        
-        <footer className="booking-footer">
-          <div className="booking-footer-content">
-            <p>© 2024 MojFrizer. Sva prava zadržana.</p>
-            <div className="booking-footer-links">
-              <a href="#" className="booking-footer-link">Uslovi korišćenja</a>
-              <a href="#" className="booking-footer-link">Privatnost</a>
-              <a href="#" className="booking-footer-link">Kontakt</a>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );

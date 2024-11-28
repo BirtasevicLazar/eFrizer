@@ -1,4 +1,5 @@
 import React from 'react';
+import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 import './Footer.css';
 
 function Footer() {
@@ -20,11 +21,17 @@ function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2023 MojFrizer. Sva prava zadržana.</p>
+        <p>© {new Date().getFullYear()} MojFrizer. Sva prava zadržana.</p>
         <div className="footer-social-links">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon facebook">
+            <BsFacebook />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon instagram">
+            <BsInstagram />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
+            <BsTwitter />
+          </a>
         </div>
       </div>
     </footer>

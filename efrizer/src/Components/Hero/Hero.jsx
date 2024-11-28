@@ -51,7 +51,9 @@ function Hero() {
   return (
     <div className="App-hero">
       <div className="hero-content">
-        <h1>MojFrizer</h1>
+        <h1>
+          MojFrizer <i className="fa-solid fa-scissors"></i>
+        </h1>
         <h2 className="subtitle">Digitalizujte Vaš Salon</h2>
         <p className="hero-text">
           Pojednostavite poslovanje vašeg salona uz našu aplikaciju. 

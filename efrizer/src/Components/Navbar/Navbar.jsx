@@ -25,8 +25,8 @@ function NavigationBar() {
     <div className="navbar">
       <div className="navbar-top">
         <div className="navbar-left">
-          <a href="mailto:efrizer@kontakt.com" className="navbar-email">
-            <span className="bi bi-envelope"></span><span> efrizer@kontakt.com</span>
+          <a href="mailto:mojfrizer@kontakt.com" className="navbar-email">
+            <span className="bi bi-envelope"></span><span> mojfrizer@kontakt.com</span>
           </a>
         </div>
         <div className="navbar-social">

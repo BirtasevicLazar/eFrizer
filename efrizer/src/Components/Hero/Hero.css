@@ -326,4 +326,15 @@
 .stat-item:hover .stat-number {
   transform: scale(1.1);
   text-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+}
+
+.fa-scissors {
+  margin-left: 10px;
+  color: #3b82f6;
+  transform: rotate(-45deg);
+}
+
+.fa-scissors:hover {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
 } 
