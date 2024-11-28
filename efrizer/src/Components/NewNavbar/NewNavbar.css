@@ -328,6 +328,9 @@
     z-index: 1002;
     padding-top: 90px;
     overflow-y: auto;
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   
   .mobile-menu-close {
@@ -341,10 +344,11 @@
     cursor: pointer;
     padding: 8px;
     border-radius: 50%;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: translateZ(0);
   }
   
   .mobile-menu-close:hover {
@@ -375,7 +379,7 @@
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -445,5 +449,13 @@
     
     .mobile-nav-links a:active {
       background-color: #f7fafc;
+    }
+    
+    .mobile-nav-links a {
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    .mobile-menu-close:active {
+      transform: translateZ(0) rotate(90deg);
     }
   }

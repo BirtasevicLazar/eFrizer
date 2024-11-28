@@ -66,17 +66,15 @@ const NewNavbar = () => {
     closed: {
       x: "100%",
       transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40
+        type: "tween",
+        duration: 0.2
       }
     },
     open: {
       x: 0,
       transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40
+        type: "tween",
+        duration: 0.2
       }
     }
   };
