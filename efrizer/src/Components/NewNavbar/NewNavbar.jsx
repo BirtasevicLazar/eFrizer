@@ -269,6 +269,20 @@ const NewNavbar = () => {
                     <BsEnvelope /> Kontakt
                   </Link>
                 </li>
+                {localStorage.getItem('isAuthenticated') && (
+                  <li>
+                    <Link 
+                      to="/login" 
+                      className="dashboard-link"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        navigate('/login');
+                      }}
+                    >
+                      <BsPerson /> Kontrolna tabla
+                    </Link>
+                  </li>
+                )}
               </ul>
             </motion.div>
           </>

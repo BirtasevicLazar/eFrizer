@@ -41,7 +41,7 @@
   
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -414,7 +414,8 @@
     }
     
     .navbar-logo span {
-      display: none;
+      display: block;
+      font-size: 1rem;
     }
     
     .mobile-menu {
@@ -458,4 +459,31 @@
     .mobile-menu-close:active {
       transform: translateZ(0) rotate(90deg);
     }
+  }
+  
+  /* Poboljšano centriranje linkova na većim ekranima */
+  .navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Sakrivanje dashboard dugmeta na manjim ekranima */
+  @media (max-width: 1024px) {
+    .dashboard-btn {
+      display: none;
+    }
+  }
+  
+  /* Dodavanje stila za dashboard link u mobilnom meniju */
+  .mobile-nav-links .dashboard-link {
+    color: #4299e1;
+    font-weight: 600;
+    border-top: 1px solid #edf2f7;
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+  
+  .mobile-nav-links .dashboard-link:hover {
+    background: #ebf8ff;
   }
