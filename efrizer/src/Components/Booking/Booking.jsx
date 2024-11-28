@@ -109,13 +109,22 @@ const Booking = () => {
   const handleNextStep = () => {
     switch(step) {
       case 1:
-        if (!selectedService) return;
+        if (!selectedService) {
+          toast.error('Molimo izaberite uslugu');
+          return;
+        }
         break;
       case 2:
-        if (!selectedDate) return;
+        if (!selectedDate) {
+          toast.error('Molimo izaberite datum');
+          return;
+        }
         break;
       case 3:
-        if (!selectedSlot) return;
+        if (!selectedSlot) {
+          toast.error('Molimo izaberite termin');
+          return;
+        }
         break;
     }
     setStep(step + 1);
@@ -271,42 +280,83 @@ const Booking = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!customerData.name.trim() || !customerData.phone.trim() || !customerData.email.trim()) {
-      toast.error('Molimo popunite sva polja');
-      return;
-    }
-    
-    try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/create_appointment.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          salonId: salonData.id,
-          serviceId: selectedService,
-          date: selectedDate,
-          timeSlot: selectedSlot,
-          customerData
-        })
-      });
-      
-      const data = await response.json();
-      
-      if (data.success) {
-        toast.success('Uspešno ste zakazali termin!');
-        setSelectedService(null);
-        setSelectedDate('');
-        setSelectedSlot('');
-        setCustomerData({ name: '', phone: '', email: '' });
-        setStep(1);
-      } else {
-        toast.error(data.error || 'Došlo je do greške prilikom zakazivanja');
+    if (step === 4) {
+      if (!customerData.name || !customerData.phone || !customerData.email) {
+        toast.error('Molimo popunite sva polja');
+        return;
       }
-    } catch (error) {
-      console.error('Greška:', error);
-      toast.error('Došlo je do greške u komunikaciji sa serverom');
+      
+      try {
+        const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/create_appointment.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            salonId: salonData.id,
+            serviceId: selectedService,
+            date: selectedDate,
+            timeSlot: selectedSlot,
+            customerData
+          })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          toast.success('Uspešno ste zakazali termin!');
+          resetForm();
+        } else {
+          toast.error('Došlo je do greške prilikom zakazivanja');
+        }
+      } catch (error) {
+        console.error('Greška:', error);
+        toast.error('Greška pri komunikaciji sa serverom');
+      }
     }
+  };
+
+  const resetForm = () => {
+    setSelectedService(null);
+    setSelectedDate('');
+    setSelectedSlot('');
+    setCustomerData({ name: '', phone: '', email: '' });
+    setStep(1);
+  };
+
+  const renderButtons = () => {
+    return (
+      <div className="booking-nav">
+        {step > 1 && (
+          <button 
+            type="button" 
+            className="booking-btn-prev" 
+            onClick={handlePrevStep}
+          >
+            Nazad
+          </button>
+        )}
+        
+        {step < 4 && (
+          <button 
+            type="button"
+            className="booking-btn-next" 
+            onClick={handleNextStep}
+          >
+            Dalje
+          </button>
+        )}
+        
+        {step === 4 && (
+          <button 
+            type="submit"
+            className="booking-btn-next"
+          >
+            Zakaži termin
+          </button>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -326,25 +376,9 @@ const Booking = () => {
           ))}
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           {renderStepContent()}
-          
-          <div className="booking-nav">
-            {step > 1 && (
-              <button type="button" className="booking-btn-prev" onClick={handlePrevStep}>
-                Nazad
-              </button>
-            )}
-            {step < 4 ? (
-              <button type="button" className="booking-btn-next" onClick={handleNextStep}>
-                Dalje
-              </button>
-            ) : (
-              <button type="submit" className="booking-btn-next">
-                Zakaži termin
-              </button>
-            )}
-          </div>
+          {renderButtons()}
         </form>
       </div>
     </div>
