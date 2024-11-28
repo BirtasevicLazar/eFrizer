@@ -371,8 +371,7 @@ const Booking = () => {
     <>
       <nav className="booking-navbar">
         <Link to="/" className="booking-navbar-logo">
-          <BsScissors />
-          MojFrizer
+          MojFrizer <BsScissors className="navbar-scissors" />
         </Link>
       </nav>
       

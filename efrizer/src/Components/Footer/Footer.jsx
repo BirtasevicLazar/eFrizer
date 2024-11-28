@@ -1,12 +1,14 @@
 import React from 'react';
-import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { BsFacebook, BsInstagram, BsTwitter, BsScissors } from 'react-icons/bs';
 import './Footer.css';
 
 function Footer() {
   return (
     <footer className="footer">
       <div className="footer-top">
-        <div className="footer-logo">MojFrizer</div>
+        <div className="footer-logo">
+          MojFrizer <BsScissors className="footer-scissors" />
+        </div>
         <div className="footer-links">
           <ul>
             <li><a href="#services">Usluge</a></li>
