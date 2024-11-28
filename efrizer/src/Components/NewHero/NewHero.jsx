@@ -7,9 +7,31 @@ import { useNavigate } from 'react-router-dom';
 const NewHero = () => {
   const navigate = useNavigate();
 
+  const renderParticles = () => {
+    const particles = [];
+    for (let i = 0; i < 50; i++) {
+      const moveX = Math.random() * 400 - 200;
+      const moveY = Math.random() * 400 - 200;
+      const duration = 3 + Math.random() * 4;
+      const delay = Math.random() * 4;
+      const style = {
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        '--move-x': `${moveX}px`,
+        '--move-y': `${moveY}px`,
+        animation: `particleAnimation ${duration}s infinite ${delay}s`
+      };
+      particles.push(<div key={i} className="particle" style={style} />);
+    }
+    return particles;
+  };
+
   return (
     <div className="new-hero">
       <div className="hero-overlay"></div>
+      <div className="particles-container">
+        {renderParticles()}
+      </div>
       
       <div className="hero-content">
         <motion.div 
