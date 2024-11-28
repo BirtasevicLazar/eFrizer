@@ -198,23 +198,28 @@ const Booking = () => {
     switch(step) {
       case 1:
         return (
-          <div className="booking-services">
-            {services.map(service => (
-              <div
-                key={service.id}
-                className={`booking-service-card ${selectedService === service.id ? 'selected' : ''}`}
-                onClick={() => handleServiceSelect(service)}
-              >
-                <h4>{service.naziv_usluge}</h4>
-                <div className="service-details">
-                  <span className="price">{service.cena} {service.valuta}</span>
-                  <span className="duration">
-                    <BsClock /> {service.trajanje} min
-                  </span>
+          <>
+            <h3 className="step-title">
+              <BsScissors /> Izaberite uslugu
+            </h3>
+            <div className="booking-services">
+              {services.map(service => (
+                <div
+                  key={service.id}
+                  className={`booking-service-card ${selectedService === service.id ? 'selected' : ''}`}
+                  onClick={() => handleServiceSelect(service)}
+                >
+                  <h4>{service.naziv_usluge}</h4>
+                  <div className="service-details">
+                    <span className="price">{service.cena} {service.valuta}</span>
+                    <span className="duration">
+                      <BsClock /> {service.trajanje} min
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </>
         );
 
       case 2:
