@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Register.css';
 import { useNavigate } from 'react-router-dom';
 import { BsShop, BsPerson, BsEnvelope, BsPhone, BsLock, BsGeoAlt } from 'react-icons/bs';
+import NewNavbar from '../NewNavbar/NewNavbar';
+import Footer from '../Footer/Footer';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -282,41 +284,45 @@ const Register = () => {
   };
 
   return (
-    <div className="register-page">
-      <div className="register-container">
-        <h2>Registracija Salona</h2>
-        <div className="steps-indicator">
-          {[1, 2, 3].map((num) => (
-            <div key={num} className={`step ${step >= num ? 'active' : ''}`}>
-              {num}
+    <>
+      <NewNavbar />
+      <div className="register-page">
+        <div className="register-container">
+          <h2>Registracija Salona</h2>
+          <div className="steps-indicator">
+            {[1, 2, 3].map((num) => (
+              <div key={num} className={`step ${step >= num ? 'active' : ''}`}>
+                {num}
+              </div>
+            ))}
+          </div>
+          <form onSubmit={handleSubmit}>
+            {renderStepContent()}
+            
+            <div className="buttons-container">
+              {step > 1 && (
+                <button type="button" onClick={handlePrevStep} className="prev-button">
+                  Nazad
+                </button>
+              )}
+              {step < 3 ? (
+                <button type="button" onClick={handleNextStep} className="next-button">
+                  Dalje
+                </button>
+              ) : (
+                <button type="submit" className="submit-button">
+                  Registruj se
+                </button>
+              )}
             </div>
-          ))}
+            <div className="login-link">
+              Već imate nalog? <span onClick={() => navigate('/login')}>Prijavite se</span>
+            </div>
+          </form>
         </div>
-        <form onSubmit={handleSubmit}>
-          {renderStepContent()}
-          
-          <div className="buttons-container">
-            {step > 1 && (
-              <button type="button" onClick={handlePrevStep} className="prev-button">
-                Nazad
-              </button>
-            )}
-            {step < 3 ? (
-              <button type="button" onClick={handleNextStep} className="next-button">
-                Dalje
-              </button>
-            ) : (
-              <button type="submit" className="submit-button">
-                Registruj se
-              </button>
-            )}
-          </div>
-          <div className="login-link">
-            Već imate nalog? <span onClick={() => navigate('/login')}>Prijavite se</span>
-          </div>
-        </form>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

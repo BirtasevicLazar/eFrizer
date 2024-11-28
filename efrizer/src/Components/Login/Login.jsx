@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { BsEnvelope, BsLock } from 'react-icons/bs';
+import NewNavbar from '../NewNavbar/NewNavbar';
+import Footer from '../Footer/Footer';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -58,44 +60,48 @@ const Login = () => {
   };
 
   return (
-    <div className="login-page">
-      <div className="login-container">
-        <h2>Prijava</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <div className="input-icon">
-              <BsEnvelope className="icon" />
-              <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
+    <>
+      <NewNavbar />
+      <div className="login-page">
+        <div className="login-container">
+          <h2>Prijava</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <div className="input-icon">
+                <BsEnvelope className="icon" />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="form-group">
-            <div className="input-icon">
-              <BsLock className="icon" />
-              <input
-                type="password"
-                placeholder="Lozinka"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-              />
+            <div className="form-group">
+              <div className="input-icon">
+                <BsLock className="icon" />
+                <input
+                  type="password"
+                  placeholder="Lozinka"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-          </div>
 
-          {error && <div className="error-message">{error}</div>}
+            {error && <div className="error-message">{error}</div>}
 
-          <button type="submit" className="login-button">
-            Prijavi se
-          </button>
-        </form>
+            <button type="submit" className="login-button">
+              Prijavi se
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

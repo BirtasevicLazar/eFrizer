@@ -1,26 +1,25 @@
 .register-page {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
+    position: relative;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #60a5fa20, #ffffff);
     padding: 2rem;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-bottom: 60px;
   }
   
   .register-container {
+    position: relative;
+    z-index: 1;
     background: white;
-    padding: 2.5rem;
+    padding: 3rem;
     border-radius: 1rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 500px;
-    margin: 80px auto;
+    max-width: 700px;
   }
   
   .register-container h2 {
@@ -171,18 +170,15 @@
     transform: translateY(-2px);
   }
   
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .register-container {
-      padding: 1.5rem;
+      max-width: 90%;
+      padding: 2rem;
       margin: 1rem;
     }
   
-    .steps-indicator {
-      gap: 1rem;
-    }
-  
-    .buttons-container {
-      flex-direction: column;
+    .register-page {
+      padding: 1rem;
     }
   }
   
