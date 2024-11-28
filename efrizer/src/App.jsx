@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, useLocation } from 'react-router-dom';
 import './App.css';
 
 // Layout komponente
@@ -40,14 +40,35 @@ const HomePage = () => (
   </>
 );
 
+// Dodajemo ScrollToTop wrapper
+function ScrollToTopWrapper() {
+  const { pathname } = useLocation();
+  
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout><HomePage /></MainLayout>
+    element: (
+      <>
+        <ScrollToTopWrapper />
+        <MainLayout><HomePage /></MainLayout>
+      </>
+    )
   },
   {
     path: "/register",
-    element: <Register />
+    element: (
+      <>
+        <ScrollToTopWrapper />
+        <Register />
+      </>
+    )
   },
   {
     path: "/dashboard",
@@ -63,19 +84,39 @@ const router = createBrowserRouter([
   },
   {
     path: "/services",
-    element: <MainLayout><Services /></MainLayout>
+    element: (
+      <>
+        <ScrollToTopWrapper />
+        <MainLayout><Services /></MainLayout>
+      </>
+    )
   },
   {
     path: "/pricing",
-    element: <MainLayout><Pricing /></MainLayout>
+    element: (
+      <>
+        <ScrollToTopWrapper />
+        <MainLayout><Pricing /></MainLayout>
+      </>
+    )
   },
   {
     path: "/about",
-    element: <MainLayout><About /></MainLayout>
+    element: (
+      <>
+        <ScrollToTopWrapper />
+        <MainLayout><About /></MainLayout>
+      </>
+    )
   },
   {
     path: "/contact",
-    element: <MainLayout><Contact /></MainLayout>
+    element: (
+      <>
+        <ScrollToTopWrapper />
+        <MainLayout><Contact /></MainLayout>
+      </>
+    )
   }
 ], {
   future: {

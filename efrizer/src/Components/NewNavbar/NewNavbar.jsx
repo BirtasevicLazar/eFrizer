@@ -55,6 +55,13 @@ const NewNavbar = () => {
     }
   };
 
+  const handleCloseSearch = () => {
+    setIsSearchOpen(false);
+    setSearchTerm('');
+    setSearchResults([]);
+    navigate('/');
+  };
+
   const menuVariants = {
     closed: {
       x: "100%",
@@ -154,11 +161,7 @@ const NewNavbar = () => {
                 <button 
                   type="button" 
                   className="search-close-btn"
-                  onClick={() => {
-                    setIsSearchOpen(false);
-                    setSearchTerm('');
-                    setSearchResults([]);
-                  }}
+                  onClick={handleCloseSearch}
                 >
                   <BsX />
                 </button>
