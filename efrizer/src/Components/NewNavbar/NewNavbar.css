@@ -1,0 +1,449 @@
+.new-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: #ffffff;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  .new-navbar.scrolled {
+    height: 70px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #2d3748;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .logo-icon {
+    color: #4299e1;
+    font-size: 1.8rem;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links a {
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #4299e1;
+    transition: width 0.2s ease;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .nav-icon-btn {
+    background: none;
+    border: none;
+    color: #4a5568;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+  
+  .nav-icon-btn:hover {
+    background: #f7fafc;
+    color: #4299e1;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .login-btn, .register-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .login-btn {
+    background: transparent;
+    border: 2px solid #4299e1;
+    color: #4299e1;
+  }
+  
+  .register-btn {
+    background: #4299e1;
+    border: none;
+    color: white;
+  }
+  
+  .login-btn:hover {
+    background: #4299e1;
+    color: white;
+  }
+  
+  .register-btn:hover {
+    background: #3182ce;
+  }
+  
+  .dashboard-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: #4299e1;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .dashboard-btn:hover {
+    background: #3182ce;
+  }
+  
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #4a5568;
+    cursor: pointer;
+  }
+  
+  .search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+  }
+  
+  .search-container {
+    width: 90%;
+    max-width: 800px;
+  }
+  
+  .search-input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .search-input-wrapper input {
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-close-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .search-results-container {
+    background: white;
+    border-radius: 12px;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 15px;
+  }
+  
+  .salon-card {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background: #f8f9fa;
+    transition: all 0.2s ease;
+  }
+  
+  .salon-card:hover {
+    background: #f1f3f5;
+  }
+  
+  .salon-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .salon-card h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+  }
+  
+  .salon-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .salon-location, .salon-phone {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .book-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .book-button:hover {
+    background: #0056b3;
+  }
+  
+  .loading-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #007bff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @media (max-width: 768px) {
+    .search-container {
+      width: 95%;
+    }
+    
+    .salon-details {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .navbar-container {
+      padding: 0 1rem;
+    }
+    
+    .navbar-center {
+      display: none;
+    }
+    
+    .mobile-menu-btn {
+      display: block;
+      margin-left: 1rem;
+    }
+    
+    .auth-buttons {
+      display: none;
+    }
+    
+    .dashboard-btn {
+      font-size: 0.9rem;
+      padding: 0.4rem 1rem;
+    }
+    
+    .nav-icon-btn {
+      padding: 0.4rem;
+    }
+  }
+  
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    background: #ffffff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1002;
+    padding-top: 90px;
+    overflow-y: auto;
+  }
+  
+  .mobile-menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #4a5568;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mobile-menu-close:hover {
+    background: #f7fafc;
+    color: #4299e1;
+    transform: rotate(90deg);
+  }
+  
+  .mobile-nav-links {
+    list-style: none;
+    padding: 0 1.5rem;
+    margin: 0;
+  }
+  
+  .mobile-nav-links li {
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #edf2f7;
+  }
+  
+  .mobile-nav-links li:last-child {
+    border-bottom: none;
+  }
+  
+  .mobile-nav-links a {
+    display: block;
+    padding: 1rem;
+    color: #2d3748;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .mobile-nav-links a:hover {
+    background: #f7fafc;
+    color: #4299e1;
+    padding-left: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    .new-navbar {
+      height: 60px;
+    }
+    
+    .new-navbar.scrolled {
+      height: 55px;
+    }
+    
+    .navbar-container {
+      padding: 0 0.8rem;
+    }
+    
+    .navbar-logo {
+      font-size: 1.2rem;
+    }
+    
+    .logo-icon {
+      font-size: 1.4rem;
+    }
+    
+    .navbar-logo span {
+      display: none;
+    }
+    
+    .mobile-menu {
+      width: 100%;
+    }
+    
+    .mobile-nav-links {
+      padding: 0 2rem;
+    }
+    
+    .mobile-nav-links a {
+      font-size: 1.2rem;
+      padding: 1.2rem 1rem;
+    }
+  }
+  
+  /* Dodajemo animaciju za mobile menu */
+  .mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
+  
+  /* Poboljšanje za touch uređaje */
+  @media (hover: none) {
+    .nav-links a::after {
+      display: none;
+    }
+    
+    .mobile-nav-links a:active {
+      background-color: #f7fafc;
+    }
+  }

@@ -1,0 +1,143 @@
+.services-page {
+  padding: 140px 24px 100px;
+  max-width: 1280px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #fafafa;
+}
+
+.services-hero {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.services-hero h1 {
+  font-size: 3.5rem;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.services-hero p {
+  color: #64748b;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.services-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.stat-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.stat-card h3 {
+  font-size: 2.2rem;
+  color: #1e293b;
+  margin-bottom: 8px;
+  font-weight: 300;
+}
+
+.stat-card p {
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.service-icon {
+  font-size: 2rem;
+  color: #3b82f6;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  color: #1e293b;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.service-card p {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+@media (max-width: 1024px) {
+  .services-stats {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .services-page {
+    padding: 100px 20px 60px;
+  }
+  
+  .services-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .services-hero p {
+    font-size: 1.1rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  
+  .stat-card h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .service-card {
+    padding: 24px;
+  }
+}

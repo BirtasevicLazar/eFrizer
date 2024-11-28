@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 
 // Layout komponente
-import NavigationBar from './Components/Navbar/Navbar';
+import NewNavbar from './Components/NewNavbar/NewNavbar';
 import Footer from './Components/Footer/Footer';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
@@ -16,11 +16,15 @@ import Register from './Components/Register/Register';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Login from './Components/Login/Login';
 import Booking from './Components/Booking/Booking';
+import Services from './Components/Services/Services';
+import Pricing from './Components/Pricing/Pricing';
+import About from './Components/About/About';
+import Contact from './Components/Contact/Contact';
 
 // Layout wrapper komponenta
 const MainLayout = ({ children }) => (
   <>
-    <NavigationBar />
+    <NewNavbar />
     {children}
     <Footer />
   </>
@@ -56,6 +60,22 @@ const router = createBrowserRouter([
   {
     path: "/booking/:slug",
     element: <Booking />
+  },
+  {
+    path: "/services",
+    element: <MainLayout><Services /></MainLayout>
+  },
+  {
+    path: "/pricing",
+    element: <MainLayout><Pricing /></MainLayout>
+  },
+  {
+    path: "/about",
+    element: <MainLayout><About /></MainLayout>
+  },
+  {
+    path: "/contact",
+    element: <MainLayout><Contact /></MainLayout>
   }
 ], {
   future: {

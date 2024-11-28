@@ -645,3 +645,21 @@
 .booking-navbar-logo:hover .navbar-scissors {
   transform: rotate(0deg);
 }
+
+@media (max-width: 768px) {
+  .booking-service-card {
+    flex: 0 1 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-service-card {
+    flex: 0 1 100%;
+    max-width: none;
+    width: 100%;
+  }
+  
+  .booking-services {
+    padding: 0 0.5rem;
+  }
+}
