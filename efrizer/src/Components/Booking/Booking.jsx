@@ -27,7 +27,7 @@ const Booking = () => {
 
   const fetchSalonData = async () => {
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_salon_by_slug.php', {
+      const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/get_salon_by_slug.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ const Booking = () => {
 
   const fetchServices = async (salonId) => {
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_services.php', {
+      const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/get_services.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const Booking = () => {
 
   const fetchAvailableSlots = async (date, serviceId) => {
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_available_slots.php', {
+      const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/get_available_slots.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -295,7 +295,7 @@ const Booking = () => {
       }
       
       try {
-        const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/create_appointment.php', {
+        const response = await fetch('http://192.168.0.28:8888/efrizer/php_api/create_appointment.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

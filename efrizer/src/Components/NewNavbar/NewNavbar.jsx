@@ -35,7 +35,7 @@ const NewNavbar = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://192.168.0.31:8888/efrizer/php_api/search_salons.php?query=${encodeURIComponent(searchValue)}`,
+        `http://192.168.0.28:8888/efrizer/php_api/search_salons.php?query=${encodeURIComponent(searchValue)}`,
         {
           method: 'GET',
           headers: {
