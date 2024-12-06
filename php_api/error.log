@@ -1,0 +1,1056 @@
+[02-Dec-2024 06:58:21 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 19
+[02-Dec-2024 06:58:21 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 19
+[02-Dec-2024 06:58:21 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:19
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 19
+[02-Dec-2024 06:58:21 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:19
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 19
+[02-Dec-2024 06:58:58 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 06:58:58 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 06:58:58 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:18
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 06:58:58 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:18
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 06:59:01 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 06:59:01 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 06:59:01 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:18
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 06:59:01 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:18
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 06:59:48 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 06:59:48 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 06:59:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:18
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 06:59:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:18
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 07:01:24 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:01:24 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:17
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:02:22 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:02:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:17
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:02:22 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:02:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:17
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:02:25 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:02:25 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:17
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:02:39 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:02:39 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:02:39 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:17
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:02:39 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:17
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 17
+[02-Dec-2024 07:03:10 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 07:03:10 UTC] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 07:03:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:18
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 07:03:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/Applications/MAMP/bin/php/php8.2.0/lib/php') in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php:18
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/efrizer/php_api/get_working_hours.php on line 18
+[02-Dec-2024 07:03:48 UTC] General Error: Database connection not available
+[02-Dec-2024 07:03:48 UTC] General Error: Database connection not available
+[02-Dec-2024 07:04:34 UTC] Error in get_working_hours.php: Configuration file not found
+[02-Dec-2024 07:04:34 UTC] Error in get_working_hours.php: Configuration file not found
+[02-Dec-2024 07:06:41 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:06:41 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:06:50 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"isWorking":true,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":2,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":3,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":4,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":5,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":6,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":7,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null}]}
+[02-Dec-2024 07:06:50 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:07:10 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"isWorking":true,"hasBreak":true,"startTime":"09:00","endTime":"17:00","breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":2,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":3,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":4,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":5,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":6,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":7,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null}]}
+[02-Dec-2024 07:07:10 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:09:20 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"isWorking":true,"hasBreak":true,"startTime":"09:00","endTime":"17:00","breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":2,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":3,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":4,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":5,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":6,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":7,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null}]}
+[02-Dec-2024 07:09:20 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:10:03 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:10:03 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:10:19 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"isWorking":true,"hasBreak":true,"startTime":"09:00","endTime":"17:00","breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":2,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":3,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":4,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":5,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":6,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null},{"dayOfWeek":7,"isWorking":false,"hasBreak":false,"startTime":"09:00","endTime":"17:00","breakStart":null,"breakEnd":null}]}
+[02-Dec-2024 07:10:19 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:12:08 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:12:13 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":true,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 07:14:04 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:14:04 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:14:19 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":true,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 07:14:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:14:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:15:10 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:15:10 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:15:10 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:16:01 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"15:00","hasBreak":true,"breakStart":"11:00","breakEnd":"12:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 07:22:40 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:22:40 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:22:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:22:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:22:56 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:22:56 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:22:58 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:22:58 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:22:59 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:22:59 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:01 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:01 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:03 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:03 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:27 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:27 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:30 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:30 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:31 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:31 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:23:49 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:23:49 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:23:49 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:24:33 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:24:33 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:24:34 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:24:34 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:24:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:24:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:24:43 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:24:43 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:18 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:27:18 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:27:19 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:25 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:25 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:27 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:27:27 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:28 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:27:29 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:30 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:27:30 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:36 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:36 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:47 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:47 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:48 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:48 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:27:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:29:14 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:29:14 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:30:15 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:30:15 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:30:16 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:30:18 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:30:18 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:30:19 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:31:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:31:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:32:03 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:32:03 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 07:32:03 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 07:32:03 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:55:34 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:55:34 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:55:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:55:36 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:55:36 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:55:37 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:55:38 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:55:38 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:55:40 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:55:40 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:56:07 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:56:07 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:56:09 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:56:09 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:56:10 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:56:10 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:56:30 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:56:30 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:56:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"15:00","hasBreak":true,"breakStart":"11:00","breakEnd":"12:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 09:57:24 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:57:24 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:07 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:07 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:09 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:09 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:10 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:10 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:11 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:11 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:13 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:13 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:14 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:14 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:22 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:22 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:24 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:24 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 09:59:24 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 09:59:25 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:01:32 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:01:32 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:01:33 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:01:40 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:01:40 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:04:19 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:04:19 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:04:20 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:04:23 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:04:23 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:04:26 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:04:26 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:04:31 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:07:27 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:07:27 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:08:05 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:08:05 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:08:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:08:15 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:08:16 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:08:17 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:08:19 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:08:19 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:09:21 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:09:21 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:13:43 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:13:43 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:15:59 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:15:59 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:16:07 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:16:07 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:16:09 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:16:09 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:16:24 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:16:24 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:18:57 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:18:57 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:19:10 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:19:10 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:19:11 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:19:12 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:19:12 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:19:13 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:19:14 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:19:15 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:19:52 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:19:53 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:20:17 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:20:17 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:20:18 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:20:49 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:20:49 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:20:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:20:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:20:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:20:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:20:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:20:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:29:39 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:29:39 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:29:41 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:29:41 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:29:42 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:29:42 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:29:42 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:29:42 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:29:44 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:29:44 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:29:50 UTC] Primljeni podaci: {"barberId":1,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 10:29:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:29:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:29:55 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:29:56 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:29:57 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:30:02 UTC] Primljeni podaci: {"barberId":1,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 10:30:03 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:30:03 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:30:05 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:30:05 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:30:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:30:11 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:30:20 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:30:20 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:30:20 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:38:43 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:38:43 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:38:44 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:38:47 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:38:47 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:38:49 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:38:49 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:38:52 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:39:12 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:39:12 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:39:21 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:39:21 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:41:23 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:41:23 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:41:44 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:41:44 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:41:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:41:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:41:56 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:41:56 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:41:56 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:41:57 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:44:37 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:44:37 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:44:47 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:44:47 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:44:49 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:44:49 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:44:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:44:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:45:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:45:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:45:07 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:45:07 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:45:13 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:45:13 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:45:22 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:45:22 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:45:36 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:45:36 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:45:41 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:45:41 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:46:44 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:46:44 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:46:51 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:46:51 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:47:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:47:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:47:39 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:47:39 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:47:40 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:47:40 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:47:41 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:47:41 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:47:42 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:47:42 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:47:43 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:47:43 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:47:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:47:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:48:17 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:48:17 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:48:18 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:48:18 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:02 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:02 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:08 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:08 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:10 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:10 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:12 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:12 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:28 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:28 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:31 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:31 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:33 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:33 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:52 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:49:52 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:01 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:01 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:03 UTC] Primljeni podaci: {"barberId":3,"salonId":37}
+[02-Dec-2024 10:52:03 UTC] Primljeni podaci: {"barberId":3,"salonId":37}
+[02-Dec-2024 10:52:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:27 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:27 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:30 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:30 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:36 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:36 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:38 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:38 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:39 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:39 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:52:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:53:06 UTC] Primljeni podaci: {"barberId":3,"salonId":37}
+[02-Dec-2024 10:53:07 UTC] Primljeni podaci: {"barberId":4,"salonId":37}
+[02-Dec-2024 10:53:07 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:53:09 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:53:09 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:55:23 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:55:23 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:55:28 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:55:28 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 10:55:36 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:36 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:39 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:39 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:41 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:41 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:43 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:43 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:44 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:44 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:46 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:46 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:56 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:56 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:58 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:55:58 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:56:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:56:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:56:45 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:56:45 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:56:47 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:56:47 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:56:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:56:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:57:03 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:57:03 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:57:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:57:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:57:07 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:57:07 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:57:08 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:57:08 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:58:04 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:58:04 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:59:08 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:59:08 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:59:30 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 10:59:30 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:00:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:00:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:00:58 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:00:58 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:01:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:01:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:01:20 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:01:20 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:01:26 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:01:26 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:02:37 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:02:37 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:03:53 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:03:53 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:03:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:03:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:03:58 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:03:58 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:04:03 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:04:03 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:05:53 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:05:53 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:07:30 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 11:07:30 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 11:07:37 UTC] Primljeni podaci: {"barberId":3,"salonId":37}
+[02-Dec-2024 11:07:37 UTC] Primljeni podaci: {"barberId":3,"salonId":37}
+[02-Dec-2024 11:07:43 UTC] Primljeni podaci: {"barberId":3,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 11:07:47 UTC] Primljeni podaci: {"barberId":3,"salonId":37}
+[02-Dec-2024 11:07:47 UTC] Primljeni podaci: {"barberId":3,"salonId":37}
+[02-Dec-2024 11:07:51 UTC] Primljeni podaci: {"barberId":4,"salonId":37}
+[02-Dec-2024 11:07:51 UTC] Primljeni podaci: {"barberId":4,"salonId":37}
+[02-Dec-2024 11:07:52 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:07:52 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:07:53 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 11:07:53 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 11:08:01 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:08:01 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:08:04 UTC] Primljeni podaci: {"barberId":3,"salonId":37}
+[02-Dec-2024 11:08:04 UTC] Primljeni podaci: {"barberId":3,"salonId":37}
+[02-Dec-2024 11:08:05 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 11:08:05 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 11:08:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:08:06 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 11:08:08 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 11:08:08 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 11:11:21 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 11:11:21 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 12:13:42 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 12:13:42 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 12:13:46 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 12:13:46 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 12:13:48 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 12:13:48 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 12:14:00 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 12:14:00 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 12:14:04 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 12:14:04 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 12:16:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 12:16:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:31:19 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:31:19 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:32:27 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:32:27 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:32:40 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:32:40 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:32:44 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:32:44 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:32:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:32:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:33:21 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:33:21 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:33:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:33:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:34:41 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:34:41 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:34:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:34:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:34:56 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:34:56 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:36:50 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:36:50 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:36:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:36:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:43:57 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:43:57 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:11 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:11 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:13 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:13 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:14 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:14 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:31 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:31 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:32 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:32 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:39 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:39 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:41 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:41 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:42 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 17:51:42 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:03:40 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:40 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:40 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:40 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:52 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:52 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:53 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:53 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:53 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:53 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:54 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:54 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:54 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:54 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:54 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:54 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:54 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:54 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:54 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:54 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:55 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:55 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:55 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:55 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:55 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:55 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:55 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:55 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:55 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:55 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:56 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:56 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:03:56 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:03:56 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:50 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:04:50 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:04:53 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:53 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:53 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:53 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:54 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:54 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:54 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:54 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:55 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:55 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:55 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:55 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:55 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:55 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:55 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:55 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:55 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:55 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:56 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:56 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:56 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:56 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:56 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:56 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:56 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:56 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:56 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:56 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:56 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:56 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:57 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:57 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:57 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:57 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:57 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:57 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:04:57 UTC] Primljeni podaci: {"barberId":2,"salonId":null}
+[02-Dec-2024 18:04:57 UTC] Greška: Nedostaju potrebni podaci
+[02-Dec-2024 18:07:04 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:07:04 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:09:13 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:09:13 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:12:49 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:12:49 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:13:50 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:13:50 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:18:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:18:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:46:58 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:46:58 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:47:33 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 18:47:33 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 18:47:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:47:35 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:47:44 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:47:44 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:47:59 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"15:00","hasBreak":true,"breakStart":"11:00","breakEnd":"12:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"11:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 18:48:47 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:48:47 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:48:49 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:48:49 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:48:50 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 18:48:50 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 18:48:58 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 18:48:58 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[02-Dec-2024 18:49:27 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:49:27 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:55:02 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:55:02 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:55:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 18:55:05 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:07:38 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:07:38 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:07:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:07:54 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:14:51 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"15:00","hasBreak":true,"breakStart":"11:00","breakEnd":"12:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"11:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 19:14:56 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:14:56 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:23:18 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:23:18 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:23:18 UTC] Radno vreme: Array
+(
+    [0] => Array
+        (
+            [dayOfWeek] => 1
+            [isWorking] => 1
+            [startTime] => 09:00
+            [endTime] => 15:00
+            [hasBreak] => 1
+            [breakStart] => 11:00
+            [breakEnd] => 12:00
+        )
+
+    [1] => Array
+        (
+            [dayOfWeek] => 2
+            [isWorking] => 1
+            [startTime] => 09:00
+            [endTime] => 11:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [2] => Array
+        (
+            [dayOfWeek] => 3
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [3] => Array
+        (
+            [dayOfWeek] => 4
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [4] => Array
+        (
+            [dayOfWeek] => 5
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [5] => Array
+        (
+            [dayOfWeek] => 6
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [6] => Array
+        (
+            [dayOfWeek] => 7
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+)
+
+[02-Dec-2024 19:23:18 UTC] Radno vreme: Array
+(
+    [0] => Array
+        (
+            [dayOfWeek] => 1
+            [isWorking] => 1
+            [startTime] => 09:00
+            [endTime] => 15:00
+            [hasBreak] => 1
+            [breakStart] => 11:00
+            [breakEnd] => 12:00
+        )
+
+    [1] => Array
+        (
+            [dayOfWeek] => 2
+            [isWorking] => 1
+            [startTime] => 09:00
+            [endTime] => 11:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [2] => Array
+        (
+            [dayOfWeek] => 3
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [3] => Array
+        (
+            [dayOfWeek] => 4
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [4] => Array
+        (
+            [dayOfWeek] => 5
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [5] => Array
+        (
+            [dayOfWeek] => 6
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [6] => Array
+        (
+            [dayOfWeek] => 7
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+)
+
+[02-Dec-2024 19:23:22 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:23:22 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:23:22 UTC] Radno vreme: Array
+(
+    [0] => Array
+        (
+            [dayOfWeek] => 1
+            [isWorking] => 1
+            [startTime] => 09:00
+            [endTime] => 15:00
+            [hasBreak] => 1
+            [breakStart] => 11:00
+            [breakEnd] => 12:00
+        )
+
+    [1] => Array
+        (
+            [dayOfWeek] => 2
+            [isWorking] => 1
+            [startTime] => 09:00
+            [endTime] => 11:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [2] => Array
+        (
+            [dayOfWeek] => 3
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [3] => Array
+        (
+            [dayOfWeek] => 4
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [4] => Array
+        (
+            [dayOfWeek] => 5
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [5] => Array
+        (
+            [dayOfWeek] => 6
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [6] => Array
+        (
+            [dayOfWeek] => 7
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+)
+
+[02-Dec-2024 19:23:22 UTC] Radno vreme: Array
+(
+    [0] => Array
+        (
+            [dayOfWeek] => 1
+            [isWorking] => 1
+            [startTime] => 09:00
+            [endTime] => 15:00
+            [hasBreak] => 1
+            [breakStart] => 11:00
+            [breakEnd] => 12:00
+        )
+
+    [1] => Array
+        (
+            [dayOfWeek] => 2
+            [isWorking] => 1
+            [startTime] => 09:00
+            [endTime] => 11:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [2] => Array
+        (
+            [dayOfWeek] => 3
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [3] => Array
+        (
+            [dayOfWeek] => 4
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [4] => Array
+        (
+            [dayOfWeek] => 5
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [5] => Array
+        (
+            [dayOfWeek] => 6
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+    [6] => Array
+        (
+            [dayOfWeek] => 7
+            [isWorking] => 0
+            [startTime] => 09:00
+            [endTime] => 17:00
+            [hasBreak] => 0
+            [breakStart] => 
+            [breakEnd] => 
+        )
+
+)
+
+[02-Dec-2024 19:24:40 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:24:40 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:31:48 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"15:00","hasBreak":true,"breakStart":"11:00","breakEnd":"12:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"12:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 19:34:21 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"15:00","hasBreak":true,"breakStart":"11:00","breakEnd":"12:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"12:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 19:34:53 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"15:00","hasBreak":true,"breakStart":"11:00","breakEnd":"12:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"12:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 19:36:13 UTC] Primljeni podaci: {"barberId":2,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"15:00","hasBreak":true,"breakStart":"11:00","breakEnd":"12:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"12:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[02-Dec-2024 19:39:15 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[02-Dec-2024 19:40:16 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:21:37 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:21:37 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:22:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:22:55 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:23:18 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[05-Dec-2024 23:23:18 UTC] Primljeni podaci: {"barberId":1,"salonId":37}
+[05-Dec-2024 23:24:52 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:24:52 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:25:09 UTC] Primljeni podaci: {"barberId":5,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":true,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":true,"breakStart":"11:00","breakEnd":"14:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[05-Dec-2024 23:28:35 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:28:35 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:32:24 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:32:24 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:32:25 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:32:25 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:33:11 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:33:11 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:33:14 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:33:14 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:39:31 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:39:31 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:40:03 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:40:03 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:43:16 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:43:16 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:43:26 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:43:26 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:50:16 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:50:16 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:51:07 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:51:07 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:51:38 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:51:38 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:51:41 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:51:41 UTC] Primljeni podaci: {"barberId":2,"salonId":37}
+[05-Dec-2024 23:51:45 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:51:45 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:51:52 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:51:52 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:52:03 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:52:03 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:52:09 UTC] Primljeni podaci: {"barberId":5,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"10:00","endTime":"17:00","hasBreak":true,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":true,"breakStart":"11:00","breakEnd":"14:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[05-Dec-2024 23:52:15 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:52:15 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:52:21 UTC] Primljeni podaci: {"barberId":5,"salonId":37,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":true,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":true,"breakStart":"11:00","breakEnd":"14:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[05-Dec-2024 23:52:50 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:52:50 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:53:08 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[05-Dec-2024 23:53:08 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[06-Dec-2024 01:13:30 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[06-Dec-2024 01:13:30 UTC] Primljeni podaci: {"barberId":5,"salonId":37}
+[06-Dec-2024 01:15:22 UTC] Primljeni podaci: {"barberId":6,"salonId":38}
+[06-Dec-2024 01:15:22 UTC] Primljeni podaci: {"barberId":6,"salonId":38}
+[06-Dec-2024 01:15:35 UTC] Primljeni podaci: {"barberId":6,"salonId":38,"workingHours":[{"dayOfWeek":1,"name":"Ponedeljak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":true,"breakStart":"11:00","breakEnd":"13:00"},{"dayOfWeek":2,"name":"Utorak","isWorking":true,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":3,"name":"Sreda","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":4,"name":"Četvrtak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":5,"name":"Petak","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":6,"name":"Subota","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"},{"dayOfWeek":7,"name":"Nedelja","isWorking":false,"startTime":"09:00","endTime":"17:00","hasBreak":false,"breakStart":"12:00","breakEnd":"13:00"}]}
+[06-Dec-2024 01:16:58 UTC] Primljeni podaci: {"barberId":6,"salonId":38}
+[06-Dec-2024 01:16:58 UTC] Primljeni podaci: {"barberId":6,"salonId":38}

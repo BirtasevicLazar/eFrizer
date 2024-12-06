@@ -1,29 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { BsCalendar, BsClock, BsScissors, BsPerson, BsArrowLeft, BsFacebook, BsInstagram, BsTwitter, BsLinkedin, BsEnvelope, BsTelephone, BsGeoAlt } from 'react-icons/bs';
+import { BsCalendar, BsClock, BsScissors, BsPerson, BsArrowLeft, BsFacebook, BsInstagram, BsTwitter, BsLinkedin, BsEnvelope, BsTelephone, BsGeoAlt, BsPersonCircle, BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import './Booking.css';
 import { toast, Toaster } from 'react-hot-toast';
 import Footer from '../Footer/Footer';
+import { format, subDays, addDays } from 'date-fns';
 
 const Booking = () => {
   const { slug } = useParams();
   const [step, setStep] = useState(1);
-  const [salonData, setSalonData] = useState(null);
-  const [services, setServices] = useState([]);
+  const [selectedBarber, setSelectedBarber] = useState(null);
   const [selectedService, setSelectedService] = useState(null);
   const [selectedDate, setSelectedDate] = useState('');
-  const [availableSlots, setAvailableSlots] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState('');
   const [customerData, setCustomerData] = useState({
     name: '',
     phone: '',
     email: ''
   });
+  const [barbers, setBarbers] = useState([]);
+  const [services, setServices] = useState([]);
+  const [timeSlots, setTimeSlots] = useState([]);
+  const [salonData, setSalonData] = useState(null);
   const [selectedServiceDuration, setSelectedServiceDuration] = useState(null);
 
   useEffect(() => {
-    fetchSalonData();
+    if (slug) {
+      fetchSalonData();
+    }
   }, [slug]);
+
+  useEffect(() => {
+    if (selectedDate && selectedBarber && selectedService) {
+      fetchTimeSlots();
+    }
+  }, [selectedDate]);
 
   const fetchSalonData = async () => {
     try {
@@ -38,54 +49,77 @@ const Booking = () => {
       const data = await response.json();
       if (data.success) {
         setSalonData(data.salon);
-        fetchServices(data.salon.id);
+        fetchBarbers(data.salon.id);
       }
     } catch (error) {
       console.error('Greška:', error);
+      toast.error('Greška pri učitavanju podataka o salonu');
     }
   };
 
-  const fetchServices = async (salonId) => {
+  const fetchBarbers = async (salonId) => {
+    try {
+      console.log('Fetching barbers for salon:', salonId);
+
+      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_barbers.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ salonId: salonId })
+      });
+
+      const data = await response.json();
+      console.log('Barbers response:', data);
+
+      if (data.success) {
+        setBarbers(data.barbers);
+        if (data.barbers.length === 0) {
+          toast.error('Trenutno nema dostupnih frizera');
+        }
+      } else {
+        toast.error('Greška pri učitavanju frizera');
+        console.error('Error fetching barbers:', data.error);
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      toast.error('Greška pri učitavanju frizera');
+    }
+  };
+
+  const fetchServices = async () => {
     try {
       const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_services.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ salonId })
+        body: JSON.stringify({ 
+          salonId: salonData?.id,
+          barberId: selectedBarber?.id 
+        })
       });
-      
       const data = await response.json();
       if (data.success) {
         setServices(data.services);
       }
     } catch (error) {
-      console.error('Greška:', error);
+      toast.error('Greška pri učitavanju usluga');
     }
   };
 
-  const handleServiceChange = (serviceId) => {
-    setSelectedService(serviceId);
-    setAvailableSlots([]);
-    setSelectedSlot('');
-    
-    if (selectedDate) {
-        fetchAvailableSlots(selectedDate, serviceId);
-    }
-  };
-
-  const handleDateChange = async (date) => {
-    setSelectedDate(date);
-    setAvailableSlots([]);
-    setSelectedSlot('');
-    
-    if (selectedService) {
-        await fetchAvailableSlots(date, selectedService);
-    }
-  };
-
-  const fetchAvailableSlots = async (date, serviceId) => {
+  const fetchTimeSlots = async () => {
     try {
+      if (!selectedDate || !selectedBarber || !salonData?.id || !selectedService) {
+        console.log('Nedostaju potrebni podaci:', {
+          date: selectedDate,
+          barber: selectedBarber,
+          salon: salonData?.id,
+          service: selectedService
+        });
+        return;
+      }
+
       const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_available_slots.php', {
         method: 'POST',
         headers: {
@@ -93,47 +127,93 @@ const Booking = () => {
         },
         body: JSON.stringify({
           salonId: salonData.id,
-          date,
-          serviceId
-        })
+          barberId: selectedBarber.id,
+          date: selectedDate,
+          serviceId: selectedService
+        }),
       });
-      
+
       const data = await response.json();
       if (data.success) {
-        setAvailableSlots(data.slots);
+        setTimeSlots(data.slots);
+      } else {
+        toast.error(data.error || 'Greška pri učitavanju termina');
       }
     } catch (error) {
       console.error('Greška:', error);
+      toast.error('Došlo je do greške pri učitavanju termina');
+    }
+  };
+
+  const handleServiceChange = (serviceId) => {
+    setSelectedService(serviceId);
+    setTimeSlots([]);
+    setSelectedSlot('');
+    
+    if (selectedDate) {
+        fetchTimeSlots(selectedDate, serviceId);
+    }
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setSelectedSlot('');
+  };
+
+  const handlePrevDate = () => {
+    if (selectedDate) {
+      const currentDate = new Date();
+      const newDate = subDays(new Date(selectedDate), 1);
+      
+      if (newDate >= currentDate) {
+        setSelectedDate(format(newDate, 'yyyy-MM-dd'));
+      } else {
+        toast.error('Ne možete zakazati termin za prošle datume');
+      }
+    }
+  };
+
+  const handleNextDate = () => {
+    if (selectedDate) {
+      const newDate = addDays(new Date(selectedDate), 1);
+      setSelectedDate(format(newDate, 'yyyy-MM-dd'));
     }
   };
 
   const handleNextStep = () => {
     switch(step) {
       case 1:
+        if (!selectedBarber) {
+          toast.error('Molimo izaberite frizera');
+          return;
+        }
+        fetchServices();
+        break;
+      case 2:
         if (!selectedService) {
           toast.error('Molimo izaberite uslugu');
           return;
         }
         break;
-      case 2:
+      case 3:
         if (!selectedDate) {
           toast.error('Molimo izaberite datum');
           return;
         }
         break;
-      case 3:
+      case 4:
         if (!selectedSlot) {
           toast.error('Molimo izaberite termin');
           return;
         }
         break;
     }
-    setStep(step + 1);
+    setStep(prev => prev + 1);
   };
 
   const handlePrevStep = () => {
     if (step === 3) {
-        setAvailableSlots([]);
+        setTimeSlots([]);
         setSelectedSlot('');
     }
     setStep(prev => prev - 1);
@@ -142,11 +222,15 @@ const Booking = () => {
   const validateCurrentStep = () => {
     switch(step) {
       case 1:
-        return selectedService !== null;
+        return selectedBarber !== null;
       case 2:
-        return selectedDate !== '';
+        return selectedService !== null;
       case 3:
+        return selectedDate !== '';
+      case 4:
         return selectedSlot !== '';
+      case 5:
+        return customerData.name && customerData.phone && customerData.email;
       default:
         return true;
     }
@@ -155,9 +239,8 @@ const Booking = () => {
   const handleServiceSelect = (service) => {
     setSelectedService(service.id);
     setSelectedServiceDuration(service.trajanje);
-    setAvailableSlots([]);
-    setSelectedSlot('');
     setSelectedDate('');
+    setSelectedSlot('');
   };
 
   const formatEndTime = (startTime, duration) => {
@@ -173,31 +256,23 @@ const Booking = () => {
   const renderTimeSlots = () => {
     return (
       <div className="booking-slots">
-        <div className="slot-info">
-          <BsClock /> Trajanje termina: {selectedServiceDuration} min
-        </div>
-        {availableSlots.length > 0 ? (
+        {timeSlots.length > 0 ? (
           <div className="slots-grid">
-            {availableSlots.map(slot => {
-              const startTime = slot.slice(0, 5);
-              const endTime = formatEndTime(slot, selectedServiceDuration);
-              
-              return (
-                <button
-                  key={slot}
-                  className={`booking-time-slot ${selectedSlot === slot ? 'selected' : ''}`}
-                  onClick={() => setSelectedSlot(slot)}
-                >
-                  <span className="time-range">
-                    {startTime} - {endTime}
-                  </span>
-                </button>
-              );
-            })}
+            {timeSlots.map((slot, index) => (
+              <button
+                key={index}
+                className={`booking-time-slot ${selectedSlot === slot.start ? 'selected' : ''}`}
+                onClick={() => setSelectedSlot(slot.start)}
+              >
+                <span className="time-range">
+                  {slot.start} - {slot.end}
+                </span>
+              </button>
+            ))}
           </div>
         ) : (
           <div className="no-slots-message">
-            Nema dostupnih termina za izabrani datum. Molimo vas izaberite drugi datum.
+            Nema dostupnih termina za izabrani datum.
           </div>
         )}
       </div>
@@ -207,6 +282,8 @@ const Booking = () => {
   const renderStepContent = () => {
     switch(step) {
       case 1:
+        return renderBarbers();
+      case 2:
         return (
           <>
             <h3 className="step-title">
@@ -231,21 +308,38 @@ const Booking = () => {
             </div>
           </>
         );
-
-      case 2:
-        return (
-          <div className="booking-calendar">
-            <h3><BsCalendar /> Izaberite datum</h3>
-            <input
-              type="date"
-              value={selectedDate}
-              onChange={(e) => handleDateChange(e.target.value)}
-              min={new Date().toISOString().split('T')[0]}
-            />
-          </div>
-        );
-
       case 3:
+        return (
+          <>
+            <h3 className="step-title">
+              <BsCalendar /> Izaberite datum
+            </h3>
+            <div className="date-selection">
+              <div className="date-navigation">
+                <button 
+                  type="button"
+                  onClick={handlePrevDate}
+                  disabled={selectedDate === format(new Date(), 'yyyy-MM-dd')}
+                >
+                  <BsChevronLeft /> <span>Prethodni dan</span>
+                </button>
+                <div className="current-date">
+                  <input 
+                    type="date"
+                    value={selectedDate}
+                    onChange={(e) => handleDateChange(e.target.value)}
+                    min={format(new Date(), 'yyyy-MM-dd')}
+                    className="ef-datepicker-input"
+                  />
+                </div>
+                <button type="button" onClick={handleNextDate}>
+                  <span>Sledeći dan</span> <BsChevronRight />
+                </button>
+              </div>
+            </div>
+          </>
+        );
+      case 4:
         return (
           <>
             <h3 className="step-title">
@@ -254,8 +348,7 @@ const Booking = () => {
             {renderTimeSlots()}
           </>
         );
-
-      case 4:
+      case 5:
         return (
           <div className="booking-customer-info">
             <h3><BsPerson /> Vaši podaci</h3>
@@ -279,7 +372,6 @@ const Booking = () => {
             />
           </div>
         );
-
       default:
         return null;
     }
@@ -288,7 +380,7 @@ const Booking = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (step === 4) {
+    if (step === 5) {
       if (!customerData.name || !customerData.phone || !customerData.email) {
         toast.error('Molimo popunite sva polja');
         return;
@@ -303,6 +395,7 @@ const Booking = () => {
           body: JSON.stringify({
             salonId: salonData.id,
             serviceId: selectedService,
+            barberId: selectedBarber.id,
             date: selectedDate,
             timeSlot: selectedSlot,
             customerData
@@ -315,7 +408,7 @@ const Booking = () => {
           toast.success('Uspešno ste zakazali termin!');
           resetForm();
         } else {
-          toast.error('Došlo je do greške prilikom zakazivanja');
+          toast.error(data.error || 'Došlo je do greške prilikom zakazivanja');
         }
       } catch (error) {
         console.error('Greška:', error);
@@ -345,7 +438,7 @@ const Booking = () => {
           </button>
         )}
         
-        {step < 4 && (
+        {step < 5 && (
           <button 
             type="button"
             className="booking-btn-next" 
@@ -355,7 +448,7 @@ const Booking = () => {
           </button>
         )}
         
-        {step === 4 && (
+        {step === 5 && (
           <button 
             type="submit"
             className="booking-btn-next"
@@ -364,6 +457,37 @@ const Booking = () => {
           </button>
         )}
       </div>
+    );
+  };
+
+  const renderBarbers = () => {
+    return (
+      <>
+        <h3 className="step-title">
+          <BsPersonCircle /> Izaberite frizera
+        </h3>
+        <div className="booking-barbers">
+          {barbers.length > 0 ? (
+            barbers.map(barber => (
+              <div
+                key={barber.id}
+                className={`booking-barber-card ${selectedBarber?.id === barber.id ? 'selected' : ''}`}
+                onClick={() => setSelectedBarber(barber)}
+              >
+                <h4>{barber.ime} {barber.prezime}</h4>
+                <div className="barber-details">
+                  <span className="phone">{barber.telefon}</span>
+                  <span className="email">{barber.email}</span>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="no-barbers-message">
+              Trenutno nema dostupnih frizera
+            </div>
+          )}
+        </div>
+      </>
     );
   };
 
@@ -384,7 +508,7 @@ const Booking = () => {
           </div>
 
           <div className="booking-progress">
-            {[1, 2, 3, 4].map((num) => (
+            {[1, 2, 3, 4, 5].map((num) => (
               <div key={num} className={`booking-step ${step >= num ? 'active' : ''}`}>
                 {num}
               </div>

@@ -1,68 +1,69 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
 header('Access-Control-Allow-Origin: http://192.168.0.31:5173');
 header('Content-Type: application/json');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Access-Control-Allow-Credentials: true');
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
 
 require_once 'config.php';
 
 try {
     $data = json_decode(file_get_contents("php://input"));
 
-    if (!isset($data->id)) {
-        throw new Exception('Nije prosleđen ID salona');
+    if (!isset($data->salonId)) {
+        throw new Exception('Nedostaje ID salona');
     }
 
-    // Validacija
-    if (empty($data->salonName) || empty($data->ownerName) || 
-        empty($data->address) || empty($data->city)) {
-        throw new Exception('Sva polja moraju biti popunjena');
+    // Provera da li postoji salon sa istim emailom
+    $checkQuery = "SELECT id FROM saloni WHERE email = :email AND id != :salonId";
+    $checkStmt = $conn->prepare($checkQuery);
+    $checkStmt->bindParam(':email', $data->email);
+    $checkStmt->bindParam(':salonId', $data->salonId);
+    $checkStmt->execute();
+
+    if ($checkStmt->rowCount() > 0) {
+        throw new Exception('Email adresa je već u upotrebi');
     }
 
     $query = "UPDATE saloni SET 
-              salon_naziv = :salon_naziv,
-              vlasnik_ime = :vlasnik_ime,
-              adresa = :adresa,
-              grad = :grad
-              WHERE id = :id AND aktivan = 1";
-
+              salon_naziv = :salonName,
+              vlasnik_ime = :ownerName,
+              email = :email,
+              telefon = :phone,
+              adresa = :address,
+              grad = :city
+              WHERE id = :salonId AND aktivan = 1";
+    
     $stmt = $conn->prepare($query);
+    
+    $stmt->bindParam(':salonId', $data->salonId);
+    $stmt->bindParam(':salonName', $data->salonName);
+    $stmt->bindParam(':ownerName', $data->ownerName);
+    $stmt->bindParam(':email', $data->email);
+    $stmt->bindParam(':phone', $data->phone);
+    $stmt->bindParam(':address', $data->address);
+    $stmt->bindParam(':city', $data->city);
 
-    $stmt->bindParam(':salon_naziv', $data->salonName);
-    $stmt->bindParam(':vlasnik_ime', $data->ownerName);
-    $stmt->bindParam(':adresa', $data->address);
-    $stmt->bindParam(':grad', $data->city);
-    $stmt->bindParam(':id', $data->id);
-
-    if ($stmt->execute()) {
-        // Dohvatamo ažurirane podatke - DODAJEMO ID u SELECT
+    if($stmt->execute()) {
+        // Dohvatanje ažuriranih podataka
         $selectQuery = "SELECT id, salon_naziv as salonName, vlasnik_ime as ownerName, 
-                       email, telefon as phone, adresa as address, grad as city 
-                       FROM saloni WHERE id = :id";
+                       email, telefon as phone, adresa as address, grad as city, slug 
+                       FROM saloni 
+                       WHERE id = :salonId AND aktivan = 1";
         $selectStmt = $conn->prepare($selectQuery);
-        $selectStmt->bindParam(':id', $data->id);
+        $selectStmt->bindParam(':salonId', $data->salonId);
         $selectStmt->execute();
+        
         $updatedSalon = $selectStmt->fetch(PDO::FETCH_ASSOC);
-
-        if (!$updatedSalon) {
-            throw new Exception('Salon nije pronađen nakon ažuriranja');
-        }
 
         echo json_encode([
             'success' => true,
-            'message' => 'Podaci uspešno ažurirani',
-            'salonData' => $updatedSalon
+            'message' => 'Podaci salona su uspešno ažurirani',
+            'salon' => $updatedSalon
         ]);
-    } else {
-        throw new Exception('Greška pri ažuriranju podataka');
     }
-
 } catch(Exception $e) {
     echo json_encode([
         'success' => false,

@@ -9,108 +9,129 @@ require_once 'config.php';
 try {
     $data = json_decode(file_get_contents("php://input"));
     
-    // Provera podataka o terminu
-    if (!isset($data->salonId) || !isset($data->serviceId) || 
-        !isset($data->date) || !isset($data->timeSlot)) {
-        throw new Exception('Nedostaju podaci o terminu');
-    }
+    // Provera da li postoje generisani termini
+    $checkGeneratedSlots = $conn->prepare("
+        SELECT COUNT(*) 
+        FROM time_slots 
+        WHERE salon_id = :salonId 
+        AND frizer_id = :barberId 
+        AND date = :date
+        AND time_slot = :timeSlot
+    ");
 
-    // Provera korisničkih podataka samo ako su poslati
-    if (isset($data->customerData)) {
-        if (empty($data->customerData->name) || 
-            empty($data->customerData->phone) || 
-            empty($data->customerData->email)) {
-            throw new Exception('Molimo popunite sve podatke o korisniku');
-        }
-    }
+    $checkGeneratedSlots->execute([
+        ':salonId' => $data->salonId,
+        ':barberId' => $data->barberId,
+        ':date' => $data->date,
+        ':timeSlot' => $data->timeSlot
+    ]);
 
+    if ($checkGeneratedSlots->fetchColumn() == 0) {
+        throw new Exception('Nije moguće zakazati termin jer termini nisu generisani za izabrani datum');
+    }
+    
+    // Započni transakciju
     $conn->beginTransaction();
     
-    // Dohvatanje cene usluge
-    $serviceQuery = "SELECT trajanje, cena, valuta FROM usluge WHERE id = ?";
-    $stmt = $conn->prepare($serviceQuery);
-    $stmt->execute([$data->serviceId]);
-    $service = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Prvo dobavi trajanje usluge
+    $stmtService = $conn->prepare("
+        SELECT trajanje, cena, valuta 
+        FROM usluge 
+        WHERE id = :serviceId AND salon_id = :salonId
+    ");
     
-    if (!$service) {
-        throw new Exception('Izabrana usluga nije pronađena');
-    }
+    $stmtService->execute([
+        ':serviceId' => $data->serviceId,
+        ':salonId' => $data->salonId
+    ]);
     
+    $service = $stmtService->fetch(PDO::FETCH_ASSOC);
     $requiredSlots = ceil($service['trajanje'] / 15);
 
-    // Provera dostupnosti termina
-    $checkSlotsQuery = "SELECT COUNT(*) FROM time_slots 
-                       WHERE salon_id = ? 
-                       AND date = ? 
-                       AND time_slot >= ? 
-                       AND time_slot < ADDTIME(?, ?) 
-                       AND is_available = 1";
-    
-    $stmt = $conn->prepare($checkSlotsQuery);
-    $stmt->execute([
-        $data->salonId, 
-        $data->date, 
-        $data->timeSlot,
-        $data->timeSlot,
-        date('H:i:s', $service['trajanje'] * 60)
-    ]);
-    $availableCount = $stmt->fetchColumn();
+    // Proveri da li su svi potrebni termini slobodni
+    $checkSlots = $conn->prepare("
+        SELECT COUNT(*) as count
+        FROM time_slots
+        WHERE salon_id = :salonId
+        AND frizer_id = :barberId
+        AND date = :date
+        AND time_slot >= :startTime
+        AND time_slot < :endTime
+        AND is_available = 0
+    ");
 
-    if ($availableCount < $requiredSlots) {
-        throw new Exception('Izabrani termini više nisu dostupni');
+    $endTime = date('H:i:s', strtotime($data->timeSlot) + ($service['trajanje'] * 60));
+    
+    $checkSlots->execute([
+        ':salonId' => $data->salonId,
+        ':barberId' => $data->barberId,
+        ':date' => $data->date,
+        ':startTime' => $data->timeSlot,
+        ':endTime' => $endTime
+    ]);
+
+    if ($checkSlots->fetch(PDO::FETCH_ASSOC)['count'] > 0) {
+        throw new Exception('Izabrani termin više nije dostupan');
     }
 
-    // Tek nakon provera kreiramo appointment
-    $createAppointment = "INSERT INTO appointments 
-                         (salon_id, service_id, cena, valuta, date, time_slot, 
-                          customer_name, customer_phone, customer_email, status) 
-                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')";
-    
-    $stmt = $conn->prepare($createAppointment);
-    $stmt->execute([
-        $data->salonId,
-        $data->serviceId,
-        $service['cena'],
-        $service['valuta'],
-        $data->date,
-        $data->timeSlot,
-        $data->customerData->name,
-        $data->customerData->phone,
-        $data->customerData->email
+    // Kreiraj appointment
+    $stmtAppointment = $conn->prepare("
+        INSERT INTO appointments (
+            salon_id, frizer_id, service_id, cena, valuta,
+            date, time_slot, customer_name, customer_phone, customer_email
+        ) VALUES (
+            :salonId, :barberId, :serviceId, :cena, :valuta,
+            :date, :timeSlot, :customerName, :customerPhone, :customerEmail
+        )
+    ");
+
+    $stmtAppointment->execute([
+        ':salonId' => $data->salonId,
+        ':barberId' => $data->barberId,
+        ':serviceId' => $data->serviceId,
+        ':cena' => $service['cena'],
+        ':valuta' => $service['valuta'],
+        ':date' => $data->date,
+        ':timeSlot' => $data->timeSlot,
+        ':customerName' => $data->customerData->name,
+        ':customerPhone' => $data->customerData->phone,
+        ':customerEmail' => $data->customerData->email
     ]);
-    
+
     $appointmentId = $conn->lastInsertId();
 
-    // Zauzimanje slotova
-    $updateSlots = "UPDATE time_slots 
-                   SET is_available = 0, 
-                       appointment_id = ? 
-                   WHERE salon_id = ? 
-                   AND date = ? 
-                   AND time_slot >= ? 
-                   AND time_slot < ADDTIME(?, ?) 
-                   AND is_available = 1";
+    // Ažuriraj time_slots tabelu
+    $updateSlots = $conn->prepare("
+        UPDATE time_slots 
+        SET is_available = 0, 
+            appointment_id = :appointmentId 
+        WHERE salon_id = :salonId 
+        AND frizer_id = :barberId 
+        AND date = :date 
+        AND time_slot >= :startTime
+        AND time_slot < :endTime
+    ");
 
-    $stmt = $conn->prepare($updateSlots);
-    $stmt->execute([
-        $appointmentId,
-        $data->salonId,
-        $data->date,
-        $data->timeSlot,
-        $data->timeSlot,
-        date('H:i:s', $service['trajanje'] * 60)
+    $updateSlots->execute([
+        ':appointmentId' => $appointmentId,
+        ':salonId' => $data->salonId,
+        ':barberId' => $data->barberId,
+        ':date' => $data->date,
+        ':startTime' => $data->timeSlot,
+        ':endTime' => $endTime
     ]);
 
     $conn->commit();
     
     echo json_encode([
         'success' => true,
-        'message' => 'Termin je uspešno zakazan',
+        'message' => 'Termin uspešno zakazan',
         'appointmentId' => $appointmentId
     ]);
 
 } catch(Exception $e) {
     $conn->rollBack();
+    error_log("Greška: " . $e->getMessage());
     echo json_encode([
         'success' => false,
         'error' => $e->getMessage()

@@ -8,19 +8,17 @@ require_once 'config.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
-if(!isset($data->salonId)) {
-    echo json_encode(array('success' => false, 'error' => 'Nedostaje ID salona'));
+if(!isset($data->salonId) || !isset($data->barberId)) {
+    echo json_encode(array('success' => false, 'error' => 'Nedostaju potrebni podaci'));
     exit();
 }
 
 try {
-    $query = "SELECT * FROM usluge WHERE salon_id = ? ORDER BY naziv_usluge ASC";
+    $query = "SELECT * FROM usluge WHERE salon_id = ? AND frizer_id = ? ORDER BY naziv_usluge ASC";
     $stmt = $conn->prepare($query);
-    $stmt->execute([$data->salonId]);
+    $stmt->execute([$data->salonId, $data->barberId]);
     
     $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    error_log("Services for salon_id " . $data->salonId . ": " . print_r($services, true));
     
     echo json_encode(array(
         'success' => true,

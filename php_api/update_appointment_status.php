@@ -1,4 +1,9 @@
 <?php
+header('Access-Control-Allow-Origin: http://192.168.0.31:5173');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+header('Content-Type: application/json');
+
 require_once 'config.php';
 
 try {
@@ -8,35 +13,50 @@ try {
         throw new Exception('Nedostaju potrebni podaci');
     }
 
-    $conn->beginTransaction();
+    $validStatuses = ['pending', 'completed', 'cancelled'];
+    if (!in_array($data->status, $validStatuses)) {
+        throw new Exception('Nevažeći status');
+    }
 
-    // Ažuriranje statusa
-    $query = "UPDATE appointments SET status = ? WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->execute([$data->status, $data->appointmentId]);
+    $stmt = $conn->prepare("
+        UPDATE appointments 
+        SET status = :status,
+            updated_at = CURRENT_TIMESTAMP
+        WHERE id = :appointmentId
+        AND frizer_id = :barberId
+    ");
 
-    // Dohvatanje svih termina za taj dan
-    $appointmentQuery = "SELECT a.*, u.naziv_usluge as service_name, 
-                        u.trajanje as duration,
-                        DATE_FORMAT(a.date, '%Y-%m-%d') as formatted_date
-                        FROM appointments a 
-                        JOIN usluge u ON a.service_id = u.id 
-                        WHERE a.salon_id = ? AND a.date = ?
-                        ORDER BY a.time_slot ASC";
-                        
-    $stmt = $conn->prepare($appointmentQuery);
-    $stmt->execute([$data->salonId, $data->date]);
-    $appointments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->execute([
+        ':status' => $data->status,
+        ':appointmentId' => $data->appointmentId,
+        ':barberId' => $data->barberId
+    ]);
 
-    $conn->commit();
-    
+    // Dohvatanje ažuriranog termina
+    $stmt = $conn->prepare("
+        SELECT 
+            a.*,
+            u.naziv_usluge as service_name,
+            u.trajanje as duration,
+            k.ime as client_name,
+            k.telefon as client_phone,
+            k.email as client_email
+        FROM appointments a
+        LEFT JOIN usluge u ON a.service_id = u.id
+        LEFT JOIN klijenti k ON a.client_id = k.id
+        WHERE a.id = :appointmentId
+    ");
+
+    $stmt->execute([':appointmentId' => $data->appointmentId]);
+    $updatedAppointment = $stmt->fetch(PDO::FETCH_ASSOC);
+
     echo json_encode([
         'success' => true,
-        'appointments' => $appointments
+        'appointment' => $updatedAppointment,
+        'message' => 'Status termina je uspešno ažuriran'
     ]);
 
 } catch(Exception $e) {
-    $conn->rollBack();
     echo json_encode([
         'success' => false,
         'error' => $e->getMessage()

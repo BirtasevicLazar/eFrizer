@@ -5,9 +5,9 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { format, addDays, subDays, setHours, setMinutes } from 'date-fns';
 import { sr } from 'date-fns/locale';
-import './AppointmentsTable.css';
+import './styles/AppointmentsTable.css';
 
-const AppointmentsTable = ({ salonId }) => {
+const AppointmentsTable = ({ salonId, barberId }) => {
   const [appointments, setAppointments] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [workingHours, setWorkingHours] = useState(null);
@@ -18,40 +18,57 @@ const AppointmentsTable = ({ salonId }) => {
   useEffect(() => {
     const fetchWorkingHours = async () => {
       try {
-        const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_working_hours.php', {
+        const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_barber_working_hours.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ salon_id: salonId })
+          body: JSON.stringify({ 
+            salonId: Number(salonId),
+            barberId: Number(barberId),
+            date: format(selectedDate, 'yyyy-MM-dd')
+          })
         });
         
         const data = await response.json();
         if (data.success) {
-          setWorkingHours(data.working_hours);
+          setWorkingHours(data.workingHours);
         }
       } catch (error) {
         console.error('Greška pri učitavanju radnog vremena:', error);
       }
     };
 
-    fetchWorkingHours();
-  }, [salonId]);
+    if (barberId && salonId) {
+      fetchWorkingHours();
+    }
+  }, [salonId, barberId, selectedDate]);
 
   // Generisanje vremenskih slotova na osnovu radnog vremena
   const generateTimeSlots = () => {
     if (!workingHours) return [];
 
     const dayOfWeek = selectedDate.getDay();
-    const todayWorkingHours = workingHours.find(day => day.day_of_week === (dayOfWeek === 0 ? 7 : dayOfWeek));
+    const todayWorkingHours = workingHours.find(day => 
+      day.day_of_week === (dayOfWeek === 0 ? 7 : dayOfWeek) && day.is_working
+    );
 
-    if (!todayWorkingHours || !todayWorkingHours.is_working) return [];
+    if (!todayWorkingHours) return [];
 
     const startTime = getMinutesFromTime(todayWorkingHours.start_time);
     const endTime = getMinutesFromTime(todayWorkingHours.end_time);
     const slots = [];
 
     for (let minutes = startTime; minutes < endTime; minutes += 15) {
+      // Proveravamo pauzu ako postoji
+      if (todayWorkingHours.has_break) {
+        const breakStart = getMinutesFromTime(todayWorkingHours.break_start);
+        const breakEnd = getMinutesFromTime(todayWorkingHours.break_end);
+        if (minutes >= breakStart && minutes < breakEnd) {
+          continue; // Preskačemo termine tokom pauze
+        }
+      }
+
       const hour = Math.floor(minutes / 60);
       const minute = minutes % 60;
       slots.push(
@@ -74,7 +91,8 @@ const AppointmentsTable = ({ salonId }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          salonId: salonId,
+          salonId: Number(salonId),
+          barberId: Number(barberId),
           date: format(selectedDate, 'yyyy-MM-dd')
         })
       });
@@ -92,17 +110,12 @@ const AppointmentsTable = ({ salonId }) => {
 
   // Polling useEffect
   useEffect(() => {
-    // Inicijalno učitavanje
-    fetchAppointments();
-
-    // Postavljanje intervala za osvežavanje (na svakih 10 sekundi)
-    const interval = setInterval(fetchAppointments, 10000);
-
-    // Cleanup funkcija
-    return () => {
-      clearInterval(interval);
-    };
-  }, [salonId, selectedDate]); // Dependency array
+    if (barberId && salonId) {
+      fetchAppointments();
+      const interval = setInterval(fetchAppointments, 10000);
+      return () => clearInterval(interval);
+    }
+  }, [salonId, barberId, selectedDate]);
 
   const handleStatusUpdate = async (appointmentId, newStatus) => {
     try {

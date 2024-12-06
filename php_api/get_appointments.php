@@ -22,11 +22,12 @@ try {
               FROM appointments a 
               JOIN usluge u ON a.service_id = u.id 
               WHERE a.salon_id = ? 
+              AND a.frizer_id = ? 
               AND a.date = ?
               ORDER BY a.time_slot ASC";
               
     $stmt = $conn->prepare($query);
-    $stmt->execute([$data->salonId, $data->date]);
+    $stmt->execute([$data->salonId, $data->barberId, $data->date]);
     $appointments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     echo json_encode([
