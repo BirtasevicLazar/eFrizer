@@ -5,6 +5,7 @@ import { Toaster, toast } from 'react-hot-toast';
 import './styles/Dashboard.css';
 import ProfileSection from './ProfileSection';
 import BarbersSection from './BarbersSection';
+import { API_BASE_URL } from '../../config'; 
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Dashboard = () => {
       }
 
       try {
-        const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_salon_data.php', {
+        const response = await fetch(`${API_BASE_URL}/get_salon_data.php`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

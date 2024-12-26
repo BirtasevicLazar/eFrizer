@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BsClock, BsPause, BsToggleOn, BsToggleOff, BsCheck2Circle } from 'react-icons/bs';
 import { toast } from 'react-hot-toast';
 import './styles/BarberWorkingHours.css';
+import { API_BASE_URL } from '../../../config'; // Dodajte ovaj import
 
 const BarberWorkingHours = ({ barberId, salonId }) => {
   const [workingHours, setWorkingHours] = useState([]);
@@ -27,7 +28,7 @@ const BarberWorkingHours = ({ barberId, salonId }) => {
   const fetchWorkingHours = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_working_hours.php', {
+      const response = await fetch(`${API_BASE_URL}/get_working_hours.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -115,7 +116,7 @@ const BarberWorkingHours = ({ barberId, salonId }) => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/set_working_hours.php', {
+      const response = await fetch(`${API_BASE_URL}/set_working_hours.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -129,7 +130,7 @@ const BarberWorkingHours = ({ barberId, salonId }) => {
       
       if (data.success) {
         // Nakon uspešnog čuvanja radnog vremena, generišemo termine
-        const generateResponse = await fetch('http://192.168.0.31:8888/efrizer/php_api/generate_time_slots.php', {
+        const generateResponse = await fetch(`${API_BASE_URL}/generate_time_slots.php`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -292,4 +293,4 @@ const BarberWorkingHours = ({ barberId, salonId }) => {
   );
 };
 
-export default BarberWorkingHours; 
+export default BarberWorkingHours;

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { BsPersonCircle, BsPencil, BsCheckLg, BsX, BsLink45Deg } from 'react-icons/bs';
 import { toast } from 'react-hot-toast';
 import './styles/ProfileSection.css';
+import { API_BASE_URL } from '../../config';
+import { API_URL2 } from '../../config';
 
 const ProfileSection = ({ salonData, setSalonData }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -14,7 +16,7 @@ const ProfileSection = ({ salonData, setSalonData }) => {
     city: salonData?.city || ''
   });
 
-  const bookingUrl = `http://192.168.0.31:5173/booking/${salonData?.slug}`;
+  const bookingUrl = `${API_URL2}booking/${salonData?.slug}`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(bookingUrl);
@@ -32,7 +34,7 @@ const ProfileSection = ({ salonData, setSalonData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/update_salon.php', {
+      const response = await fetch(`${API_BASE_URL}/update_salon.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -194,4 +196,4 @@ const ProfileSection = ({ salonData, setSalonData }) => {
   );
 };
 
-export default ProfileSection; 
+export default ProfileSection;

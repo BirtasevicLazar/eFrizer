@@ -1,4 +1,5 @@
 <?php
+require_once 'cors.php'; 
 require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

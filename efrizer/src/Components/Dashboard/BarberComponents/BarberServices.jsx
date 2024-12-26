@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BsPlus, BsPencil, BsTrash, BsCheck, BsX } from 'react-icons/bs';
 import { toast } from 'react-hot-toast';
 import './styles/BarberServices.css';
+import { API_BASE_URL } from '../../../config'; // Dodajte ovaj import
 
 const BarberServices = ({ barberId, salonId }) => {
   const [services, setServices] = useState([]);
@@ -22,7 +23,7 @@ const BarberServices = ({ barberId, salonId }) => {
 
   const fetchServices = async () => {
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_barber_services.php', {
+      const response = await fetch(`${API_BASE_URL}/get_barber_services.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ barberId, salonId })
@@ -44,7 +45,7 @@ const BarberServices = ({ barberId, salonId }) => {
         ? 'update_barber_service.php'
         : 'add_barber_service.php';
 
-      const response = await fetch(`http://192.168.0.31:8888/efrizer/php_api/${endpoint}`, {
+      const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -71,7 +72,7 @@ const BarberServices = ({ barberId, salonId }) => {
   const handleDelete = async (serviceId) => {
     try {
       // Prvo proveravamo da li ima zakazanih termina
-      const checkResponse = await fetch('http://192.168.0.31:8888/efrizer/php_api/delete_barber_service.php', {
+      const checkResponse = await fetch(`${API_BASE_URL}/delete_barber_service.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -88,7 +89,7 @@ const BarberServices = ({ barberId, salonId }) => {
         // Ako ima termina, pitamo za potvrdu
         if (window.confirm(checkData.error)) {
           // Ako korisnik potvrdi, brišemo sve
-          const deleteResponse = await fetch('http://192.168.0.31:8888/efrizer/php_api/delete_barber_service.php', {
+          const deleteResponse = await fetch(`${API_BASE_URL}/delete_barber_service.php`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -219,4 +220,4 @@ const BarberServices = ({ barberId, salonId }) => {
   );
 };
 
-export default BarberServices; 
+export default BarberServices;

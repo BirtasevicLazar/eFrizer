@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BsScissors, BsSearch, BsPerson, BsX, BsHouseDoor, BsCash, BsInfoCircle, BsEnvelope, BsGeoAlt, BsTelephone, BsArrowRight } from 'react-icons/bs';
 import './NewNavbar.css';
+import { API_BASE_URL } from '../../config';  // Dodajemo import
 
 const NewNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,7 +36,7 @@ const NewNavbar = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://192.168.0.31:8888/efrizer/php_api/search_salons.php?query=${encodeURIComponent(searchValue)}`,
+        `${API_BASE_URL}/search_salons.php?query=${encodeURIComponent(searchValue)}`,  // Zamenjujemo hardkodiranu IP
         {
           method: 'GET',
           headers: {

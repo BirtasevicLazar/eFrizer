@@ -1,20 +1,12 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 0);
-ini_set('log_errors', 1);
-ini_set('error_log', dirname(__FILE__) . '/error.log');
-
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: http://192.168.0.31:5173');
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
+require_once 'cors.php'; 
+require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
 
-require_once 'config.php';
 
 try {
     $input = file_get_contents('php://input');

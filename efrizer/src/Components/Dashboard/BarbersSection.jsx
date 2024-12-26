@@ -5,7 +5,7 @@ import BarberWorkingHours from './BarberComponents/BarberWorkingHours';
 import BarberServices from './BarberComponents/BarberServices';
 import AppointmentsTable from './BarberComponents/AppointmentsTable';
 import './styles/BarbersSection.css';
-
+import { API_BASE_URL } from '../../config';
 
 const BarbersSection = ({ salonId }) => {
   const [barbers, setBarbers] = useState([]);
@@ -25,7 +25,7 @@ const BarbersSection = ({ salonId }) => {
 
   const fetchBarbers = async () => {
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_barbers.php', {
+      const response = await fetch(`${API_BASE_URL}/get_barbers.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ const BarbersSection = ({ salonId }) => {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/add_barber.php', {
+      const response = await fetch(`${API_BASE_URL}/add_barber.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -219,4 +219,4 @@ const BarbersSection = ({ salonId }) => {
   );
 };
 
-export default BarbersSection; 
+export default BarbersSection;

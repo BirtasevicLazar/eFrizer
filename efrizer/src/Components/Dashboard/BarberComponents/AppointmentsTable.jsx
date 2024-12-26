@@ -4,8 +4,9 @@ import { toast } from 'react-hot-toast';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { format, addDays, subDays, setHours, setMinutes } from 'date-fns';
-import { sr } from 'date-fns/locale';
+import { sr } from 'date-fns/locale'; 
 import './styles/AppointmentsTable.css';
+import { API_BASE_URL } from '../../../config';
 
 const AppointmentsTable = ({ salonId, barberId }) => {
   const [appointments, setAppointments] = useState([]);
@@ -18,7 +19,7 @@ const AppointmentsTable = ({ salonId, barberId }) => {
   useEffect(() => {
     const fetchWorkingHours = async () => {
       try {
-        const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_barber_working_hours.php', {
+        const response = await fetch(`${API_BASE_URL}/get_barber_working_hours.php`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -85,7 +86,7 @@ const AppointmentsTable = ({ salonId, barberId }) => {
   const fetchAppointments = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_appointments.php', {
+      const response = await fetch(`${API_BASE_URL}/get_appointments.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -119,7 +120,7 @@ const AppointmentsTable = ({ salonId, barberId }) => {
 
   const handleStatusUpdate = async (appointmentId, newStatus) => {
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/update_appointment_status.php', {
+      const response = await fetch(`${API_BASE_URL}/update_appointment_status.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

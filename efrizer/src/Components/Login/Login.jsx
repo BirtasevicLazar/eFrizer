@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { BsEnvelope, BsLock } from 'react-icons/bs';
 import NewNavbar from '../NewNavbar/NewNavbar';
 import Footer from '../Footer/Footer';
+import { API_BASE_URL } from '../../config'; 
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/login.php', {
+      const response = await fetch(`${API_BASE_URL}/login.php`, {  
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

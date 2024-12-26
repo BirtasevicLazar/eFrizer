@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { BsShop, BsPerson, BsEnvelope, BsPhone, BsLock, BsGeoAlt } from 'react-icons/bs';
 import NewNavbar from '../NewNavbar/NewNavbar';
 import Footer from '../Footer/Footer';
+import { API_BASE_URL } from '../../config'; // Dodajte ovaj import
 
 const Register = () => {
   const navigate = useNavigate();
@@ -98,7 +99,7 @@ const Register = () => {
           city: formData.city.trim()
         };
 
-        const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/register.php', {
+        const response = await fetch(`${API_BASE_URL}/register.php`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -326,4 +327,4 @@ const Register = () => {
   );
 };
 
-export default Register; 
+export default Register;

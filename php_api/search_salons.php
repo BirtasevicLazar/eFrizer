@@ -1,10 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: http://192.168.0.31:5173');
-header('Content-Type: application/json');
-header('Access-Control-Allow-Methods: GET');
-header('Access-Control-Allow-Headers: Content-Type');
-header('Access-Control-Allow-Credentials: true');
-
+require_once 'cors.php'; 
 require_once 'config.php';
 
 try {

@@ -5,6 +5,7 @@ import './Booking.css';
 import { toast, Toaster } from 'react-hot-toast';
 import Footer from '../Footer/Footer';
 import { format, subDays, addDays } from 'date-fns';
+import { API_BASE_URL } from '../../config';
 
 const Booking = () => {
   const { slug } = useParams();
@@ -38,7 +39,7 @@ const Booking = () => {
 
   const fetchSalonData = async () => {
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_salon_by_slug.php', {
+      const response = await fetch(`${API_BASE_URL}/get_salon_by_slug.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +62,7 @@ const Booking = () => {
     try {
       console.log('Fetching barbers for salon:', salonId);
 
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_barbers.php', {
+      const response = await fetch(`${API_BASE_URL}/get_barbers.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +90,7 @@ const Booking = () => {
 
   const fetchServices = async () => {
     try {
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_services.php', {
+      const response = await fetch(`${API_BASE_URL}/get_services.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -120,7 +121,7 @@ const Booking = () => {
         return;
       }
 
-      const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/get_available_slots.php', {
+      const response = await fetch(`${API_BASE_URL}/get_available_slots.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -387,7 +388,7 @@ const Booking = () => {
       }
       
       try {
-        const response = await fetch('http://192.168.0.31:8888/efrizer/php_api/create_appointment.php', {
+        const response = await fetch(`${API_BASE_URL}/create_appointment.php`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
